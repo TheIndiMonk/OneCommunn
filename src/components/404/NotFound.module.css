@@ -1,0 +1,104 @@
+.container {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 90vh;
+  padding: 20px;
+  letter-spacing: 0.24em;
+  background-color: #f7f7f7;
+}
+
+.image {
+  width: 100%; /* Make the image responsive */
+  max-width: 643.36px; /* Limit the maximum width */
+  height: auto; /* Maintain aspect ratio */
+  padding-top: 5px;
+  margin-bottom: 0rem;
+}
+
+.title {
+  font-family: 'Elsie';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 70px;
+  line-height: 81px;
+  color: #27282C;
+  font-weight: 200;
+  margin: 10px !important;
+}
+
+/* Responsive font size */
+@media (max-width: 768px) {
+  .title {
+    font-size: 50px; /* Reduce font size for tablets */
+    line-height: 60px;
+  }
+}
+
+.text {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: 0.24em;
+  color: #27282C;
+  padding-bottom: 10px !important;
+  margin: 0rem !important;
+}
+
+/* Button */
+.button {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 21px;
+  margin: 25px;
+  padding: 0.75rem 3rem;
+  border: 1px solid #d1d5db;
+  border-radius: 9999px;
+  color: #6b7280;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s;
+}
+
+/* Button hover effect */
+.button:hover {
+  background-color: #e5e7eb;
+}
+
+.icon {
+  margin-left: 0.5rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .container {
+    padding: 10px; /* Adjust padding for smaller screens */
+  }
+
+  .button {
+    padding: 0.5rem 2rem; /* Reduce padding for buttons on smaller screens */
+  }
+
+  .text {
+    font-size: 12px; /* Reduce font size for smaller screens */
+  }
+}
+
+@media (max-width: 480px) {
+  .title {
+    font-size: 30px; /* Further reduce font size for mobile */
+    line-height: 36px;
+  }
+
+  .text {
+    font-size: 10px; /* Further reduce text size for mobile */
+  }
+}

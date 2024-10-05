@@ -1,0 +1,24 @@
+.services {
+    padding: 50px 20px;
+    text-align: center;
+}
+
+.services h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 36px;
+    margin-bottom: 40px;
+}
+
+.serviceItem {
+    display: inline-block;
+    width: 200px;
+    height: 200px;
+    background-color: #a3b18a;
+    margin: 0 20px;
+    border-radius: 10px;
+}
+
+.serviceItem p {
+    margin-top: 10px;
+    font-size: 18px;
+}
