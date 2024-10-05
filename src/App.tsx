@@ -4,7 +4,7 @@ import './App.css';
 // import Header from './components/Header/Header';
 // import Footer from './components/Footer/Footer';
 
-// Pages
+// Pages for the route
 import BuilderPage from './builder-page';
 import Home from './components/Home/Home';
 import Team from './components/Team/Team';
