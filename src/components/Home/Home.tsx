@@ -21,8 +21,8 @@ const Home: React.FC = () => {
     return (
         <div>
             <Hero
-                title="About Us" 
-                breadcrumb="Home • About Us" 
+                title="Home" 
+                breadcrumb="Home • Home" 
                 illustrations={illustrations} 
             />
         </div>
