@@ -75,6 +75,11 @@ Builder.registerComponent(Footer, {
           friendlyName: 'Newsletter Placeholder',
       },
       {
+        name: 'footer-logo',
+        type: 'file',
+        friendlyName: "Footer Logo"
+      },
+      {
           name: 'contactInfo',
           type: 'object',
           subFields: [

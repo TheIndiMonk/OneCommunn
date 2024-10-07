@@ -106,6 +106,7 @@
     position: absolute;
     min-width: 160px;
     border-radius: 20px;
+    background-color: #e5bc92dd;
     box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
     z-index: 1;
     top: 100%;
@@ -125,7 +126,7 @@
 }
 
 /* Responsive Adjustments for Mid-Sized Screens (Tablets/Larger Mobiles) */
-@media screen and (min-width: 800px) and (max-width: 1300px) {
+@media screen and (min-width: 700px) and (max-width: 1300px) {
     .header {
         padding: 15px 30px; /* Adjust padding */
         gap: 1rem; /* Reduce gap */
@@ -146,7 +147,7 @@
 
 
 /* Show hamburger on smaller screens */
-@media screen and (max-width: 790px) {
+@media screen and (max-width: 1008px) {
     .nav,
     .actions {
         display: none;
