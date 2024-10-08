@@ -1,14 +1,15 @@
 import React from 'react';
 import styles from './hero.module.css';
-import { HeroProps } from '../../lib/types/Hero/HeroProps';
+import { HeroProps } from '../../lib/types/type';
 
-export const Hero: React.FC<HeroProps> = ({ title }) => {
+export const Hero: React.FC<HeroProps> = ({ title, breadcrumb, illustrations}) => {
     return (
         <>
             <section className={styles.heroSection}>
                 <h1 className={styles.heroTitle}>{title}</h1>
                 <p className={styles.breadcrumb}>Home • {title}</p>
                 <div className={styles.illustrationContainer}>
+                
                     <img
                         src="/logo/left.svg"
                         alt="Leaf Illustration 1"

@@ -26,7 +26,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 function App() {
 
-  const logo = {
+  const logo: HeaderProps['logo'] = {
     src: "/logo/mantra-logo.svg",
     alt: 'Mantra Logo',
     width: 50,
@@ -63,7 +63,8 @@ function App() {
     { url: "/join", label: "Join Now" },
     { url: "/pay", label: "Pay" },
   ];
-  const footerlogo = {
+
+  const footerlogo: FooterProps['logo'] = {
     src: "/logo/mantra-logo.svg",
     alt: 'Mantra Logo',
     width: 50,
@@ -72,7 +73,7 @@ function App() {
     showLogoText: true,
   };
 
-  const contactInfo = {
+  const contactInfo: FooterProps['contactInfo'] = {
     address: '42 F, Manisha UK Street',
     phone1: '008 4587 9875',
     phone2: '008 5874 6985',
@@ -105,13 +106,13 @@ function App() {
     },
   ];
 
-  const socialLinks = [
+  const socialLinks: FooterProps['socialLinks'] = [
     { platform: 'Facebook', url: 'https://facebook.com', icon: <FaFacebook /> },
     { platform: 'Instagram', url: 'https://instagram.com', icon: <FaInstagram /> },
     { platform: 'Twitter', url: 'https://twitter.com', icon: <FaTwitter /> }
   ];
 
-  const legalLinks = [
+  const legalLinks: FooterProps['legalLinks'] = [
     { label: 'Terms And Condition', url: '#', external: true },
     { label: 'Privacy Policy', url: '#', external: true }
   ];

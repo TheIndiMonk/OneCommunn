@@ -42,6 +42,7 @@
 .inputContainer {
   position: relative;
   margin-bottom: 20px;
+  outline: none;
 }
 
 .input {
@@ -177,13 +178,17 @@
   }
   .columnWide{
     padding: 15px;
-    max-width: 440px;
+    max-width: 270px;
   }
   .column{
-    max-width: 360px;
+    max-width: 460px;
   }
   .inputContainer{
     width: 95%;
+  }
+  .description{
+    padding-right: 12px;
+    text-align: justify;
   }
 
 }

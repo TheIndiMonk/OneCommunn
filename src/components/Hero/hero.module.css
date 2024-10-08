@@ -58,7 +58,7 @@
 /* Responsive styles */
 @media (max-width: 768px) {
     .heroTitle {
-        font-size: 2.5rem; /* Reduce font size for tablets */
+        font-size: 50px; /* Reduce font size for tablets */
     }
 
     .illustration1 {

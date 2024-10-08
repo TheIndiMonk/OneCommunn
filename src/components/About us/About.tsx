@@ -22,7 +22,7 @@ const About: React.FC = () => {
         <div>
             <Hero
                 title="About Us" 
-                breadcrumb="Home • About Us" 
+                breadcrumb="About Us" 
                 illustrations={illustrations} 
             />
         </div>
