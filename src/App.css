@@ -1,3 +1,32 @@
 body{
     margin: 0%;
 }
+
+h1{
+    font-family: 'Elsie';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 50px;
+    line-height: 81px;
+    text-align: center;
+    color: #27282C;
+}
+
+p{
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 26px;
+    color: #27282C;
+    margin-top: 0.5rem;
+}
+
+button{
+    font-family: 'Poppins';
+    cursor: pointer;
+    color: #27282C; 
+    border-radius: 23.5px;
+    border: 1px solid #27282C;
+    background-color: transparent;
+}

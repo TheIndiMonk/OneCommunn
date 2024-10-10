@@ -5,13 +5,14 @@ import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
 
 // Pages for the route
+import { FAQ } from './Pages/FAQ/FAQ';
+import Home from './Pages/Home/Home';
+import Team from './Pages/Team/Team';
 import BuilderPage from './builder-page';
-import Home from './components/Home/Home';
-import Team from './components/Team/Team';
-import About from './components/About us/About';
-import Pricing from './components/Pricing/Pricing';
-import Contact from './components/Contact us/contact';
-import { Services } from './components/ Services/ Services';
+import About from './Pages/About us/About';
+import Pricing from './Pages/Pricing/Pricing';
+import Contact from './Pages/Contact us/contact';
+import { Services } from './Pages/ Services/ Services';
 
 
 // Not Found Pages
@@ -131,6 +132,8 @@ function App() {
           <Route path="/pricing" element={<Pricing />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/service" element={<Services />} />
+          <Route path="/faq" element={<FAQ />} />
+
           <Route path="/builder-page" element={<BuilderPage />} />
           <Route path="/*" element={<NotFound />} />
 

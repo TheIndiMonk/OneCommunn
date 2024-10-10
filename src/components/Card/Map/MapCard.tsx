@@ -1,7 +1,13 @@
+// MapCard.tsx
 import style from './MapCard.module.css';
 
+interface Location {
+    title: string;
+    address: string;
+}
+
 interface MapCardProps {
-    location: { title: string; address: string } | null; // Accept location as prop
+    location: Location | null; // Accept location as prop
 }
 
 export const MapCard: React.FC<MapCardProps> = ({ location }) => {
@@ -9,7 +15,11 @@ export const MapCard: React.FC<MapCardProps> = ({ location }) => {
 
     return (
         <div className={style.mapContainer}>
-            <img className={style.mapClass} src={`./maps/${location.title}.png`} alt={`Map of ${location.title}`} /> {/* Display selected map */}
+            <img 
+                className={style.mapClass} 
+                src={`./maps/${location.title}.png`} 
+                alt={`Map of ${location.title}`} 
+            /> {/* Display selected map */}
         </div>
     );
 };

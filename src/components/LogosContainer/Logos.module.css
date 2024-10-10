@@ -1,0 +1,25 @@
+/* Logos.module.css */
+.container{
+  display: flex;               /* Use flexbox */
+  justify-content: center;     /* Center horizontally */
+  align-items: center;         /* Center vertically */
+  height: 50vh;
+}
+
+.headerLogos {
+  width: 90%;
+  padding: 10px;
+  display: flex;               /* Use flexbox for logo alignment */
+  flex-wrap: wrap;            /* Allow logos to wrap to the next line */
+  justify-content: center;
+  border-top: 0.5px solid ;
+  border-bottom: 0.5px solid ;
+  }
+  
+  .logoImage {
+    width: 100px;
+    height: 50px;
+    margin: 10px 20px;
+    max-height: 50px;
+  }
+  

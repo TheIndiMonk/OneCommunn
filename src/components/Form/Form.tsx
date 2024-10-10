@@ -1,8 +1,8 @@
+// Form.tsx
 import { useEffect, useState } from 'react';
 import styles from './Form.module.css';
 import { FormInput } from '../../lib/types/type';
 import { ContactFormValues } from '../../lib/types/Form/ContactFormValues';
-
 
 const initialFormValues: ContactFormValues = {
     firstName: '',
@@ -12,21 +12,28 @@ const initialFormValues: ContactFormValues = {
     message: '',
 };
 
+interface FormProps extends FormInput {
+    showMessageBox?: boolean; // New prop for toggling the message box
+}
 
-export const Form: React.FC<FormInput> = ({ title, formDescription, fields, selectedLocation }) => {
-    const contactEmail = ''
+export const Form: React.FC<FormProps> = ({
+    title,
+    formDescription,
+    fields,
+    selectedLocation,
+    showMessageBox = true, // Default to true
+}) => {
+    const contactEmail = '';
     const [formValues, setFormValues] = useState<ContactFormValues>(initialFormValues);
 
     useEffect(() => {
-        // Update form values based on selected location if necessary
         if (selectedLocation) {
             setFormValues((prevValues) => ({
                 ...prevValues,
-                contactEmail: selectedLocation.email, // Example: setting email field based on selected location
+                contactEmail: selectedLocation.email, // Set email field based on selected location
             }));
         }
     }, [selectedLocation]);
-
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
         setFormValues({
@@ -63,15 +70,17 @@ export const Form: React.FC<FormInput> = ({ title, formDescription, fields, sele
                         ))}
                     </div>
 
-                    <div className={styles.formGroup}>
-                        <label htmlFor="message">Message</label>
-                        <textarea
-                            id="message"
-                            name="message"
-                            value={formValues.message}
-                            onChange={handleChange}
-                        ></textarea>
-                    </div>
+                    {showMessageBox && ( // Conditionally render the message box
+                        <div className={styles.formGroup}>
+                            <label htmlFor="message">Message</label>
+                            <textarea
+                                id="message"
+                                name="message"
+                                value={formValues.message}
+                                onChange={handleChange}
+                            ></textarea>
+                        </div>
+                    )}
 
                     <div className={styles.formSubmit}>
                         <button className={styles.btn} type="submit">Send Message</button>

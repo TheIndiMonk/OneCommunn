@@ -12,5 +12,25 @@ export * from './LocationCard/LocationCardProps'
 // Form 
 export * from './Form/formProps'
 
+// Card
+export * from './Card/CardProps'
+export * from './FAQ/QuestionnaireProps'
+
+
+
+export * from './Logo/LogoPros'
+export * from './Testimonial/TestimonialProps'
+export * from './Therapist/TherapistProps'
+
+
+export * from './FeaturedCardProps/FeaturedCardProps'
+export * from './AboutFeatureProps/AboutSectionProps'
+export * from './CheckSchedule/CheckScheduleProps'
+
+
+
+
+
+
 
 

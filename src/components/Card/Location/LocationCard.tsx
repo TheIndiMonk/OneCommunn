@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { LocationCardProps } from '../../../lib/types/type';
 import styles from './LocationCard.module.css';
+import { Card } from '../Card';
 
 interface LocationCardPropsArray {
     contactInfo: LocationCardProps[];
@@ -18,21 +19,18 @@ export const LocationCard: React.FC<LocationCardPropsArray> = ({ contactInfo, on
     return (
         <div className={styles.locationContainer}>
             {contactInfo.map((location, index) => (
-                <div
-                    key={index}
-                    className={`${styles.location} ${selectedLocationIndex === index ? styles.selected : ''}`}
+                // Adding the Overlay background Image.
+                <div key={index} className={`${styles.location} ${selectedLocationIndex === index ? styles.selected : ''}`}
                     onClick={() => handleLocationClick(location, index)}
-                    style={{
-                        backgroundImage: selectedLocationIndex === index ? 'url(./logo/Selector.svg)' : 'none',
-                    }}
+                    style={{ backgroundImage: selectedLocationIndex === index ? 'url(./logo/Selector.svg)' : 'none', }}
                 >
-                    <div className={styles.textContainer}>
-                        <h2>{location.title}</h2>
-                        <p>{location.address}</p>
-                        <p>{location.phone1}</p>
-                        <p>{location.phone2}</p>
-                        <p>{location.email}</p>
-                    </div>
+                    <Card
+                        title={location.title}
+                        address={location.address}
+                        phone1={location.phone1}
+                        phone2={location.phone2}
+                        email={location.email}
+                    />
 
                 </div>
             ))}

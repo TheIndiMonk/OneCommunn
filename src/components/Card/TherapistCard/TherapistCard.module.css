@@ -1,0 +1,32 @@
+.therapistCard {
+    text-align: center;
+}
+
+.therapistImage {
+    width: 100%;
+    height: 250px;
+    background-color: #a3b18a;
+    border-radius: 8px;
+    margin-bottom: 10px;
+
+
+}
+.therapistImage:hover{
+    box-shadow: -10px 10px 5px #9D7E5E ;   
+
+}
+
+.therapistName {
+    font-family: 'Elsie';
+    color: black;
+    font-size: 1rem;
+    font-weight: normal;
+}
+
+.therapistRole {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 0.8rem;
+    color: #94a3b8;
+}
