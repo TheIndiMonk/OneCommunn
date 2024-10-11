@@ -17,6 +17,7 @@ import { CheckSchedule } from "./components/CheckSchedule/CheckSchedule";
 import { PriceCard } from "./components/Card/PriceCard/PriceCard";
 import BannerCard from "./components/Banner/BannerCard";
 import TimeTable from "./components/TimeTable/TimeTable";
+import ProductCard from "./components/Card/ProductCard/ProductCard";
 
 // Header and Footer
 Builder.registerComponent(Header, {
@@ -926,5 +927,20 @@ Builder.registerComponent(TimeTable, {
               },
           ],
       },
+  ],
+});
+
+Builder.registerComponent(ProductCard, {
+  name: 'ProductCard',
+  inputs: [
+    {
+      name: 'products',
+      type: 'list',
+      subFields: [
+        { name: 'name', type: 'string', defaultValue: 'Product Name' },
+        { name: 'price', type: 'number', defaultValue: 0 },
+        { name: 'image', type: 'file', allowedFileTypes: ['jpeg', 'jpg', 'png'], defaultValue: '' },
+      ],
+    },
   ],
 });

@@ -86,6 +86,21 @@ const Pricing: React.FC = () => {
         }
     ];
 
+    const products = [
+        {
+          name: 'Product 1',
+          price: '29.99',
+          image: 'https://placehold.co/300x350',
+        },
+        {
+          name: 'Product 2',
+          price: '39.99',
+          image: 'https://placehold.co/300x350',
+
+        },
+        // Add more products as needed
+      ];
+
     return (
         <div>
             <Hero
@@ -107,13 +122,7 @@ const Pricing: React.FC = () => {
                 <h1 className={styles.title}>Yoga Class Timing</h1>
                 <p className={styles.subtitle}>Duis aute irure dolor reprehenderit voluptate velit esse cillum dolore fugiat nulla pariatur.</p>
                 <TimeTable TimeTables={timeTables} />
-
-                {/* <div className="product-grid">
-                    <ProductCard price="210.00" name="Yoga Stiff Ball" />
-                    <ProductCard price="210.00" name="Yoga Stiff Ball" />
-                    <ProductCard price="210.00" name="Yoga Stiff Ball" />
-                    <ProductCard price="210.00" name="Yoga Stiff Ball" />
-                </div> */}
+                <ProductCard products={products}/>
             </div>
         </div>
     );

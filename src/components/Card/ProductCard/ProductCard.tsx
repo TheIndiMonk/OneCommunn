@@ -1,24 +1,38 @@
-
+// ProductCard.tsx
 import React from 'react';
 import styles from './ProductCard.module.css';
+import { ProductCardProps } from '../../../lib/types/type';
 
-type ProductCardProps = {
-  price: string;
-  name: string;
-};
 
-const ProductCard: React.FC<ProductCardProps> = ({ price, name }) => {
+const ProductCard: React.FC<ProductCardProps> = ({ products }) => {
   return (
-    <div className={styles.card}>
-      <div className={styles.imageContainer}>
-        <div className={styles.addToCart}>
-          <span>Add To Cart</span>
+    <>
+      <div className={styles.ProductsContainer}>
+        <div className={styles.productContainer}>
+          {products.map((product, index) => (
+            <div key={index} className={styles.products}>
+              <div className={styles.card}>
+                <div className={styles.imageContainer} style={{ backgroundImage: product.image ? `url(${product.image})` : 'none' }}>
+                  <div className={styles.addToCart}>
+                    <span className={styles.btnText}>
+                      Add To Cart
+                    </span>
+                  </div>
+                </div>
+              </div>
+              <p className={styles.price}>${product.price}</p>
+              <p className={styles.name}>{product.name}</p>
+            </div>
+          ))}
+        </div>
+        <div className={styles.btnContainer}>
+          <button className={styles.btn}>View All  →</button>
         </div>
       </div>
-      <p className={styles.price}>${price}</p>
-      <p className={styles.name}>{name}</p>
-    </div>
+    </>
   );
 };
+
+
 
 export default ProductCard;

@@ -32,6 +32,8 @@ export * from './CheckSchedule/CheckScheduleProps'
 export * from './PriceCard/PriceCardProps'
 export * from './Banner/Banner'
 export * from './TimeTable/TimeTableProps'
+export * from './ProductCard/ProductCardProps'
+
 
 
 

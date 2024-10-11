@@ -47,7 +47,7 @@ function App() {
         { label: 'SEO Optimization', url: '/services/seo' },
       ],
     },
-    { label: 'Plans', url: '/plans' },
+    { label: 'Pricing', url: '/pricing' },
     {
       label: 'Courses',
       subLinks: [
