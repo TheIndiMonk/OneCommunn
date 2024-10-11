@@ -1,4 +1,4 @@
-import { Therapist } from "./Therapist";
+import { Therapist } from "./TherapistTypes";
 
 export interface TherapistProps {
     Therapist: Therapist[]

@@ -1,0 +1,71 @@
+/* Container for each product card */
+.card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 16px;
+  }
+  
+  /* Product image container with responsive sizes */
+  .imageContainer {
+    position: relative;
+    background-color: #a7d7c5;
+    width: 100%;
+    max-width: 250px;
+    height: 250px;
+    border-radius: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  /* Add to Cart button with absolute positioning */
+  .addToCart {
+    position: absolute;
+    background-color: #8b4513; /* Brown color */
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 14px;
+  }
+  
+  /* Price styling */
+  .price {
+    margin-top: 16px;
+    color: #4a5568;
+    font-size: 18px;
+  }
+  
+  /* Product name styling */
+  .name {
+    color: #2d3748;
+    font-size: 20px;
+    font-weight: 700;
+    margin-top: 8px;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .imageContainer {
+      width: 180px;
+      height: 180px;
+    }
+  
+    .addToCart {
+      width: 80px;
+      height: 80px;
+    }
+  
+    .price {
+      font-size: 16px;
+    }
+  
+    .name {
+      font-size: 18px;
+    }
+  }
+  

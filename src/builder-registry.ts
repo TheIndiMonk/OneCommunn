@@ -14,6 +14,9 @@ import { Logos } from "./components/LogosContainer/Logos";
 import { TestimonialSection } from "./components/TestimonialCarousel/Testimonial";
 import { AboutSection } from "./components/AboutSection/AboutSection";
 import { CheckSchedule } from "./components/CheckSchedule/CheckSchedule";
+import { PriceCard } from "./components/Card/PriceCard/PriceCard";
+import BannerCard from "./components/Banner/BannerCard";
+import TimeTable from "./components/TimeTable/TimeTable";
 
 // Header and Footer
 Builder.registerComponent(Header, {
@@ -456,7 +459,7 @@ Builder.registerComponent(TherapistGrid, {
   name: "TherapistGrid",
   inputs: [
     {
-      name: "therapists",
+      name: "Therapist",
       type: "list",
       subFields: [
         {
@@ -781,5 +784,147 @@ Builder.registerComponent(CheckSchedule, {
       friendlyName: 'Button Text',
       required: true,
     },
+  ],
+});
+
+Builder.registerComponent(PriceCard, {
+  name: 'PriceCard', // This is the name you'll use in Builder.io
+  inputs: [
+    {
+      name: 'pricingData',
+      type: 'list', // Specify that this will be a list of items
+      // Define the fields that each item in the list will have
+      subFields: [
+        {
+          name: 'title',
+          type: 'string',
+          required: true,
+          helperText: 'The title of the pricing package',
+        },
+        {
+          name: 'trainingCount',
+          type: 'number',
+          required: true,
+          helperText: 'The number of training sessions',
+        },
+        {
+          name: 'schedule',
+          type: 'string',
+          required: true,
+          helperText: 'The schedule of the training',
+        },
+        {
+          name: 'trainer',
+          type: 'string',
+          required: true,
+          helperText: 'The trainer for this package',
+        },
+        {
+          name: 'description',
+          type: 'string',
+          required: true,
+          helperText: 'A brief description of the pricing package',
+        },
+        {
+          name: 'price',
+          type: 'number',
+          required: true,
+          helperText: 'The price of the package',
+        },
+        {
+          name: 'includeTax',
+          type: 'string',
+          required: true,
+          helperText: 'Details about tax inclusion',
+        },
+      ],
+    },
+  ],
+});
+
+Builder.registerComponent(BannerCard, {
+  name: 'Banner Card', // Name to be displayed in Builder.io
+  inputs: [
+    {
+      name: 'title',
+      type: 'string',
+      required: true,
+      helperText: 'Title of the banner',
+    },
+    {
+      name: 'subtitle',
+      type: 'string',
+      required: true,
+      helperText: 'Subtitle of the banner',
+    },
+    {
+      name: 'buttonText',
+      type: 'string',
+      required: true,
+      helperText: 'Text for the button',
+    },
+    {
+      name: 'link',
+      type: 'string',
+      required: false,
+      helperText: 'URL to navigate when the button is clicked',
+    },
+    {
+      name: 'description',
+      type: 'string',
+      required: false,
+      helperText: 'Description text under the image',
+    },
+  ],
+});
+
+Builder.registerComponent(TimeTable, {
+  name: 'TimeTable',
+  inputs: [
+      {
+          name: 'TimeTables',
+          type: 'list',
+          subFields: [
+              {
+                  name: 'title',
+                  type: 'string',
+                  required: true,
+                  defaultValue: 'Time Table Title',
+              },
+              {
+                  name: 'times',
+                  type: 'list',
+                  subFields: [
+                      {
+                          name: 'time',
+                          type: 'string',
+                          required: true,
+                      },
+                  ],
+              },
+              {
+                  name: 'days',
+                  type: 'list',
+                  subFields: [
+                      {
+                          name: 'day',
+                          type: 'string',
+                          required: true,
+                      },
+                  ],
+              },
+              {
+                  name: 'link',
+                  type: 'url',
+                  required: false,
+              },
+              {
+                  name: 'buttonText',
+                  type: 'string',
+                  required: false,
+                  defaultValue: 'Learn More',
+              },
+          ],
+      },
   ],
 });

@@ -21,12 +21,17 @@ export * from './FAQ/QuestionnaireProps'
 export * from './Logo/LogoPros'
 export * from './Testimonial/TestimonialProps'
 export * from './Therapist/TherapistProps'
+export * from './Therapist/TherapistCardProps'
+
 
 
 export * from './FeaturedCardProps/FeaturedCardProps'
 export * from './AboutFeatureProps/AboutSectionProps'
 export * from './CheckSchedule/CheckScheduleProps'
 
+export * from './PriceCard/PriceCardProps'
+export * from './Banner/Banner'
+export * from './TimeTable/TimeTableProps'
 
 
 
