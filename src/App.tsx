@@ -108,9 +108,9 @@ function App() {
   ];
 
   const socialLinks: FooterProps['socialLinks'] = [
-    { platform: 'Facebook', url: 'https://facebook.com', icon: <FaFacebook /> },
-    { platform: 'Instagram', url: 'https://instagram.com', icon: <FaInstagram /> },
-    { platform: 'Twitter', url: 'https://twitter.com', icon: <FaTwitter /> }
+    { platform: 'Facebook', url: 'https://facebook.com', icon:'' },
+    { platform: 'Instagram', url: 'https://instagram.com', icon: ''},
+    { platform: 'Twitter', url: 'https://twitter.com', icon: ''}
   ];
 
   const legalLinks: FooterProps['legalLinks'] = [
