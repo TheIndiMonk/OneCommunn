@@ -1,0 +1,157 @@
+/* HomeHero.module.css */
+body {
+    margin: 0;
+    font-family: 'Arial, sans-serif';
+  }
+  
+  .container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 2rem;
+    flex-wrap: wrap;
+  }
+  
+  .header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+  }
+  
+  .dot {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    margin-right: 20px;
+  }
+  
+  .green {
+    background-color: #a5ae88;
+  }
+  
+  .black {
+    background-color: #3a3a3c;
+  }
+  
+  .arrow {
+    font-size: 1.5rem;
+  }
+  
+  .content {
+    max-width: 300px;
+    margin-right: 2rem;
+    margin-bottom: 2rem;
+  }
+  
+  .content p {
+    font-size: 0.9rem;
+    color: #3a3a3c;
+  }
+  
+  .content h1 {
+    font-size: 2rem;
+    color: #3a3a3c;
+    line-height: 1.2;
+  }
+  
+  .btn {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: transparent;
+    color: #3a3a3c;
+    border: 2px solid #3a3a3c;
+    border-radius: 20px;
+    cursor: pointer;
+  }
+  
+  .art {
+    display: flex;
+    align-items: center;
+    position: relative;
+    flex: 1;
+    min-width: 300px;
+    max-width: 500px;
+  }
+  
+  .circle, .oval {
+    position: absolute;
+  }
+  
+  .circle {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  
+  .leaf {
+    width: 100px;
+    height: 200px;
+    background-color: #b69479;
+    border-radius: 50% 50% 0 0;
+    transform: rotate(45deg);
+    top: 20px;
+    left: 55%;
+  }
+  
+  .oval {
+    width: 300px;
+    height: 200px;
+    border-radius: 100px;
+    top: 50px;
+    left: 40%;
+  }
+  
+  .sun {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    width: 100px;
+    height: 100px;
+    background-color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: rotate(90deg);
+  }
+  
+  .pagination {
+    position: absolute;
+    bottom: 20px;
+    right: 0;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
+  
+  .line {
+    width: 2px;
+    height: 50px;
+    background-color: #3a3a3c;
+    margin-bottom: 10px;
+  }
+  
+  .pager {
+    font-size: 1rem;
+    color: #3a3a3c;
+  }
+  
+  @media (max-width: 768px) {
+    .container {
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .content {
+      margin-right: 0;
+      text-align: center;
+    }
+  
+    .art {
+      margin-top: 2rem;
+    }
+  }
+  

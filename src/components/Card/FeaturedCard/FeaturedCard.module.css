@@ -1,4 +1,4 @@
-.featuredCard {
+    .featuredCard {
     background-color: #1f2937;
     color: #ffffff;
     padding: 40px;
@@ -19,6 +19,7 @@
     transform: translateY(-50%); /* Adjust for centering */
     width: 250px; /* Adjust as needed */
     height: auto;
+    z-index: 1;
 }
 
 .illustration2 {
@@ -33,12 +34,17 @@
 .contentContainer{
     display: flex;
     max-width: 70%;
+    flex-wrap: wrap;
+    align-items: center;
+
 }
 
 .imageContainer {
+    position: relative;
     flex-shrink: 0;
     width: 300px; /* Adjust width to fit image */
     height: 300px; /* Adjust height */
+    z-index: 2;
 }
 
 .profileImage {
@@ -143,5 +149,11 @@
     .imageContainer {
         width: 120px; /* Smaller size for mobile */
         height: 120px;
+    }
+}
+
+@media (max-width: 425px) {
+    .details{
+        margin-left: 0px;
     }
 }

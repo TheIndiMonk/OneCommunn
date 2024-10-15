@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './hero.module.css';
 import { HeroProps } from '../../lib/types/type';
 
-export const Hero: React.FC<HeroProps> = ({ title, breadcrumb, illustrations}) => {
+export const Hero: React.FC<HeroProps> = ({ title }) => {
     return (
         <>
             <section className={styles.heroSection}>

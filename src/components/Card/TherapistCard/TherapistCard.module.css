@@ -3,13 +3,21 @@
 }
 
 .therapistImage {
-    width: 100%;
-    height: 250px;
     background-color: #a3b18a;
     border-radius: 8px;
     margin-bottom: 10px;
-
-
+    width: 100%;
+    height: 250px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+    position: relative; /* Ensures hover content is positioned correctly */
+    overflow: hidden; /* Prevents content overflow */
+    background-size: cover; /* Makes sure the image covers the container */
+    background-position: center; /* Centers the image inside the container */
+    background-repeat: no-repeat; /* Prevents the image from repeating */
+    aspect-ratio: 1 / 1; /* Ensures the image container remains square */
 }
 .therapistImage:hover{
     box-shadow: -10px 10px 5px #9D7E5E ;   

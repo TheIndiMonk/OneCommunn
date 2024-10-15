@@ -15,7 +15,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ products }) => {
                 <div className={styles.imageContainer} style={{ backgroundImage: product.image ? `url(${product.image})` : 'none' }}>
                   <div className={styles.addToCart}>
                     <span className={styles.btnText}>
-                      Add To Cart
+                      <a href={product.link}>Add To Cart</a>
                     </span>
                   </div>
                 </div>

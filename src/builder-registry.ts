@@ -8,7 +8,7 @@ import { Form } from "./components/Form/Form";
 import { MapCard } from "./components/Card/Map/MapCard";
 import { FeaturedCard } from "./components/Card/FeaturedCard/FeaturedCard";
 import TherapistGrid from "./components/Card/TherapistGrid/TherapistGrid";
-import { Questionnaire } from "./Pages/FAQ/Questioner/Questionnaire";
+import { Questionnaire } from "./components/Questioner/Questionnaire";
 import { ImageCard } from "./components/Card/ImageCard/ImageCard";
 import { Logos } from "./components/LogosContainer/Logos";
 import { TestimonialSection } from "./components/TestimonialCarousel/Testimonial";
@@ -538,6 +538,11 @@ Builder.registerComponent(Questionnaire, {
         "Find answers to your most frequently asked questions below.",
     },
     {
+      name: 'backgroundImage',
+      type: 'boolean',
+      defaultValue: 'false'
+    },
+    {
       name: "question",
       type: "list",
       subFields: [
@@ -563,7 +568,9 @@ Builder.registerComponent(Questionnaire, {
           type: "string",
           defaultValue: "This is the second part of the answer (optional).",
         },
+        
       ],
+      
       defaultValue: [
         {
           question: "What is Builder.io?",
@@ -940,6 +947,8 @@ Builder.registerComponent(ProductCard, {
         { name: 'name', type: 'string', defaultValue: 'Product Name' },
         { name: 'price', type: 'number', defaultValue: 0 },
         { name: 'image', type: 'file', allowedFileTypes: ['jpeg', 'jpg', 'png'], defaultValue: '' },
+        { name: 'link', type: 'string', defaultValue: '' },
+
       ],
     },
   ],

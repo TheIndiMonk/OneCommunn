@@ -49,7 +49,6 @@ export const AboutSection: React.FC<AboutSectionProps> = ({heading, subHeading, 
             </div>
             <div className={styles.graphicSection}>
                 <div className={styles.circleTop}>
-
                     <div className={styles.playButton}></div>
                 </div>
                 <div className={styles.leafIllustartions}>

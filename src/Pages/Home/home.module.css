@@ -1,0 +1,23 @@
+.homeContainer{
+    background-color: white;
+}
+.section{
+    display: flex;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    flex-direction: column;
+    align-items: center;
+}
+.sectionTitle{
+    padding-bottom: 2rem;
+}
+
+.FaqContainer {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-content: space-around;
+    background-image: url('./logo/background-vector.svg');
+}

@@ -1,6 +1,6 @@
-import { Illustration } from "./HeroIllustration";
+// import { Illustration } from "./HeroIllustration";
 export interface HeroProps  {
     title: string;
-    breadcrumb: string;
-    illustrations: Illustration[];
+    // breadcrumb: string;
+    // illustrations: Illustration[];
 };

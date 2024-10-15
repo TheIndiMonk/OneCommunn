@@ -1,6 +1,6 @@
 import styles from './faq.module.css';
 import { Hero } from '../../components/Hero/Hero';
-import { Questionnaire } from './Questioner/Questionnaire';
+import { Questionnaire } from '../../components/Questioner/Questionnaire';
 import { ImageCard } from '../../components/Card/ImageCard/ImageCard';
 
 
@@ -56,6 +56,7 @@ export const FAQ: React.FC = () => {
                 title='Frequently Asked Questions'
                 description="Rrow itself, let it be sorrow; let him love it; let him pursue it, ishing for its acquisition. Because he will behold, uniess but through concern, and also of those who resist. Now a pure snore disturbed sum."
                 question={FaqData}
+                backgroundImage={false} // Set to true to show the background image
             />
             <div className={styles.cardContainer}>
                 <ImageCard 
@@ -76,8 +77,8 @@ export const FAQ: React.FC = () => {
                 title='Yoga Instructor Questions'
                 description="Rrow itself, let it be sorrow; let him love it; let him pursue it, ishing for its acquisition. Because he will behold, uniess but through concern, and also of those who resist. Now a pure snore disturbed sum."
                 question={FaqData}
+                backgroundImage={false} // Set to true to show the background image
             />
-
         </div>
     );
 };

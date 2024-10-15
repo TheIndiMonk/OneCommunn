@@ -35,9 +35,11 @@ export * from './TimeTable/TimeTableProps'
 export * from './ProductCard/ProductCardProps'
 
 
+export * from './InstagramFollow/InstagramFollowProps'
 
 
+export * from './HomeAboutSection/HomeAboutSectionProps'
 
 
-
+export * from './VisionMissionProps/VisionMissionProps'
 
