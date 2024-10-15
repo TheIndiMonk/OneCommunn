@@ -20,7 +20,7 @@ import NotFound from './components/404/NotFound';
 
 // Props and Types
 import { FooterProps, HeaderProps } from './lib/types/type';
-import { FaFacebook, FaTwitter, FaInstagram } from 'react-icons/fa';
+// import { FaFacebook, FaTwitter, FaInstagram } from 'react-icons/fa';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 
