@@ -50,25 +50,25 @@ const Team: React.FC = () => {
         setSelectedTherapist(therapist);
     };
 
-    const illustrations = [
-        {
-            src: '/logo/left.svg',
-            alt: 'Leaf Illustration 1',
-            className: 'illustration1'
-        },
-        {
-            src: '/logo/right.svg',
-            alt: 'Leaf Illustration 2',
-            className: 'illustration2'
-        },
-    ];
+    // const illustrations = [
+    //     {
+    //         src: '/logo/left.svg',
+    //         alt: 'Leaf Illustration 1',
+    //         className: 'illustration1'
+    //     },
+    //     {
+    //         src: '/logo/right.svg',
+    //         alt: 'Leaf Illustration 2',
+    //         className: 'illustration2'
+    //     },
+    // ];
 
     return (
         <div>
             <Hero
                 title="Team" 
-                breadcrumb="Home • Team" 
-                illustrations={illustrations} 
+                // breadcrumb="Home • Team" 
+                // illustrations={illustrations} 
             />
             <div className={styles.container}>
                 <h1 className={styles.title}>Meet The Therapist</h1>

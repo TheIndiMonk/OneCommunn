@@ -9,19 +9,19 @@ import { CheckSchedule } from '../../components/CheckSchedule/CheckSchedule';
 // import styles from './about.module.css';
 
 const About: React.FC = () => {
-    const illustrations = [
-        {
-            src: '/logo/left.svg',
-            alt: 'Leaf Illustration 1',
-            className: 'illustration1'
-        },
-        {
-            src: '/logo/right.svg',
-            alt: 'Leaf Illustration 2',
-            className: 'illustration2'
+    // const illustrations = [
+    //     {
+    //         src: '/logo/left.svg',
+    //         alt: 'Leaf Illustration 1',
+    //         className: 'illustration1'
+    //     },
+    //     {
+    //         src: '/logo/right.svg',
+    //         alt: 'Leaf Illustration 2',
+    //         className: 'illustration2'
 
-        },
-    ];
+    //     },
+    // ];
 
 
     const aboutSectionData = {
@@ -138,8 +138,8 @@ const About: React.FC = () => {
         <div>
             <Hero
                 title="About Us"
-                breadcrumb="About Us"
-                illustrations={illustrations}
+                // breadcrumb="About Us"
+                // illustrations={illustrations}
             />
             <AboutSection 
               heading={aboutSectionData.heading}

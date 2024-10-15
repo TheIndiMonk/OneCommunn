@@ -9,18 +9,18 @@ import { ContactFormProps } from '../../lib/types/Form/ContactFormProps'
 const Contact: React.FC = () => {
     const [selectedLocation, setSelectedLocation] = useState<LocationCardProps | null>(null); // Store selected location data
 
-    const illustrations = [
-        {
-            src: '/logo/left.svg',
-            alt: 'Leaf Illustration 1',
-            className: 'illustration1'
-        },
-        {
-            src: '/logo/right.svg',
-            alt: 'Leaf Illustration 2',
-            className: 'illustration2'
-        },
-    ];
+    // const illustrations = [
+    //     {
+    //         src: '/logo/left.svg',
+    //         alt: 'Leaf Illustration 1',
+    //         className: 'illustration1'
+    //     },
+    //     {
+    //         src: '/logo/right.svg',
+    //         alt: 'Leaf Illustration 2',
+    //         className: 'illustration2'
+    //     },
+    // ];
 
     const contactInfo: LocationCardProps[] = [
         { title: 'London', address: '25F/56, Avinash Street, London', phone1: '014 54789 9654', phone2: '014 5879 36541', email: 'london@examples.com' },
@@ -40,8 +40,8 @@ const Contact: React.FC = () => {
         <div>
             <Hero
                 title="Contact Us"
-                breadcrumb="Home • Contact Us"
-                illustrations={illustrations}
+                // breadcrumb="Home • Contact Us"
+                // illustrations={illustrations}
             />
             <LocationCard
                 contactInfo={contactInfo}

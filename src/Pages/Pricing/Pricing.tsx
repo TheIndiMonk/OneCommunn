@@ -10,19 +10,19 @@ import InstagramFollow from '../../components/InstagramCard/InstagramFollow';
 
 
 const Pricing: React.FC = () => {
-    const illustrations = [
-        {
-            src: '/logo/left.svg',
-            alt: 'Leaf Illustration 1',
-            className: 'illustration1'
-        },
-        {
-            src: '/logo/right.svg',
-            alt: 'Leaf Illustration 2',
-            className: 'illustration2'
+    // const illustrations = [
+    //     {
+    //         src: '/logo/left.svg',
+    //         alt: 'Leaf Illustration 1',
+    //         className: 'illustration1'
+    //     },
+    //     {
+    //         src: '/logo/right.svg',
+    //         alt: 'Leaf Illustration 2',
+    //         className: 'illustration2'
 
-        },
-    ];
+    //     },
+    // ];
 
     const packages = [
         {
@@ -147,8 +147,8 @@ const Pricing: React.FC = () => {
         <div>
             <Hero
                 title="Pricing"
-                breadcrumb="Home • Pricing"
-                illustrations={illustrations}
+                // breadcrumb="Home • Pricing"
+                // illustrations={illustrations}
             />
             <div className={styles.container}>
                 <h1 className={styles.title}>Prices And Packages</h1>

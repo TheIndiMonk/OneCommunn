@@ -5,13 +5,11 @@ import { VisionMissionProps } from "../../../lib/types/type";
 
 
 const VisionMission: React.FC<VisionMissionProps> = ({
-  title,
   vision,
   mission,
   instructorName,
   yogaType,
   schedule,
-  trainer,
 }) => {
   return (
     <div className={styles.container}>

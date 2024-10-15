@@ -207,13 +207,11 @@ const Home: React.FC = () => {
                 onContactClick={handleButtonClick}
             />
             <VisionMission
-                title="Yoga Page"
                 vision="Duis aute irure dolor reprehenderit voluptate velit esse cillum dolore."
                 mission="Excepteur sint occaecat cupidatat non proident sunt in culpa qui officia deserunt."
                 instructorName="Jasmin"
                 yogaType="Yoga Pregnant"
                 schedule="Tue - Fri: 7:00am to 7:00pm"
-                trainer="Jasmin"
             />
             <Logos Logos={logos} />
             <TestimonialSection Testimonials={testimonials} />

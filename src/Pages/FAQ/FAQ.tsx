@@ -6,18 +6,18 @@ import { ImageCard } from '../../components/Card/ImageCard/ImageCard';
 
 
 export const FAQ: React.FC = () => {
-    const illustrations = [
-        {
-            src: '/logo/left.svg',
-            alt: 'Leaf Illustration 1',
-            className: 'illustration1'
-        },
-        {
-            src: '/logo/right.svg',
-            alt: 'Leaf Illustration 2',
-            className: 'illustration2'
-        },
-    ];
+    // const illustrations = [
+    //     {
+    //         src: '/logo/left.svg',
+    //         alt: 'Leaf Illustration 1',
+    //         className: 'illustration1'
+    //     },
+    //     {
+    //         src: '/logo/right.svg',
+    //         alt: 'Leaf Illustration 2',
+    //         className: 'illustration2'
+    //     },
+    // ];
 
     const FaqData = [
         {
@@ -49,8 +49,8 @@ export const FAQ: React.FC = () => {
         <div>
             <Hero
                 title="FAQ"
-                breadcrumb="Home • Contact Us"
-                illustrations={illustrations}
+                // breadcrumb="Home • Contact Us"
+                // illustrations={illustrations}
             />
             <Questionnaire
                 title='Frequently Asked Questions'
