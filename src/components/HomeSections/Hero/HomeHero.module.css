@@ -1,157 +1,300 @@
 /* HomeHero.module.css */
-body {
-    margin: 0;
-    font-family: 'Arial, sans-serif';
+.heroContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 2rem;
+  background-color: #d4cbc2;
+}
+
+.left {
+  width: 60%;
+  padding: 2rem;
+  z-index: 2;
+}
+
+.right {
+  width: 40%;
+  padding: 2rem;
+}
+
+.header {
+  width: 70%;
+  display: flex;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.dot {
+  display: flex;
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  align-items: center;
+  justify-content: center;
+}
+
+.lightgreen {
+  background-color: #a3b18a;
+  z-index: 0;
+}
+
+.green {
+  background-color: #7d9259;
+  z-index: 1;
+}
+
+.black {
+  background-color: #3a3a3c;
+  z-index: 2;
+}
+
+.arrow {
+  display: flex;
+  color: white;
+  font-size: 1.5rem;
+  z-index: 3;
+}
+
+.shopNowBTN {
+  font-size: large;
+  cursor: pointer;
+  color: #fff;
+  padding: 0.5rem;
+  border: 0px solid #27282C;
+  background-color: transparent;
+  transition: background-color 0.3s ease;
+}
+
+.shopNowBTN:hover {
+  color: #9D7E5E;
+  background-color: transparent;
+}
+
+.content {
+  margin-bottom: 2rem;
+}
+
+.content p {
+  width: 80%;
+  font-size: 0.9rem;
+  color: #3a3a3c;
+}
+
+.content h1 {
+  text-align: left;
+  width: 70%;
+  font-size: 70px;
+  color: #3a3a3c;
+  line-height: 80.64px;
+}
+
+.btn {
+  display: flex;
+  align-items: center;
+  padding: 0.75rem 1.5rem;
+  border-radius: 9999px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.circle {
+  position: absolute;
+  top: 220px;
+  left: 400px;
+  width: 329px;
+  height: 367px;
+  border-radius: 214.5px;
+  z-index: 1;
+}
+
+.oval {
+  width: 425px;
+  height: 200px;
+  border-radius: 181.5px;
+
+}
+
+.sun {
+  position: absolute;
+  top: 25%;
+  right: 10%;
+  width: 150px;
+  height: 150px;
+  background-color: #ffffff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.pagination {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.line {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.arrowBtn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.5rem;
+  color: #3a3a3c;
+  margin: 5px 0;
+  transition: transform 0.2s;
+}
+
+.arrowBtn:hover {
+  color: #000;
+  background-color: transparent;
+}
+
+.leaf {
+  width: 100%;
+}
+
+.pager {
+  margin: 1rem;
+  font-size: 1rem;
+  color: #3a3a3c;
+}
+
+
+/* Smaller Screens */
+@media (min-width:769px) and (max-width: 1200px) {
+  .left {
+    width: 50%;
+    padding: 0.5rem;
+
   }
-  
-  .container {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    padding: 2rem;
+
+  .right {
+    width: 50%;
+    padding: 0.5rem;
+  }
+
+  .circle {
+    margin: 10px;
+    top: 220px;
+    left: 15px;
+    width: 300px;
+    height: 347px;
+  }
+
+  .oval {
+    width: 380px;
+    height: 200px;
+    border-radius: 181.5px;
+    bottom: -200px;
+    right: 0;
+  }
+
+  .pagination {
+    display: none;
+  }
+}
+
+/* Tablet Responsive Styles */
+@media (max-width: 768px) {
+  .heroContainer {
     flex-wrap: wrap;
   }
-  
-  .header {
-    display: flex;
-    align-items: center;
-    margin-bottom: 1rem;
+
+  .left {
+    width: 100%;
+    padding: 1rem;
   }
-  
-  .dot {
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    margin-right: 20px;
+
+  .right {
+    width: 100%;
+    padding: 1rem;
+
   }
-  
-  .green {
-    background-color: #a5ae88;
-  }
-  
-  .black {
-    background-color: #3a3a3c;
-  }
-  
-  .arrow {
-    font-size: 1.5rem;
-  }
-  
-  .content {
-    max-width: 300px;
-    margin-right: 2rem;
-    margin-bottom: 2rem;
-  }
-  
-  .content p {
-    font-size: 0.9rem;
-    color: #3a3a3c;
-  }
-  
-  .content h1 {
-    font-size: 2rem;
-    color: #3a3a3c;
-    line-height: 1.2;
-  }
-  
-  .btn {
-    margin-top: 20px;
-    padding: 10px 20px;
-    background-color: transparent;
-    color: #3a3a3c;
-    border: 2px solid #3a3a3c;
-    border-radius: 20px;
-    cursor: pointer;
-  }
-  
-  .art {
-    display: flex;
-    align-items: center;
-    position: relative;
-    flex: 1;
-    min-width: 300px;
-    max-width: 500px;
-  }
-  
-  .circle, .oval {
-    position: absolute;
-  }
-  
+
   .circle {
+    top: 250px;
+    left: 190px;
+    height: 300px;
+    width: 250px;
+  }
+
+  .sun {
+
+    top: 35%;
     width: 150px;
     height: 150px;
-    border-radius: 50%;
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%);
   }
-  
-  .leaf {
-    width: 100px;
-    height: 200px;
-    background-color: #b69479;
-    border-radius: 50% 50% 0 0;
-    transform: rotate(45deg);
-    top: 20px;
-    left: 55%;
-  }
-  
+
   .oval {
-    width: 300px;
+    width: 400px;
     height: 200px;
-    border-radius: 100px;
-    top: 50px;
-    left: 40%;
   }
-  
+
+  .art {
+    margin-top: 2rem;
+  }
+}
+
+/* Mobile Responsive Styles */
+@media (max-width: 468px) {
+  .left {
+    width: 100%;
+    padding: 0.5rem;
+  }
+
+  .right {
+    width: 100%;
+    padding: 0.5rem;
+  }
+
+  .circle {
+    left: 40px;
+    width: 250px;
+    height: 340px;
+  }
+
   .sun {
-    position: absolute;
-    bottom: 20px;
-    right: 20px;
-    width: 100px;
-    height: 100px;
-    background-color: white;
+    display: none;
+    top: -100px;
+    right: -50px;
+    width: 200px;
+    height: 200px;
+  }
+
+  .oval {
+    width: 250px;
+    height: 150px;
+  }
+
+  .dot {
+    width: 56px;
+    height: 56px;
     border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transform: rotate(90deg);
   }
-  
-  .pagination {
-    position: absolute;
-    bottom: 20px;
-    right: 0;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
+
+  .art {
+    margin-top: 1rem;
   }
-  
-  .line {
-    width: 2px;
-    height: 50px;
-    background-color: #3a3a3c;
-    margin-bottom: 10px;
+
+  .art img {
+    width: 80%;
+    height: 70%;
   }
-  
-  .pager {
-    font-size: 1rem;
-    color: #3a3a3c;
+
+  .sun {
+    display: none;
   }
-  
-  @media (max-width: 768px) {
-    .container {
-      flex-direction: column;
-      align-items: center;
-    }
-  
-    .content {
-      margin-right: 0;
-      text-align: center;
-    }
-  
-    .art {
-      margin-top: 2rem;
-    }
+
+  .content h1 {
+    font-size: 40px;
   }
-  
+}

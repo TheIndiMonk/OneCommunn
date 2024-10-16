@@ -8,6 +8,7 @@ const HomeAboutSection: React.FC<HomeAboutSectionProps> = ({
   title,
   name,
   description,
+  video,
   onContactClick
 }) => {
   return (
@@ -17,12 +18,23 @@ const HomeAboutSection: React.FC<HomeAboutSectionProps> = ({
           <h1 className={styles.title}>{title}</h1>
           <h2 className={styles.name}>{name}</h2>
           <p className={styles.description}>{description}</p>
+          <div>
           <button className={styles.contactButton} onClick={onContactClick}>
-            Contact Now
+            Contact Now →
+
           </button>
+          </div>
         </div>
         <div className={styles.right}>
-          <div className={styles.circle}></div>
+          <div className={styles.circle}>
+          <video
+              className={styles.video}
+              src={video}
+              autoPlay
+              loop
+              muted
+            />
+          </div>
           <img
             src="./logo/sun.svg"
             alt="Sun illustration"
@@ -33,9 +45,7 @@ const HomeAboutSection: React.FC<HomeAboutSectionProps> = ({
             alt="Leaf illustration"
             className={styles.leafImage}
           />
-          <div className={styles.playButton}>
-            <i className="fas fa-play"></i>
-          </div>
+   
         </div>
       </div>
     </div>

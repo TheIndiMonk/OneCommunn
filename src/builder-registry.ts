@@ -18,6 +18,8 @@ import { PriceCard } from "./components/Card/PriceCard/PriceCard";
 import BannerCard from "./components/Banner/BannerCard";
 import TimeTable from "./components/TimeTable/TimeTable";
 import ProductCard from "./components/Card/ProductCard/ProductCard";
+import HomeAboutSection from "./components/HomeSections/About/HomeAboutSection";
+import HomeHero from "./components/HomeSections/Hero/HomeHero";
 
 // Header and Footer
 Builder.registerComponent(Header, {
@@ -950,6 +952,72 @@ Builder.registerComponent(ProductCard, {
         { name: 'link', type: 'string', defaultValue: '' },
 
       ],
+    },
+  ],
+});
+
+Builder.registerComponent(HomeAboutSection, {
+  name: 'HomeAboutSection',
+  inputs: [
+    { 
+      name: 'title', 
+      type: 'string', 
+      defaultValue: 'Welcome to Our Company' 
+    },
+    { 
+      name: 'name', 
+      type: 'string', 
+      defaultValue: 'John Doe' 
+    },
+    { 
+      name: 'description', 
+      type: 'text', 
+      defaultValue: 'This is a dynamic about section.' 
+    },
+    { 
+      name: 'video', 
+      type: 'file', 
+      allowedFileTypes: ['mp4', 'webm'], 
+      defaultValue: 'https://cdn.example.com/video.mp4' 
+    },
+    { 
+      name: 'onContactClick', 
+      type: 'function', 
+      friendlyName: 'Contact Button Handler' 
+    },
+  ],
+});
+
+Builder.registerComponent(HomeHero, {
+  name: "HomeHero",
+  inputs: [
+    {
+      name: "slides",
+      type: "list",
+      subFields: [
+        { name: "title", type: "string", defaultValue: "Slide Title" },
+        { name: "description", type: "string", defaultValue: "Description" },
+        { name: "buttonText", type: "string", defaultValue: "Explore" },
+        { name: "buttonLink", type: "url", defaultValue: "https://example.com" },
+        { name: "videoTitle", type: "string", defaultValue: "Video Title" },
+        { name: "videoLink", type: "url", defaultValue: "https://video.com" },
+      ],
+    },
+    {
+      name: "autoSlide",
+      type: "boolean",
+      defaultValue: false,
+    },
+    {
+      name: "slideInterval",
+      type: "number",
+      defaultValue: 3000,
+    },
+    {
+      name: "backgroundColor",
+      type: "string",
+      defaultValue: "#ffffff",
+      friendlyName: "Background Color",
     },
   ],
 });

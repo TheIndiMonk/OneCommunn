@@ -1,14 +1,13 @@
 import React from 'react';
-import TherapistGrid from '../../components/Card/TherapistGrid/TherapistGrid';
 import styles from './home.module.css';
 import { Logos } from '../../components/LogosContainer/Logos';
-import ProductCard from '../../components/Card/ProductCard/ProductCard';
-import { TestimonialSection } from '../../components/TestimonialCarousel/Testimonial';
-import { QuestionBox } from '../../components/QuestionBox/QuestionBox';
 import HomeHero from '../../components/HomeSections/Hero/HomeHero';
-
+import { QuestionBox } from '../../components/QuestionBox/QuestionBox';
+import ProductCard from '../../components/Card/ProductCard/ProductCard';
+import TherapistGrid from '../../components/Card/TherapistGrid/TherapistGrid';
 import HomeAboutSection from '../../components/HomeSections/About/HomeAboutSection';
-import VisionMission from '../../components/HomeSections/VisionMission/VissionMission';
+import { TestimonialSection } from '../../components/TestimonialCarousel/Testimonial';
+// import VisionMission from '../../components/HomeSections/VisionMission/VissionMission';
 
 
 
@@ -47,6 +46,25 @@ const Home: React.FC = () => {
         },
     ];
 
+    const slides = [
+        {
+            title: "Welcome to Nature",
+            description: "Experience the beauty of nature.",
+            buttonText: "Explore Now",
+            buttonLink: "https://example.com",
+            videoTitle: "Nature Video",
+            videoLink: "https://youtube.com/video",
+        },
+        {
+            title: 'Adventure Awaits',
+            description: 'Embark on your next journey with us. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
+            buttonText: 'Join Us',
+            buttonLink: '/',
+            videoTitle: "Nature Video",
+            videoLink: "https://youtube.com/video",
+        },
+      ];
+      
 
     const logos = [
         { src: './company-logo/logo1.svg', alt: 'Logo 1' },
@@ -188,12 +206,10 @@ const Home: React.FC = () => {
 
         <div className={styles.homeContainer}>
             <HomeHero
-                title="Flex & Flow Yoga"
-                description="Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
-                buttonText="Know More"
-                onButtonClick={() => alert('Button Clicked!')}
-                videoTitle="10 Mins Yoga for Beginners"
-                pageIndex={3}
+                slides={slides}
+                autoSlide={false}
+                slideInterval={30000}
+                backgroundColor={''}
             />
 
             <div className={styles.section}>
@@ -204,15 +220,16 @@ const Home: React.FC = () => {
                 title="About Us"
                 name="Elise Burtan"
                 description="Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia. "
+                video='./video/exe.mp4'
                 onContactClick={handleButtonClick}
             />
-            <VisionMission
+            {/* <VisionMission
                 vision="Duis aute irure dolor reprehenderit voluptate velit esse cillum dolore."
                 mission="Excepteur sint occaecat cupidatat non proident sunt in culpa qui officia deserunt."
                 instructorName="Jasmin"
                 yogaType="Yoga Pregnant"
                 schedule="Tue - Fri: 7:00am to 7:00pm"
-            />
+            /> */}
             <Logos Logos={logos} />
             <TestimonialSection Testimonials={testimonials} />
 
