@@ -6,6 +6,9 @@ export interface VisionMissionProps {
     instructorName: string;
     yogaType: string;
     schedule: string;
+    appointmentLink: string;
+    onBookAppointment: () => void;
+
 
   }
   

@@ -20,6 +20,8 @@ import TimeTable from "./components/TimeTable/TimeTable";
 import ProductCard from "./components/Card/ProductCard/ProductCard";
 import HomeAboutSection from "./components/HomeSections/About/HomeAboutSection";
 import HomeHero from "./components/HomeSections/Hero/HomeHero";
+import VisionMission from "./components/HomeSections/VisionMission/VissionMission";
+import BookYoga from "./components/HomeSections/BookYoga/BookYoga";
 
 // Header and Footer
 Builder.registerComponent(Header, {
@@ -1018,6 +1020,72 @@ Builder.registerComponent(HomeHero, {
       type: "string",
       defaultValue: "#ffffff",
       friendlyName: "Background Color",
+    },
+  ],
+});
+Builder.registerComponent(VisionMission, {
+  name: "VisionMission",
+  inputs: [
+    {
+      name: "vision",
+      type: "string",
+      defaultValue: "Our vision is to promote holistic wellness through yoga.",
+    },
+    {
+      name: "mission",
+      type: "string",
+      defaultValue: "Our mission is to make yoga accessible to everyone.",
+    },
+    {
+      name: "instructorName",
+      type: "string",
+      defaultValue: "John Doe",
+    },
+    {
+      name: "yogaType",
+      type: "string",
+      defaultValue: "Hatha Yoga",
+    },
+    {
+      name: "schedule",
+      type: "string",
+      defaultValue: "Monday - Friday, 8:00 AM to 10:00 AM",
+    },
+    {
+      name: "appointmentLink",
+      type: "string",
+      defaultValue: "/",
+    },
+  ],
+});
+
+Builder.registerComponent(BookYoga, {
+  name: 'BookYoga',
+  inputs: [
+    {
+      name: 'heading',
+      type: 'string',
+      defaultValue: 'Book a Yoga Session',
+      required: true,
+    },
+    {
+      name: 'description',
+      type: 'string',
+      defaultValue: 'Join us for an amazing yoga experience',
+    },
+    {
+      name: 'contactInfo',
+      type: 'object',
+      subFields: [
+        { name: 'phone', type: 'string', defaultValue: '+123 456 789' },
+        { name: 'email', type: 'string', defaultValue: 'info@example.com' },
+      ],
+    },
+    {
+      name: 'onEmailSubmit',
+      type: 'function',
+      defaultValue: (email: string) =>
+        alert(`Email submitted: ${email}`),
     },
   ],
 });

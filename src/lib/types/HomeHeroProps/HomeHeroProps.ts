@@ -1,8 +1,10 @@
+import { Slide } from "../Slide/SlideProps";
+
 // HomeHero.types.ts
 export interface HomeHeroProps {
-    title: string;
-    description: string;
-    buttonText: string;
-    onButtonClick: () => void;
-  }
+  slides: Slide[];
+  autoSlide?: boolean;
+  slideInterval?: number; // Optional interval duration (in ms)
+  backgroundColor?: string; // Dynamic background color
+}
   

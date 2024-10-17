@@ -4,6 +4,7 @@ export interface HomeAboutSectionProps {
     name: string;
     description: string;
     video: string;
+    ButtonUrl:string;
     onContactClick: () => void;
   }
   

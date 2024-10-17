@@ -40,6 +40,7 @@ export * from './InstagramFollow/InstagramFollowProps'
 
 export * from './HomeAboutSection/HomeAboutSectionProps'
 
-
+export * from './HomeHeroProps/HomeHeroProps'
 export * from './VisionMissionProps/VisionMissionProps'
 
+export * from './BookYogaProps/BookYogaProps'

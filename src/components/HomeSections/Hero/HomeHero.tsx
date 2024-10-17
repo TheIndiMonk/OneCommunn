@@ -1,23 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect } from "react";
 import styles from "./HomeHero.module.css";
-
-type Slide = {
-  title: string;
-  description: string;
-  buttonText: string;
-  buttonLink: string;
-  videoTitle?: string;
-  videoLink?: string;
-};
-
-type HomeHeroProps = {
-  slides: Slide[];
-  autoSlide?: boolean;
-  slideInterval?: number; // Optional interval duration (in ms)
-  backgroundColor?: string; // Dynamic background color
-
-};
+import { HomeHeroProps } from "../../../lib/types/type";
 
 const HomeHero: React.FC<HomeHeroProps> = ({
   slides,

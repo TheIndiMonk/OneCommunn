@@ -7,7 +7,8 @@ import ProductCard from '../../components/Card/ProductCard/ProductCard';
 import TherapistGrid from '../../components/Card/TherapistGrid/TherapistGrid';
 import HomeAboutSection from '../../components/HomeSections/About/HomeAboutSection';
 import { TestimonialSection } from '../../components/TestimonialCarousel/Testimonial';
-// import VisionMission from '../../components/HomeSections/VisionMission/VissionMission';
+import VisionMission from '../../components/HomeSections/VisionMission/VissionMission';
+import BookYoga from '../../components/HomeSections/BookYoga/BookYoga';
 
 
 
@@ -63,9 +64,8 @@ const Home: React.FC = () => {
             videoTitle: "Nature Video",
             videoLink: "https://youtube.com/video",
         },
-      ];
+    ];
       
-
     const logos = [
         { src: './company-logo/logo1.svg', alt: 'Logo 1' },
         { src: './company-logo/logo2.svg', alt: 'Logo 2' },
@@ -211,26 +211,41 @@ const Home: React.FC = () => {
                 slideInterval={30000}
                 backgroundColor={''}
             />
-
+            
             <div className={styles.section}>
                 <h2 className={styles.sectionTitle}>Services</h2>
                 <TherapistGrid Therapist={Services} />
             </div>
+
             <HomeAboutSection
                 title="About Us"
                 name="Elise Burtan"
                 description="Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia. "
-                video='./video/exe.mp4'
+                video='./video/file_example_MP4_1280_10MG.mp4'
+                ButtonUrl='/contact'
                 onContactClick={handleButtonClick}
             />
-            {/* <VisionMission
+            <VisionMission
                 vision="Duis aute irure dolor reprehenderit voluptate velit esse cillum dolore."
                 mission="Excepteur sint occaecat cupidatat non proident sunt in culpa qui officia deserunt."
                 instructorName="Jasmin"
                 yogaType="Yoga Pregnant"
                 schedule="Tue - Fri: 7:00am to 7:00pm"
-            /> */}
+                appointmentLink="/"
+                onBookAppointment={handleButtonClick}
+            />
+
+            <BookYoga heading={'Book A Yoga'} description={'Duis aute irure dolor reprehenderit voluptate velit esse cillum dolore eu fugiat nulla pariatur.'} contactInfo={{
+                phone: '+180 4585 45789',
+                email: 'info@example.com'
+            }} onEmailSubmit={function (email: string): void {
+                throw new Error('Function not implemented.');
+            } } />
+            
+           
+
             <Logos Logos={logos} />
+           
             <TestimonialSection Testimonials={testimonials} />
 
             <div className={styles.section}>
