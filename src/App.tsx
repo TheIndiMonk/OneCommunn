@@ -12,7 +12,7 @@ import Contact from './Pages/Contact us/contact';
 import { Services } from './Pages/ Services/ Services';
 import NotFound from './components/404/NotFound';
 
-import { createBrowserRouter, RouterProvider, Route, Outlet } from 'react-router-dom';
+import { createBrowserRouter, RouterProvider, Outlet } from 'react-router-dom';
 import { HeaderProps, FooterProps } from './lib/types/type';
 
 // Header and Footer data props
