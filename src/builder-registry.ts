@@ -18,10 +18,11 @@ import { PriceCard } from "./components/Card/PriceCard/PriceCard";
 import BannerCard from "./components/Banner/BannerCard";
 import TimeTable from "./components/TimeTable/TimeTable";
 import ProductCard from "./components/Card/ProductCard/ProductCard";
-import HomeAboutSection from "./components/HomeSections/About/HomeAboutSection";
-import HomeHero from "./components/HomeSections/Hero/HomeHero";
+import HomeAboutSection from "./components/HomeSections/HomeAboutSection/HomeAboutSection";
+import HomeHero from "./components/HomeSections/HomeHero/HomeHero";
 import VisionMission from "./components/HomeSections/VisionMission/VissionMission";
 import BookYoga from "./components/HomeSections/BookYoga/BookYoga";
+import ContactForm from "./components/HomeSections/Form/HomeForm";
 
 // Header and Footer
 Builder.registerComponent(Header, {
@@ -542,9 +543,9 @@ Builder.registerComponent(Questionnaire, {
         "Find answers to your most frequently asked questions below.",
     },
     {
-      name: 'backgroundImage',
-      type: 'boolean',
-      defaultValue: 'false'
+      name: "backgroundImage",
+      type: "boolean",
+      defaultValue: "false",
     },
     {
       name: "question",
@@ -572,9 +573,8 @@ Builder.registerComponent(Questionnaire, {
           type: "string",
           defaultValue: "This is the second part of the answer (optional).",
         },
-        
       ],
-      
+
       defaultValue: [
         {
           question: "What is Builder.io?",
@@ -672,182 +672,186 @@ Builder.registerComponent(TestimonialSection, {
   ],
 });
 
-
 Builder.registerComponent(AboutSection, {
-  name: 'AboutSection',
+  name: "AboutSection",
   inputs: [
     {
-      name: 'heading',
-      type: 'string',
-      defaultValue: 'About Our Services',
-      friendlyName: 'Heading',
+      name: "heading",
+      type: "string",
+      defaultValue: "About Our Services",
+      friendlyName: "Heading",
       required: true,
     },
     {
-      name: 'subHeading',
-      type: 'string',
-      defaultValue: 'Discover',
-      friendlyName: 'Sub Heading',
+      name: "subHeading",
+      type: "string",
+      defaultValue: "Discover",
+      friendlyName: "Sub Heading",
       required: false,
     },
     {
-      name: 'buttonText',
-      type: 'string',
-      defaultValue: 'Book Appointment',
-      friendlyName: 'Button Text',
+      name: "buttonText",
+      type: "string",
+      defaultValue: "Book Appointment",
+      friendlyName: "Button Text",
       required: true,
     },
     {
-      name: 'features',
-      type: 'list',
+      name: "features",
+      type: "list",
       subFields: [
         {
-          name: 'icon',
-          type: 'file',
-          allowedFileTypes: ['svg', 'png', 'jpg', 'jpeg'],
-          defaultValue: './logo/stress-relife.svg',
-          friendlyName: 'Feature Icon',
+          name: "icon",
+          type: "file",
+          allowedFileTypes: ["svg", "png", "jpg", "jpeg"],
+          defaultValue: "./logo/stress-relife.svg",
+          friendlyName: "Feature Icon",
         },
         {
-          name: 'title',
-          type: 'string',
-          defaultValue: 'Feature Title',
-          friendlyName: 'Feature Title',
+          name: "title",
+          type: "string",
+          defaultValue: "Feature Title",
+          friendlyName: "Feature Title",
           required: true,
         },
         {
-          name: 'description',
-          type: 'text',
-          defaultValue: 'Feature Description',
-          friendlyName: 'Feature Description',
+          name: "description",
+          type: "text",
+          defaultValue: "Feature Description",
+          friendlyName: "Feature Description",
         },
       ],
       defaultValue: [
         {
-          icon: './logo/stress-relife.svg',
-          title: 'Stress Relief',
-          description: 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
+          icon: "./logo/stress-relife.svg",
+          title: "Stress Relief",
+          description:
+            "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
         },
         {
-          icon: './logo/calm-mind.svg',
-          title: 'Calm Mind',
-          description: 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
+          icon: "./logo/calm-mind.svg",
+          title: "Calm Mind",
+          description:
+            "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
         },
         {
-          icon: './logo/life-style.svg',
-          title: 'Life Style',
-          description: 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
+          icon: "./logo/life-style.svg",
+          title: "Life Style",
+          description:
+            "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
         },
         {
-          icon: './logo/healty-body.svg',
-          title: 'Healthy Body',
-          description: 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
+          icon: "./logo/healty-body.svg",
+          title: "Healthy Body",
+          description:
+            "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
         },
       ],
-      friendlyName: 'Features',
+      friendlyName: "Features",
       required: true,
     },
   ],
 });
 
 Builder.registerComponent(CheckSchedule, {
-  name: 'CheckSchedule',
+  name: "CheckSchedule",
   inputs: [
     {
-      name: 'heading',
-      type: 'string',
+      name: "heading",
+      type: "string",
       required: true,
-      defaultValue: 'Shape Your Perfect Body',
+      defaultValue: "Shape Your Perfect Body",
     },
     {
-      name: 'description',
-      type: 'text',
+      name: "description",
+      type: "text",
       required: true,
-      defaultValue: 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
+      defaultValue:
+        "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
     },
     {
-      name: 'buttonText',
-      type: 'string',
+      name: "buttonText",
+      type: "string",
       required: true,
-      defaultValue: 'Check Schedule',
+      defaultValue: "Check Schedule",
     },
     {
-      name: 'healedPeople',
-      type: 'number',
+      name: "healedPeople",
+      type: "number",
       required: true,
       defaultValue: 8,
     },
     {
-      name: 'coachingExperience',
-      type: 'number',
+      name: "coachingExperience",
+      type: "number",
       required: true,
       defaultValue: 10,
     },
     {
-      name: 'circleText',
-      type: 'string',
+      name: "circleText",
+      type: "string",
       required: true,
-      defaultValue: 'Calm & Relax',
+      defaultValue: "Calm & Relax",
     },
     {
-      name: 'buttonText',
-      type: 'string',
-      defaultValue: 'Book Appointment',
-      friendlyName: 'Button Text',
+      name: "buttonText",
+      type: "string",
+      defaultValue: "Book Appointment",
+      friendlyName: "Button Text",
       required: true,
     },
   ],
 });
 
 Builder.registerComponent(PriceCard, {
-  name: 'PriceCard', // This is the name you'll use in Builder.io
+  name: "PriceCard", // This is the name you'll use in Builder.io
   inputs: [
     {
-      name: 'pricingData',
-      type: 'list', // Specify that this will be a list of items
+      name: "pricingData",
+      type: "list", // Specify that this will be a list of items
       // Define the fields that each item in the list will have
       subFields: [
         {
-          name: 'title',
-          type: 'string',
+          name: "title",
+          type: "string",
           required: true,
-          helperText: 'The title of the pricing package',
+          helperText: "The title of the pricing package",
         },
         {
-          name: 'trainingCount',
-          type: 'number',
+          name: "trainingCount",
+          type: "number",
           required: true,
-          helperText: 'The number of training sessions',
+          helperText: "The number of training sessions",
         },
         {
-          name: 'schedule',
-          type: 'string',
+          name: "schedule",
+          type: "string",
           required: true,
-          helperText: 'The schedule of the training',
+          helperText: "The schedule of the training",
         },
         {
-          name: 'trainer',
-          type: 'string',
+          name: "trainer",
+          type: "string",
           required: true,
-          helperText: 'The trainer for this package',
+          helperText: "The trainer for this package",
         },
         {
-          name: 'description',
-          type: 'string',
+          name: "description",
+          type: "string",
           required: true,
-          helperText: 'A brief description of the pricing package',
+          helperText: "A brief description of the pricing package",
         },
         {
-          name: 'price',
-          type: 'number',
+          name: "price",
+          type: "number",
           required: true,
-          helperText: 'The price of the package',
+          helperText: "The price of the package",
         },
         {
-          name: 'includeTax',
-          type: 'string',
+          name: "includeTax",
+          type: "string",
           required: true,
-          helperText: 'Details about tax inclusion',
+          helperText: "Details about tax inclusion",
         },
       ],
     },
@@ -855,137 +859,141 @@ Builder.registerComponent(PriceCard, {
 });
 
 Builder.registerComponent(BannerCard, {
-  name: 'Banner Card', // Name to be displayed in Builder.io
+  name: "Banner Card", // Name to be displayed in Builder.io
   inputs: [
     {
-      name: 'title',
-      type: 'string',
+      name: "title",
+      type: "string",
       required: true,
-      helperText: 'Title of the banner',
+      helperText: "Title of the banner",
     },
     {
-      name: 'subtitle',
-      type: 'string',
+      name: "subtitle",
+      type: "string",
       required: true,
-      helperText: 'Subtitle of the banner',
+      helperText: "Subtitle of the banner",
     },
     {
-      name: 'buttonText',
-      type: 'string',
+      name: "buttonText",
+      type: "string",
       required: true,
-      helperText: 'Text for the button',
+      helperText: "Text for the button",
     },
     {
-      name: 'link',
-      type: 'string',
+      name: "link",
+      type: "string",
       required: false,
-      helperText: 'URL to navigate when the button is clicked',
+      helperText: "URL to navigate when the button is clicked",
     },
     {
-      name: 'description',
-      type: 'string',
+      name: "description",
+      type: "string",
       required: false,
-      helperText: 'Description text under the image',
+      helperText: "Description text under the image",
     },
   ],
 });
 
 Builder.registerComponent(TimeTable, {
-  name: 'TimeTable',
+  name: "TimeTable",
   inputs: [
-      {
-          name: 'TimeTables',
-          type: 'list',
+    {
+      name: "TimeTables",
+      type: "list",
+      subFields: [
+        {
+          name: "title",
+          type: "string",
+          required: true,
+          defaultValue: "Time Table Title",
+        },
+        {
+          name: "times",
+          type: "list",
           subFields: [
-              {
-                  name: 'title',
-                  type: 'string',
-                  required: true,
-                  defaultValue: 'Time Table Title',
-              },
-              {
-                  name: 'times',
-                  type: 'list',
-                  subFields: [
-                      {
-                          name: 'time',
-                          type: 'string',
-                          required: true,
-                      },
-                  ],
-              },
-              {
-                  name: 'days',
-                  type: 'list',
-                  subFields: [
-                      {
-                          name: 'day',
-                          type: 'string',
-                          required: true,
-                      },
-                  ],
-              },
-              {
-                  name: 'link',
-                  type: 'url',
-                  required: false,
-              },
-              {
-                  name: 'buttonText',
-                  type: 'string',
-                  required: false,
-                  defaultValue: 'Learn More',
-              },
+            {
+              name: "time",
+              type: "string",
+              required: true,
+            },
           ],
-      },
+        },
+        {
+          name: "days",
+          type: "list",
+          subFields: [
+            {
+              name: "day",
+              type: "string",
+              required: true,
+            },
+          ],
+        },
+        {
+          name: "link",
+          type: "url",
+          required: false,
+        },
+        {
+          name: "buttonText",
+          type: "string",
+          required: false,
+          defaultValue: "Learn More",
+        },
+      ],
+    },
   ],
 });
 
 Builder.registerComponent(ProductCard, {
-  name: 'ProductCard',
+  name: "ProductCard",
   inputs: [
     {
-      name: 'products',
-      type: 'list',
+      name: "products",
+      type: "list",
       subFields: [
-        { name: 'name', type: 'string', defaultValue: 'Product Name' },
-        { name: 'price', type: 'number', defaultValue: 0 },
-        { name: 'image', type: 'file', allowedFileTypes: ['jpeg', 'jpg', 'png'], defaultValue: '' },
-        { name: 'link', type: 'string', defaultValue: '' },
-
+        { name: "name", type: "string", defaultValue: "Product Name" },
+        { name: "price", type: "number", defaultValue: 0 },
+        {
+          name: "image",
+          type: "file",
+          allowedFileTypes: ["jpeg", "jpg", "png"],
+          defaultValue: "",
+        },
+        { name: "link", type: "string", defaultValue: "" },
       ],
     },
   ],
 });
 
 Builder.registerComponent(HomeAboutSection, {
-  name: 'HomeAboutSection',
+  name: "HomeAboutSection",
   inputs: [
-    { 
-      name: 'title', 
-      type: 'string', 
-      defaultValue: 'Welcome to Our Company' 
+    {
+      name: "title",
+      type: "string",
+      defaultValue: "Welcome to Our Company",
     },
-    { 
-      name: 'name', 
-      type: 'string', 
-      defaultValue: 'John Doe' 
+    {
+      name: "name",
+      type: "string",
+      defaultValue: "John Doe",
     },
-    { 
-      name: 'description', 
-      type: 'text', 
-      defaultValue: 'This is a dynamic about section.' 
+    {
+      name: "description",
+      type: "text",
+      defaultValue: "This is a dynamic about section.",
     },
-    { 
-      name: 'video', 
-      type: 'file', 
-      allowedFileTypes: ['mp4', 'webm'], 
-      defaultValue: 'https://cdn.example.com/video.mp4' 
+    {
+      name: "video",
+      type: "file",
+      allowedFileTypes: ["mp4", "webm"],
+      defaultValue: "https://cdn.example.com/video.mp4",
     },
-    { 
-      name: 'onContactClick', 
-      type: 'function', 
-      friendlyName: 'Contact Button Handler' 
+    {
+      name: "onContactClick",
+      type: "function",
+      friendlyName: "Contact Button Handler",
     },
   ],
 });
@@ -1000,7 +1008,11 @@ Builder.registerComponent(HomeHero, {
         { name: "title", type: "string", defaultValue: "Slide Title" },
         { name: "description", type: "string", defaultValue: "Description" },
         { name: "buttonText", type: "string", defaultValue: "Explore" },
-        { name: "buttonLink", type: "url", defaultValue: "https://example.com" },
+        {
+          name: "buttonLink",
+          type: "url",
+          defaultValue: "https://example.com",
+        },
         { name: "videoTitle", type: "string", defaultValue: "Video Title" },
         { name: "videoLink", type: "url", defaultValue: "https://video.com" },
       ],
@@ -1060,32 +1072,81 @@ Builder.registerComponent(VisionMission, {
 });
 
 Builder.registerComponent(BookYoga, {
-  name: 'BookYoga',
+  name: "BookYoga",
   inputs: [
     {
-      name: 'heading',
-      type: 'string',
-      defaultValue: 'Book a Yoga Session',
+      name: "heading",
+      type: "string",
+      defaultValue: "Book a Yoga Session",
       required: true,
     },
     {
-      name: 'description',
-      type: 'string',
-      defaultValue: 'Join us for an amazing yoga experience',
+      name: "description",
+      type: "string",
+      defaultValue: "Join us for an amazing yoga experience",
     },
     {
-      name: 'contactInfo',
-      type: 'object',
+      name: "contactInfo",
+      type: "object",
       subFields: [
-        { name: 'phone', type: 'string', defaultValue: '+123 456 789' },
-        { name: 'email', type: 'string', defaultValue: 'info@example.com' },
+        { name: "phone", type: "string", defaultValue: "+123 456 789" },
+        { name: "email", type: "string", defaultValue: "info@example.com" },
       ],
     },
     {
-      name: 'onEmailSubmit',
-      type: 'function',
-      defaultValue: (email: string) =>
-        alert(`Email submitted: ${email}`),
+      name: "onEmailSubmit",
+      type: "function",
+      defaultValue: (email: string) => alert(`Email submitted: ${email}`),
+    },
+  ],
+});
+
+Builder.registerComponent(ContactForm, {
+  name: 'ContactForm',
+  inputs: [
+    {
+      name: 'title',
+      type: 'string',
+      defaultValue: 'Contact Us',
+      required: true,
+    },
+    {
+      name: 'subtitle',
+      type: 'string',
+      defaultValue: 'Get in touch with us!',
+    },
+    {
+      name: 'fields',
+      type: 'list',
+      subFields: [
+        {
+          name: 'name',
+          type: 'string',
+          required: true,
+        },
+        {
+          name: 'type',
+          type: 'string',
+          enum: ['text', 'tel', 'email', 'textarea', 'date'],
+          required: true,
+          defaultValue: 'text',
+        },
+        {
+          name: 'placeholder',
+          type: 'string',
+        },
+        {
+          name: 'required',
+          type: 'boolean',
+          defaultValue: false,
+        },
+      ],
+      defaultValue: [
+        { name: 'name', type: 'text', placeholder: 'Name', required: true },
+        { name: 'phone', type: 'tel', placeholder: 'Phone No', required: true },
+        { name: 'email', type: 'email', placeholder: 'Email', required: true },
+        { name: 'message', type: 'textarea', placeholder: 'Enter your message', required: false },
+      ],
     },
   ],
 });

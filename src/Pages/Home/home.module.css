@@ -9,7 +9,7 @@
     align-items: center;
 }
 .sectionTitle{
-    padding-bottom: 2rem;
+    padding-bottom: 1rem;
 }
 
 .FaqContainer {
@@ -20,4 +20,20 @@
     flex-direction: column;
     align-content: space-around;
     background-image: url('./logo/background-vector.svg');
+}
+
+.planSection{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem;
+
+}
+
+.planSection h2{
+    margin-bottom: 1rem;
+}
+
+.planSection p{
+    margin-bottom: 3rem;
 }
