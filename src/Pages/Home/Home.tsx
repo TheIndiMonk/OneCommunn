@@ -302,7 +302,7 @@ const Home: React.FC = () => {
                         { name: "phone", type: "tel", placeholder: "Phone No", required: true },
                         { name: "date", type: "date", required: true },
                         { name: "message", type: "textarea", placeholder: "Message", required: false },
-                      ]}
+                    ]}
                     onSubmit={(data) => console.log("Form Data:", data)}
                 />
             </div>
