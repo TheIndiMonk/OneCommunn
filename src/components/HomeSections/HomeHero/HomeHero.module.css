@@ -47,7 +47,33 @@
 .black {
   background-color: #3a3a3c;
   z-index: 2;
+  position: relative;
 }
+
+.circleText {
+  width: 96px;
+  height: 96px;
+  position: absolute;
+}
+
+.arrow svg {
+  transform: rotate(-90deg); /* Adjust rotation to correct text alignment */
+  fill: white; /* Text color */
+}
+.btncircleText {
+  position: absolute;
+  width: 82%;  /* Full width of the dot */
+  height: 100%; /* Full height of the dot */
+  top: 0;       /* Align to top */
+  left: 0;      /* Align to left */
+  font-size: 10px;  /* Font size of the text */
+  letter-spacing: 2px;
+  text-align: center;  /* Center text */
+  overflow: visible;  /* Allow overflow for SVG */
+
+}
+
+
 
 .arrow {
   display: flex;
@@ -109,6 +135,9 @@
 }
 
 .oval {
+  position: absolute;
+  top: 386px;
+  right: 10%;
   width: 425px;
   height: 200px;
   border-radius: 181.5px;
@@ -119,13 +148,27 @@
   position: absolute;
   top: 25%;
   right: 10%;
-  width: 150px;
-  height: 150px;
+  width: 100px;
+  height: 100px;
   background-color: #ffffff;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
+}
+.circleText {
+  font-family: 'Elsie';
+  font-weight: 400;
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  top: -50px;
+  left: -50px;
+  font-size: 20px;
+  letter-spacing: 10px;
+  text-align: center;
+  fill: #000;
+
 }
 
 
@@ -149,7 +192,7 @@
   cursor: pointer;
   font-size: 1.5rem;
   color: #3a3a3c;
-  margin: 5px 0;
+  padding: 0rem 1.5rem;
   transition: transform 0.2s;
 }
 
@@ -164,8 +207,13 @@
 
 .pager {
   margin: 1rem;
-  font-size: 1rem;
   color: #3a3a3c;
+  font-size: 1rem;
+  font-family: 'Poppins';
+}
+
+.pager:hover{
+  color: #9D7E5E;
 }
 
 

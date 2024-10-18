@@ -57,7 +57,7 @@ const Home: React.FC = () => {
             description: "Experience the beauty of nature.",
             buttonText: "Explore Now",
             buttonLink: "https://example.com",
-            videoTitle: "Nature Video",
+            videoTitle: "10 Mins Yoga For Beginers  ",
             videoLink: "https://youtube.com/video",
         },
         {
