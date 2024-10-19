@@ -135,7 +135,7 @@
         gap: 0.4rem; /* Reduce gap */
     }
     .nav a {
-        font-size: 13px; /* Slightly smaller font size */
+        font-size: 12px; /* Slightly smaller font size */
         margin: 0 10px; /* Reduce margin to fit more links */
     }
 

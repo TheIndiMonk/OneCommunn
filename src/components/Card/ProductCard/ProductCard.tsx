@@ -4,7 +4,7 @@ import styles from './ProductCard.module.css';
 import { ProductCardProps } from '../../../lib/types/type';
 
 
-const ProductCard: React.FC<ProductCardProps> = ({ products }) => {
+export const ProductCard: React.FC<ProductCardProps> = ({ products }) => {
   return (
     <>
       <div className={styles.ProductsContainer}>
@@ -33,6 +33,3 @@ const ProductCard: React.FC<ProductCardProps> = ({ products }) => {
   );
 };
 
-
-
-export default ProductCard;

@@ -17,9 +17,9 @@ import { CheckSchedule } from "./components/CheckSchedule/CheckSchedule";
 import { PriceCard } from "./components/Card/PriceCard/PriceCard";
 import BannerCard from "./components/Banner/BannerCard";
 import TimeTable from "./components/TimeTable/TimeTable";
-import ProductCard from "./components/Card/ProductCard/ProductCard";
+import {ProductCard} from "./components/Card/ProductCard/ProductCard";
 import HomeAboutSection from "./components/HomeSections/HomeAboutSection/HomeAboutSection";
-import HomeHero from "./components/HomeSections/HomeHero/HomeHero";
+import {HomeHero} from "./components/HomeSections/HomeHero/HomeHero";
 import VisionMission from "./components/HomeSections/VisionMission/VissionMission";
 import BookYoga from "./components/HomeSections/BookYoga/BookYoga";
 import ContactForm from "./components/HomeSections/Form/HomeForm";
@@ -1007,12 +1007,10 @@ Builder.registerComponent(HomeHero, {
       subFields: [
         { name: "title", type: "string", defaultValue: "Slide Title" },
         { name: "description", type: "string", defaultValue: "Description" },
-        { name: "buttonText", type: "string", defaultValue: "Explore" },
-        {
-          name: "buttonLink",
-          type: "url",
-          defaultValue: "https://example.com",
-        },
+        { name: "contextBtnText", type: "string", defaultValue: "Explore Now" },
+        { name: "contextBtnLink", type: "url", defaultValue: "/explore" },
+        { name: "propertiesBtnText", type: "string", defaultValue: "View all properties" },
+        { name: "propertiesBtnLink", type: "url", defaultValue: "/properties" },
         { name: "videoTitle", type: "string", defaultValue: "Video Title" },
         { name: "videoLink", type: "url", defaultValue: "https://video.com" },
       ],

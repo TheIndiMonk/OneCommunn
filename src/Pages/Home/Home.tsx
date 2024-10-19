@@ -1,9 +1,9 @@
 import React from 'react';
 import styles from './home.module.css';
 import { Logos } from '../../components/LogosContainer/Logos';
-import HomeHero from '../../components/HomeSections/HomeHero/HomeHero';
+import { HomeHero } from '../../components/HomeSections/HomeHero/HomeHero';
 import { QuestionBox } from '../../components/QuestionBox/QuestionBox';
-import ProductCard from '../../components/Card/ProductCard/ProductCard';
+import { ProductCard } from '../../components/Card/ProductCard/ProductCard';
 import TherapistGrid from '../../components/Card/TherapistGrid/TherapistGrid';
 import HomeAboutSection from '../../components/HomeSections/HomeAboutSection/HomeAboutSection';
 import { TestimonialSection } from '../../components/TestimonialCarousel/Testimonial';
@@ -20,6 +20,40 @@ const Home: React.FC = () => {
     const handleButtonClick = () => {
         alert("Button clicked!");
     };
+
+    const slides = [
+        {
+            title: "Welcome to Nature 1",
+            description: "Embark on your next journey with us. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
+            contextBtnText: "Explore Now",
+            contextBtnLink: "/explore/yoga",
+            propertiesBtnText:"VIEW ALL PROPERTIES",
+            propertiesBtnLink:"/properties",
+            videoTitle: "10 min Yoga For Beginners",
+            videoLink: "https://youtube.com/video",
+        },
+        {
+            title: 'Adventure Awaits 2',
+            description: 'Embark on your next journey with us. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
+            contextBtnText: "Explore Now",
+            contextBtnLink: "/explore/yoga",
+            propertiesBtnText:"VIEW ALL PROPERTIES",
+            propertiesBtnLink:"/properties",
+            videoTitle: " 10 Mins Yoga For Nature ",
+            videoLink: "https://youtube.com/video",
+        },
+        {
+            title: 'Beginers Free Yoga',
+            description: 'Embark on your next journey with us. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
+            contextBtnText: "Explore Now",
+            contextBtnLink: "/explore/yoga",
+            propertiesBtnText:"VIEW ALL PROPERTIES",
+            propertiesBtnLink:"/properties",
+            videoTitle: " 10 Mins Yoga For Nature ",
+            videoLink: "https://youtube.com/video",
+        },
+    ];
+
     const Services = [
         {
             name: "Yoga Cloths",
@@ -48,25 +82,6 @@ const Home: React.FC = () => {
             description: "Description for Yogi Madi...",
             image: "https://placehold.co/150x150",
             socialLinks: { fb: "FB", tw: "TW", yu: "YU", in: "IN" }
-        },
-    ];
-
-    const slides = [
-        {
-            title: "Welcome to Nature",
-            description: "Experience the beauty of nature.",
-            buttonText: "Explore Now",
-            buttonLink: "https://example.com",
-            videoTitle: "10 Mins Yoga For Beginers  ",
-            videoLink: "https://youtube.com/video",
-        },
-        {
-            title: 'Adventure Awaits',
-            description: 'Embark on your next journey with us. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
-            buttonText: 'Join Us',
-            buttonLink: '/',
-            videoTitle: "Nature Video",
-            videoLink: "https://youtube.com/video",
         },
     ];
 
@@ -269,12 +284,17 @@ const Home: React.FC = () => {
                 onBookAppointment={handleButtonClick}
             />
 
-            <BookYoga heading={'Book A Yoga'} description={'Duis aute irure dolor reprehenderit voluptate velit esse cillum dolore eu fugiat nulla pariatur.'} contactInfo={{
-                phone: '+180 4585 45789',
-                email: 'info@example.com'
-            }} onEmailSubmit={function (): void {
-                throw new Error('Function not implemented.');
-            }} />
+            <BookYoga 
+                heading={'Book A Yoga'} 
+                description={'Duis aute irure dolor reprehenderit voluptate velit esse cillum dolore eu fugiat nulla pariatur.'} 
+                contactInfo={{
+                    phone: '+180 4585 45789',
+                    email: 'info@example.com'
+                }} 
+                onEmailSubmit={function (): void {
+                    throw new Error('Function not implemented.');
+                }} 
+            />
 
             <div className={styles.planSection} style={{ background: '#D4CBC2' }}>
                 <h2 className={styles.sectionTitle}>Plans</h2>

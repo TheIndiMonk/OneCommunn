@@ -4,7 +4,7 @@ import { Hero } from '../../components/Hero/Hero';
 import { PriceCard } from '../../components/Card/PriceCard/PriceCard';
 import BannerCard from '../../components/Banner/BannerCard';
 import TimeTable from '../../components/TimeTable/TimeTable';
-import ProductCard from '../../components/Card/ProductCard/ProductCard';
+import {ProductCard} from '../../components/Card/ProductCard/ProductCard';
 // import InstagramFollow from '../../components/InstagramCard/InstagramFollow';
 
 

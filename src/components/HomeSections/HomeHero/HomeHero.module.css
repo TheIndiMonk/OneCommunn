@@ -50,16 +50,7 @@
   position: relative;
 }
 
-.circleText {
-  width: 96px;
-  height: 96px;
-  position: absolute;
-}
-
-.arrow svg {
-  transform: rotate(-90deg); /* Adjust rotation to correct text alignment */
-  fill: white; /* Text color */
-}
+/* Properties Btn  */
 .btncircleText {
   position: absolute;
   width: 82%;  /* Full width of the dot */
@@ -73,14 +64,18 @@
 
 }
 
-
-
 .arrow {
   display: flex;
   color: white;
   font-size: 1.5rem;
   z-index: 3;
 }
+.arrow svg {
+  z-index: -1;
+  transform: rotate(-90deg); /* Adjust rotation to correct text alignment */
+  fill: white; /* Text color */
+}
+
 
 .shopNowBTN {
   font-size: large;
@@ -124,10 +119,15 @@
   transition: background-color 0.3s ease;
 }
 
+
+.art{
+  position: relative;
+}
+
 .circle {
   position: absolute;
   top: 220px;
-  left: 400px;
+  left: 350px;
   width: 329px;
   height: 367px;
   border-radius: 214.5px;
@@ -136,8 +136,7 @@
 
 .oval {
   position: absolute;
-  top: 386px;
-  right: 10%;
+  top: 232px;
   width: 425px;
   height: 200px;
   border-radius: 181.5px;
@@ -146,7 +145,7 @@
 
 .sun {
   position: absolute;
-  top: 25%;
+  top: 10%;
   right: 10%;
   width: 100px;
   height: 100px;
@@ -156,21 +155,32 @@
   align-items: center;
   justify-content: center;
 }
+
+.leaf {
+  width: 100%;
+}
+
 .circleText {
   font-family: 'Elsie';
   font-weight: 400;
   position: absolute;
   width: 200px;
-  height: 200px;
-  top: -50px;
-  left: -50px;
   font-size: 20px;
   letter-spacing: 10px;
   text-align: center;
   fill: #000;
+  z-index: 1;
+
 
 }
 
+.videoBtn{
+  border: 0px;
+  z-index: 3 ;
+}
+.videoBtn:hover{
+  background-color: transparent;
+}
 
 .pagination {
   display: flex;
@@ -186,7 +196,7 @@
   margin-bottom: 10px;
 }
 
-.arrowBtn {
+.NavigationArrowBtn {
   background: none;
   border: none;
   cursor: pointer;
@@ -196,25 +206,20 @@
   transition: transform 0.2s;
 }
 
-.arrowBtn:hover {
+.NavigationArrowBtn:hover {
   color: #000;
   background-color: transparent;
 }
 
-.leaf {
-  width: 100%;
-}
+
 
 .pager {
   margin: 1rem;
-  color: #3a3a3c;
+  color: #9D7E5E;
   font-size: 1rem;
   font-family: 'Poppins';
 }
 
-.pager:hover{
-  color: #9D7E5E;
-}
 
 
 /* Smaller Screens */
@@ -224,12 +229,10 @@
     padding: 0.5rem;
 
   }
-
   .right {
     width: 50%;
     padding: 0.5rem;
   }
-
   .circle {
     margin: 10px;
     top: 220px;
@@ -237,7 +240,6 @@
     width: 300px;
     height: 347px;
   }
-
   .oval {
     width: 380px;
     height: 200px;
@@ -245,14 +247,22 @@
     bottom: -200px;
     right: 0;
   }
-
   .pagination {
     display: none;
   }
+  .dot{
+    width: 80px;
+    height: 80px;
+  }
+  .content h1{
+    font-size: 50px;
+  }
+
 }
 
 /* Tablet Responsive Styles */
 @media (max-width: 768px) {
+
   .heroContainer {
     flex-wrap: wrap;
   }
@@ -267,6 +277,9 @@
     padding: 1rem;
 
   }
+  .content h1{
+    font-size: 45px;
+  }
 
   .circle {
     top: 250px;
@@ -276,19 +289,23 @@
   }
 
   .sun {
-
-    top: 35%;
+    top: 5%;
     width: 150px;
     height: 150px;
   }
 
   .oval {
+    top: 60%;
     width: 400px;
     height: 200px;
   }
 
   .art {
     margin-top: 2rem;
+  }
+
+  .circleText{
+    width: 250px;
   }
 }
 
@@ -305,20 +322,24 @@
   }
 
   .circle {
-    left: 40px;
+    top: 180px;
+    left: 80px;
     width: 250px;
     height: 340px;
   }
 
   .sun {
-    display: none;
-    top: -100px;
-    right: -50px;
-    width: 200px;
-    height: 200px;
+    top: 5%;
+    right: 10%;
+    height: 100px;
+    width:100px;
+  }
+  .circleText{
+    width:180px;
   }
 
   .oval {
+    top: 50%;
     width: 250px;
     height: 150px;
   }
@@ -338,9 +359,6 @@
     height: 70%;
   }
 
-  .sun {
-    display: none;
-  }
 
   .content h1 {
     font-size: 40px;
