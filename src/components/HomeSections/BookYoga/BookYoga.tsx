@@ -25,15 +25,9 @@ const BookYoga: React.FC<BookYogaProps> = ({
     <div className={styles.BookYogaContainer}>
       <div className={styles.left}>
         <div className={styles.graphicContents}>
-          <div className={styles.circleBackground}>
-          </div>
-          <div className={styles.svgWrapper}>
-            <img src="./logo/leaf.svg" alt="leaf-svg" />
-          </div>
-          <div className={styles.imgWrapper}>
-            <img src="./Photos/yoga-image.jpeg" alt="Yoga-Imagr" height={427} width={360} />
-          </div>
-
+            <div className={styles.circleBackground}></div>
+            <img  className={styles.imgWrapper} src="./Photos/yoga-image.jpeg" alt="Yoga-Imagr" height={427} width={360} />
+            <img className={styles.svgWrapper} src="./logo/leaf-outline.svg" alt="leaf-svg" />
         </div>
       </div>
 
@@ -65,10 +59,8 @@ const BookYoga: React.FC<BookYogaProps> = ({
           <div className={styles.rectangle}></div>
 
         </div>
-        <div className={styles.svgOverlay1}>
-          <img  className={styles.svgOverlayImage1} src="./logo/upward-leaf.svg" alt="" />
-          <img  className={styles.svgOverlayImage2}src="./logo/fill-sun.svg" alt="" />
-        </div>
+        <img  className={styles.svgOverlayImage1} src="./logo/upward-leaf.svg" alt="" />
+        <img  className={styles.svgOverlayImage2}src="./logo/fill-sun.svg" alt="" />
       </div>
     </div>
   );

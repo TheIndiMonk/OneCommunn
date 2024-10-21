@@ -27,8 +27,8 @@ const Home: React.FC = () => {
             description: "Embark on your next journey with us. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
             contextBtnText: "Explore Now",
             contextBtnLink: "/explore/yoga",
-            propertiesBtnText:"VIEW ALL PROPERTIES",
-            propertiesBtnLink:"/properties",
+            propertiesBtnText: "VIEW ALL PROPERTIES",
+            propertiesBtnLink: "/properties",
             videoTitle: "10 min Yoga For Beginners",
             videoLink: "https://youtube.com/video",
         },
@@ -37,8 +37,8 @@ const Home: React.FC = () => {
             description: 'Embark on your next journey with us. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
             contextBtnText: "Explore Now",
             contextBtnLink: "/explore/yoga",
-            propertiesBtnText:"VIEW ALL PROPERTIES",
-            propertiesBtnLink:"/properties",
+            propertiesBtnText: "VIEW ALL PROPERTIES",
+            propertiesBtnLink: "/properties",
             videoTitle: " 10 Mins Yoga For Nature ",
             videoLink: "https://youtube.com/video",
         },
@@ -47,8 +47,8 @@ const Home: React.FC = () => {
             description: 'Embark on your next journey with us. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
             contextBtnText: "Explore Now",
             contextBtnLink: "/explore/yoga",
-            propertiesBtnText:"VIEW ALL PROPERTIES",
-            propertiesBtnLink:"/properties",
+            propertiesBtnText: "VIEW ALL PROPERTIES",
+            propertiesBtnLink: "/properties",
             videoTitle: " 10 Mins Yoga For Nature ",
             videoLink: "https://youtube.com/video",
         },
@@ -254,6 +254,9 @@ const Home: React.FC = () => {
     return (
 
         <div className={styles.homeContainer}>
+
+
+            {/* Hero Section */}
             <HomeHero
                 slides={slides}
                 autoSlide={false}
@@ -261,11 +264,15 @@ const Home: React.FC = () => {
                 backgroundColor={''}
             />
 
+
+            {/* Services Section */}
             <div className={styles.section}>
                 <h2 className={styles.sectionTitle}>Services</h2>
                 <TherapistGrid Therapist={Services} />
             </div>
 
+
+            {/* About Us  */}
             <HomeAboutSection
                 title="About Us"
                 name="Elise Burtan"
@@ -274,6 +281,9 @@ const Home: React.FC = () => {
                 ButtonUrl='/contact'
                 onContactClick={handleButtonClick}
             />
+
+
+            {/* Mission Vission Section */}
             <VisionMission
                 vision="Duis aute irure dolor reprehenderit voluptate velit esse cillum dolore."
                 mission="Excepteur sint occaecat cupidatat non proident sunt in culpa qui officia deserunt."
@@ -284,8 +294,9 @@ const Home: React.FC = () => {
                 onBookAppointment={handleButtonClick}
             />
 
-            <BookYoga 
-                heading={'Book A Yoga'} 
+
+            {/* Booking Section */}
+            <BookYoga heading={'Book A Yoga'} 
                 description={'Duis aute irure dolor reprehenderit voluptate velit esse cillum dolore eu fugiat nulla pariatur.'} 
                 contactInfo={{
                     phone: '+180 4585 45789',
@@ -293,9 +304,10 @@ const Home: React.FC = () => {
                 }} 
                 onEmailSubmit={function (): void {
                     throw new Error('Function not implemented.');
-                }} 
-            />
+            }} />
 
+
+            {/* Price Plan Section */}
             <div className={styles.planSection} style={{ background: '#D4CBC2' }}>
                 <h2 className={styles.sectionTitle}>Plans</h2>
                 <p>Duis aute irure dolor in reprehenderit in voluptate eu fugiat nulla pariatur.</p>
@@ -303,16 +315,23 @@ const Home: React.FC = () => {
             </div>
 
 
+            {/* Logo carousel */}
             <Logos Logos={logos} />
 
+
+            {/* Testimonial Section */}
             <TestimonialSection Testimonials={testimonials} />
 
+
+            {/* Gallery */}
             <div className={styles.section}>
                 <h2 className={styles.sectionTitle}>Gallery</h2>
                 <p>Duis aute irure dolor in reprehenderit in voluptate eu fugiat nulla pariatur.</p>
                 <ProductCard products={products} />
             </div>
 
+
+            {/* Contact From */}
             <div className={styles.section}>
                 <ContactForm
                     title="Yoga Poses Your Body"
@@ -327,12 +346,17 @@ const Home: React.FC = () => {
                 />
             </div>
 
+
+            {/* Meet the Team Section */}
             <div className={styles.section}>
                 <h2 className={styles.sectionTitle}>Team</h2>
                 <TherapistGrid Therapist={therapists} />
             </div>
+
+
+            {/* FAQ Section  */}
             <div className={styles.FaqContainer}>
-                <h2 className={styles.sectionTitle}>Gallery</h2>
+                <h2 className={styles.sectionTitle}>Frequently Asking Questions</h2>
                 <p>Duis aute irure dolor in reprehenderit in voluptate eu fugiat nulla pariatur.</p>
 
                 <QuestionBox questions={FaqData} />

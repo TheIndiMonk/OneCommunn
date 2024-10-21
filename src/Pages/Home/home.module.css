@@ -3,8 +3,7 @@
 }
 .section{
     display: flex;
-    padding-top: 2rem;
-    padding-bottom: 2rem;
+    padding: 20px;
     flex-direction: column;
     align-items: center;
 }
@@ -13,13 +12,28 @@
 }
 
 .FaqContainer {
+    padding-bottom:8rem;
+    width: 100%;   
     display: flex;
-    justify-content: center;
-    width: 100%;
-    flex-wrap: wrap;
+    align-items: center;
     flex-direction: column;
-    align-content: space-around;
-    background-image: url('./logo/background-vector.svg');
+    background-size: cover;
+    justify-content: flex-start;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: url(./logo/background-vector.svg);
+}
+
+.FaqContainer h2{
+    padding: 0;
+}
+.FaqContainer p{
+    padding: 1.2rem 0;
+}
+
+/* Expanded state */
+.FaqContainer.open {
+    max-height: 1000px; /* Adjust as per content size */
 }
 
 .planSection{
@@ -36,4 +50,17 @@
 
 .planSection p{
     margin-bottom: 3rem;
+}
+
+
+@media (max-width: 768px) {
+    .FaqContainer h2, p {
+        padding: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .FaqContainer h2, p {
+        padding: 10px !important;
+    }
 }

@@ -12,21 +12,23 @@ export const QuestionBox: React.FC<QuestionProps> = ({ questions }) => {
 
   return (
     <>
-      {questions.map((item: FAQItem, index: number) => (
-        <div key={index} className={styles.questionContainer}>
-          <div className={styles.question} onClick={() => toggleFAQ(index)}>
-            <span>{item.question}</span>
-            <span className={styles.icon}>{open === index ? "-" : "+"}</span>
-          </div>
-          <div className={open === index ? styles.visible : styles.hidden}>
-            <div className={styles.answer}>
-              <h2 className={styles.answerTitle}>{item.answerTitle}</h2>
-              <p>{item.answerContent1}</p>
-              {item.answerContent2 && <p>{item.answerContent2}</p>}
+      <div className={styles.wrapper}>
+        {questions.map((item: FAQItem, index: number) => (
+          <div key={index} className={styles.questionContainer}>
+            <div className={styles.question} onClick={() => toggleFAQ(index)}>
+              <span>{item.question}</span>
+              <span className={styles.icon}>{open === index ? "-" : "+"}</span>
+            </div>
+            <div className={open === index ? styles.visible : styles.hidden}>
+              <div className={styles.answer}>
+                <h2 className={styles.answerTitle}>{item.answerTitle}</h2>
+                <p>{item.answerContent1}</p>
+                {item.answerContent2 && <p>{item.answerContent2}</p>}
+              </div>
             </div>
           </div>
-        </div>
-      ))}
+        ))}
+      </div>
     </>
   );
 };

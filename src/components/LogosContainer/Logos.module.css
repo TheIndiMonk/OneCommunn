@@ -1,9 +1,11 @@
 /* Logos.module.css */
 .container{
-  display: flex;               /* Use flexbox */
-  justify-content: center;     /* Center horizontally */
-  align-items: center;         /* Center vertically */
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   height: 50vh;
+  flex-wrap: wrap;
 }
 
 .headerLogos {
