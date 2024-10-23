@@ -230,6 +230,7 @@ const Home: React.FC = () => {
             trainer: 'Jasmin',
             description: 'Duis aute irure dolor reprehenderit voluptate velit esse cillum dolore fugiat nulla pariatur Excepteur.',
             includeTax: 'Include Tax, Total',
+            getStartedLink: "/beginner-plan", 
         },
         {
             title: 'The One Month',
@@ -239,6 +240,8 @@ const Home: React.FC = () => {
             trainer: 'Jasmin',
             description: 'Duis aute irure dolor reprehenderit voluptate velit esse cillum dolore fugiat nulla pariatur Excepteur.',
             includeTax: 'Include Tax, Total',
+            getStartedLink: "/beginner-plan",
+            
         },
         {
             title: 'The One Month',
@@ -248,6 +251,7 @@ const Home: React.FC = () => {
             trainer: 'Jasmin',
             description: 'Duis aute irure dolor reprehenderit voluptate velit esse cillum dolore fugiat nulla pariatur Excepteur.',
             includeTax: 'Include Tax, Total',
+            getStartedLink: "/beginner-plan",
         },
     ];
 
@@ -327,7 +331,7 @@ const Home: React.FC = () => {
             <div className={styles.section}>
                 <h2 className={styles.sectionTitle}>Gallery</h2>
                 <p>Duis aute irure dolor in reprehenderit in voluptate eu fugiat nulla pariatur.</p>
-                <ProductCard products={products} />
+                <ProductCard products={products} viewAllLink='/shop' />
             </div>
 
 

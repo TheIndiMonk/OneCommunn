@@ -4,7 +4,7 @@ import styles from './ProductCard.module.css';
 import { ProductCardProps } from '../../../lib/types/type';
 
 
-export const ProductCard: React.FC<ProductCardProps> = ({ products }) => {
+export const ProductCard: React.FC<ProductCardProps> = ({ products, viewAllLink }) => {
   return (
     <>
       <div className={styles.ProductsContainer}>
@@ -26,7 +26,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ products }) => {
           ))}
         </div>
         <div className={styles.btnContainer}>
-          <button className={styles.btn}>View All  →</button>
+          <button className={styles.btn}> <a href={viewAllLink}>View All  →</a></button>
         </div>
       </div>
     </>

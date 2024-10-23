@@ -44,11 +44,9 @@
 
 }
 
-.planSection h2{
-    margin-bottom: 1rem;
-}
 
 .planSection p{
+    font-weight: 400;
     margin-bottom: 3rem;
 }
 

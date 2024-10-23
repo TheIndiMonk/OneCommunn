@@ -22,8 +22,26 @@
     flex-wrap: wrap;
     flex-direction: column;
     align-items: flex-start;
-    padding: 30px;
+    padding: 20px;
   }
+  .primaryCard {
+    background-color: #C1A78C; /* Primary background */
+    color: black;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    
+    .schedule{
+      color: black;
+    };
+    .trainer, .trainer span{
+      color: black;
+    }
+    
+    .button{
+      background-color: #C1A78C;
+    }
+  }
+
+
   .title {
     font-family: 'Poppins';
     font-size: 0.8rem;
@@ -65,7 +83,8 @@
   }
   
   .description {
-    margin: 1rem 0;
+    font-size: 13px;
+    margin: 0.5rem 0 !important;
     color: rgb(0, 0, 0);
     text-align: left;
   }
@@ -97,6 +116,8 @@
   }
   
   .button {
+    font-weight: 400;
+    font-size: 13px;
     background-color: white;
     border: 1px solid black;
     padding: 0.5rem 1rem;
@@ -107,9 +128,17 @@
   }
   
   .button:hover{
-    background-color: black;
-    color: wheat;
+    background-color: #27282C;
+    color: white;
+    path{
+      fill: white;
+    }
   }
+
+
+
+
+
 
 
 /* Responsive styles for Tablet */

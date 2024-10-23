@@ -164,7 +164,7 @@ const Pricing: React.FC = () => {
                 <h1 className={styles.title}>Yoga Class Timing</h1>
                 <p className={styles.subtitle}>Duis aute irure dolor reprehenderit voluptate velit esse cillum dolore fugiat nulla pariatur.</p>
                 <TimeTable TimeTables={timeTables} />
-                <ProductCard products={products} />
+                <ProductCard products={products} viewAllLink="/products"/>
                 {/* <InstagramFollow images={exampleImages} instagramText={exampleText} /> */}
             </div>
         </div>

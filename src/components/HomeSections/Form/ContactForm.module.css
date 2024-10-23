@@ -105,6 +105,11 @@ input::placeholder {
   color: #0000;
 }
 
+button:hover{
+  background-color: #000;
+    color: #fff;
+}
+
 
 
 

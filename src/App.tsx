@@ -90,7 +90,7 @@ const footerProps: FooterProps = {
 // Layout component
 const Layout = () => (
   <>
-    <Header links={NavLinks} logo={logo} buttons={buttons} />
+    <Header links={NavLinks} logo={logo} buttons={buttons}  />
     <Outlet /> {/* Renders the matched child route */}
     <Footer {...footerProps} />
   </>

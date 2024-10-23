@@ -20,13 +20,15 @@
   justify-content: center;
   align-items: center;
   margin-bottom: 1.5rem;
+  flex-direction: column;
 }
+
 
 .circle {
   background-color: #a1ab87; /* Adjusted to match the green shade */
-  border-radius: 48%;
-  width: 15rem;
-  height: 15rem;
+  border-radius: 500px;
+  width: 377px;
+  height: 235px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -50,8 +52,13 @@
 }
 
 .quoteIcon {
-  font-size: 1.5rem;
-  color: #9ca3af;
+  font-size: 1rem;
+  color: #333;
+  margin: 0 0.5rem;
+}
+.starIcon {
+  font-size: 1rem;
+  color: #C1A78C;
   margin: 0 0.5rem;
 }
 
@@ -90,6 +97,11 @@
   display: inline-block;
   cursor: pointer;
 }
+
+button:hover{
+  background-color: transparent;
+}
+
 
 .activeDot {
   background-color: #333; /* Change this color to match your theme */

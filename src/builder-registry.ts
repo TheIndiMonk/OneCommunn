@@ -17,9 +17,9 @@ import { CheckSchedule } from "./components/CheckSchedule/CheckSchedule";
 import { PriceCard } from "./components/Card/PriceCard/PriceCard";
 import BannerCard from "./components/Banner/BannerCard";
 import TimeTable from "./components/TimeTable/TimeTable";
-import {ProductCard} from "./components/Card/ProductCard/ProductCard";
+import { ProductCard } from "./components/Card/ProductCard/ProductCard";
 import HomeAboutSection from "./components/HomeSections/HomeAboutSection/HomeAboutSection";
-import {HomeHero} from "./components/HomeSections/HomeHero/HomeHero";
+import { HomeHero } from "./components/HomeSections/HomeHero/HomeHero";
 import VisionMission from "./components/HomeSections/VisionMission/VissionMission";
 import BookYoga from "./components/HomeSections/BookYoga/BookYoga";
 import ContactForm from "./components/HomeSections/Form/HomeForm";
@@ -963,6 +963,12 @@ Builder.registerComponent(ProductCard, {
         { name: "link", type: "string", defaultValue: "" },
       ],
     },
+    {
+      name: "viewAllLink",
+      type: "url",
+      helperText: "Shop Link",
+      defaultValue: "/shop",
+    },
   ],
 });
 
@@ -1009,7 +1015,11 @@ Builder.registerComponent(HomeHero, {
         { name: "description", type: "string", defaultValue: "Description" },
         { name: "contextBtnText", type: "string", defaultValue: "Explore Now" },
         { name: "contextBtnLink", type: "url", defaultValue: "/explore" },
-        { name: "propertiesBtnText", type: "string", defaultValue: "View all properties" },
+        {
+          name: "propertiesBtnText",
+          type: "string",
+          defaultValue: "View all properties",
+        },
         { name: "propertiesBtnLink", type: "url", defaultValue: "/properties" },
         { name: "videoTitle", type: "string", defaultValue: "Video Title" },
         { name: "videoLink", type: "url", defaultValue: "https://video.com" },
@@ -1100,50 +1110,55 @@ Builder.registerComponent(BookYoga, {
 });
 
 Builder.registerComponent(ContactForm, {
-  name: 'ContactForm',
+  name: "ContactForm",
   inputs: [
     {
-      name: 'title',
-      type: 'string',
-      defaultValue: 'Contact Us',
+      name: "title",
+      type: "string",
+      defaultValue: "Contact Us",
       required: true,
     },
     {
-      name: 'subtitle',
-      type: 'string',
-      defaultValue: 'Get in touch with us!',
+      name: "subtitle",
+      type: "string",
+      defaultValue: "Get in touch with us!",
     },
     {
-      name: 'fields',
-      type: 'list',
+      name: "fields",
+      type: "list",
       subFields: [
         {
-          name: 'name',
-          type: 'string',
+          name: "name",
+          type: "string",
           required: true,
         },
         {
-          name: 'type',
-          type: 'string',
-          enum: ['text', 'tel', 'email', 'textarea', 'date'],
+          name: "type",
+          type: "string",
+          enum: ["text", "tel", "email", "textarea", "date"],
           required: true,
-          defaultValue: 'text',
+          defaultValue: "text",
         },
         {
-          name: 'placeholder',
-          type: 'string',
+          name: "placeholder",
+          type: "string",
         },
         {
-          name: 'required',
-          type: 'boolean',
+          name: "required",
+          type: "boolean",
           defaultValue: false,
         },
       ],
       defaultValue: [
-        { name: 'name', type: 'text', placeholder: 'Name', required: true },
-        { name: 'phone', type: 'tel', placeholder: 'Phone No', required: true },
-        { name: 'email', type: 'email', placeholder: 'Email', required: true },
-        { name: 'message', type: 'textarea', placeholder: 'Enter your message', required: false },
+        { name: "name", type: "text", placeholder: "Name", required: true },
+        { name: "phone", type: "tel", placeholder: "Phone No", required: true },
+        { name: "email", type: "email", placeholder: "Email", required: true },
+        {
+          name: "message",
+          type: "textarea",
+          placeholder: "Enter your message",
+          required: false,
+        },
       ],
     },
   ],
