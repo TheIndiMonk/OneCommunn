@@ -1,7 +1,8 @@
 export interface Therapist {
     name: string;
-    title: string;
+    title?: string;
+    image?: string;
     description: string;
-    image: string;
-    socialLinks: { fb: string, tw: string, yu: string, in: string };
+    status?: string;
+    socialLinks?: { fb: string, tw: string, yu: string, in: string };
 }

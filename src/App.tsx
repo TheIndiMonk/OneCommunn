@@ -15,6 +15,10 @@ import NotFound from './components/404/NotFound';
 import { createBrowserRouter, RouterProvider, Outlet } from 'react-router-dom';
 import { HeaderProps, FooterProps } from './lib/types/type';
 
+
+
+
+
 // Header and Footer data props
 const logo: HeaderProps['logo'] = {
   src: "/logo/mantra-logo.svg",
@@ -29,21 +33,11 @@ const NavLinks: HeaderProps['links'] = [
   { label: 'Home', url: '/' },
   { label: 'About Us', url: '/about' },
   { 
-    label: 'Services', 
-    subLinks: [
-      { label: 'Web Development', url: '/services/web-development' },
-      { label: 'Mobile Development', url: '/services/mobile-development' },
-      { label: 'SEO Optimization', url: '/services/seo' },
-    ] 
+    label: 'Services',  url: '/services'
   },
   { label: 'Pricing', url: '/pricing' },
   { 
-    label: 'Courses', 
-    subLinks: [
-      { label: 'React Course', url: '/courses/react' },
-      { label: 'Node.js Course', url: '/courses/nodejs' },
-      { label: 'Python Course', url: '/courses/python' },
-    ]
+    label: 'Faq', url: '/faq'
   },
   { label: 'Team', url: '/team' },
   { label: 'Contact Us', url: '/contact' },
@@ -87,10 +81,11 @@ const footerProps: FooterProps = {
   accentColor: "#8C7A63",
 };
 
+
 // Layout component
 const Layout = () => (
   <>
-    <Header links={NavLinks} logo={logo} buttons={buttons}  />
+    <Header links={NavLinks} logo={logo} buttons={buttons} backgroundColor='#D4CBC2'  />
     <Outlet /> {/* Renders the matched child route */}
     <Footer {...footerProps} />
   </>
@@ -116,6 +111,10 @@ const router = createBrowserRouter([
 ]);
 
 function App() {
+
+  
+
+
   return <RouterProvider router={router} />;
 }
 

@@ -24,11 +24,24 @@
     align-items: flex-start;
     padding: 20px;
   }
+
+  .item {
+    flex: 1 1 calc(25% - 16px); /* Adjusts each item's width, change 25% to desired size */
+    min-width: 200px; /* Optional: Ensures a minimum width for each item */
+    box-sizing: border-box; /* Ensure padding and borders are included in width */
+    background-color: #f0f0f0; /* Example background color */
+    padding: 10px; /* Padding inside items */
+    border: 1px solid #ccc; /* Optional: border around items */
+    border-radius: 5px; /* Optional: rounded corners */
+  }
+  
   .primaryCard {
     background-color: #C1A78C; /* Primary background */
     color: black;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-    
+    g path{
+      fill: black;
+    }
     .schedule{
       color: black;
     };
@@ -63,7 +76,7 @@
   .trainer {
     font-family: 'Poppins';
     display: flex;
-    font-size: 0.7rem;
+    font-size: 10px;
     color: gray;
     margin-bottom: 0.5rem;
     align-items: center;

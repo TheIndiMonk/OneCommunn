@@ -25,12 +25,19 @@ import BookYoga from "./components/HomeSections/BookYoga/BookYoga";
 import ContactForm from "./components/HomeSections/Form/HomeForm";
 
 // Header and Footer
+
 Builder.registerComponent(Header, {
   name: "Header",
   inputs: [
     {
       name: "logo",
       type: "object",
+      defaultValue: {
+        src: "https://via.placeholder.com/150",
+        alt: "Default Logo",
+        width: 150,
+        height: 50,
+      },
       subFields: [
         {
           name: "src",
@@ -61,6 +68,16 @@ Builder.registerComponent(Header, {
     {
       name: "links",
       type: "list",
+      defaultValue: [
+        {
+          label: "Home",
+          url: "/",
+        },
+        {
+          label: "About",
+          url: "/about",
+        },
+      ],
       subFields: [
         {
           name: "label",
@@ -98,6 +115,10 @@ Builder.registerComponent(Header, {
     {
       name: "buttons",
       type: "list",
+      defaultValue: [
+        { label: "Sign Up", url: "/signup" },
+        { label: "Login", url: "/login" },
+      ],
       subFields: [
         {
           name: "label",
@@ -112,6 +133,18 @@ Builder.registerComponent(Header, {
           helperText: "URL for the button",
         },
       ],
+    },
+    {
+      name: "backgroundColor",
+      type: "color",
+      defaultValue: "#D0B191",
+      friendlyName: "Background Color",
+    },
+    {
+      name: "textColor",
+      type: "color",
+      defaultValue: "#27282C",
+      friendlyName: "Text Color",
     },
   ],
 });
@@ -220,6 +253,12 @@ Builder.registerComponent(Hero, {
       defaultValue: "Home • Home",
       friendlyName: "Breadcrumb Text",
     },
+    {
+      name: "backgroundColor",
+      type: "color",
+      defaultValue: "#D4CBC2",
+      friendlyName: "Background Color"
+    }
   ],
 });
 
@@ -558,20 +597,9 @@ Builder.registerComponent(Questionnaire, {
           required: true,
         },
         {
-          name: "answerTitle",
+          name: "answer",
           type: "string",
           defaultValue: "Answer",
-        },
-        {
-          name: "answerContent1",
-          type: "string",
-          defaultValue: "This is the first part of the answer.",
-          required: true,
-        },
-        {
-          name: "answerContent2",
-          type: "string",
-          defaultValue: "This is the second part of the answer (optional).",
         },
       ],
 

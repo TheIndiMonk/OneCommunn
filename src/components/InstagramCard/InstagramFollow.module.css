@@ -5,7 +5,6 @@
     align-items: center;
     justify-content: center;
     min-height: 100vh;
-    background-color: #f3f4f6; /* Equivalent to bg-gray-100 */
   }
   
   .grid {
@@ -16,11 +15,18 @@
   }
   
   .card {
-    width: 16rem; /* Equivalent to w-64 */
-    height: 16rem; /* Equivalent to h-64 */
-    background-color: #c6d5a3; /* Equivalent to bg-green-200 */
+    display: flex;
+    width: 16rem;
+    height: 16rem;
+    background-color: #c6d5a3;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;  
   }
-  
+  .card p{
+    color: black;
+  }
   .centerCard {
     background-color: #1f2937; /* Equivalent to bg-gray-800 */
     color: white;
@@ -29,6 +35,9 @@
     align-items: center;
     justify-content: center;
     font-family: 'serif';
+  }
+  .centerCard p{
+    color: wheat;
   }
   
   .centerCardIcon {

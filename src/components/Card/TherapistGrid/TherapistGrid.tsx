@@ -10,8 +10,8 @@ const TherapistGrid: React.FC<TherapistProps> = ({ Therapist, onSelectTherapist 
                 <TherapistCard
                     key={index}
                     name={therapist.name}
-                    title={therapist.title}
-                    image={therapist.image}
+                    title={therapist.title!}
+                    image={therapist.image!}
                     onClick={() => onSelectTherapist?.(therapist)}
                 />
             ))}

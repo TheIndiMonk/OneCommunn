@@ -3,7 +3,12 @@ import { Link } from "react-router-dom";
 import styles from "./header.module.css";
 import { HeaderProps } from "../../lib/types/type";
 
-const Header: React.FC<HeaderProps> = ({ links, logo, buttons }) => {
+
+const Header: React.FC<HeaderProps> = ({ links, logo, buttons, backgroundColor, textColor }) => {
+
+
+
+
     const [isNavOpen, setIsNavOpen] = useState(false);
     const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
 
@@ -24,7 +29,7 @@ const Header: React.FC<HeaderProps> = ({ links, logo, buttons }) => {
     };
 
     return (
-        <div className={`${styles.header}`}>
+        <div className={styles.header} style={{ backgroundColor, color: textColor }} >
             <div className={styles.logo}>
                 <Link to={"/"}>
                     <img
@@ -139,3 +144,5 @@ const Header: React.FC<HeaderProps> = ({ links, logo, buttons }) => {
 };
 
 export default Header;
+
+

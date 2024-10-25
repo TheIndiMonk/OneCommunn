@@ -1,7 +1,7 @@
 // FAQItem.ts
 export interface FAQItem {
+    id: string;
     question: string;
-    answerTitle: string;
-    answerContent1: string;
-    answerContent2?: string; // Make this optional
+    answer: string;
+
 }

@@ -3,7 +3,7 @@ import styles from './FeaturedCard.module.css';
 import { FeaturedCardProps } from '../../../lib/types/type';
 
 
-export const FeaturedCard: React.FC<FeaturedCardProps> = ({ name, role, description, image, socialLinks }) => {
+export const FeaturedCard: React.FC<FeaturedCardProps> = ({ name, title, description, image, socialLinks }) => {
     return (
         <div className={styles.featuredCard}>
             <div className={styles.illustration1}>
@@ -15,7 +15,7 @@ export const FeaturedCard: React.FC<FeaturedCardProps> = ({ name, role, descript
                 </div>
                 <div className={styles.details}>
                     <h2 className={styles.name}>{name}</h2>
-                    <p className={styles.role}>{role}</p>
+                    <p className={styles.role}>{title}</p>
                     <p className={styles.description}>{description}</p>
                     <div className={styles.socialIcons}>
                         <i className={styles.icon}>{socialLinks.fb}</i>

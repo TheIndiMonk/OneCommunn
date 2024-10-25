@@ -1,23 +1,21 @@
 // InstagramFollow.tsx
 import React from 'react';
 import styles from './InstagramFollow.module.css';
+import { InstagramFollowProps } from '../../lib/types/type';
 
-const InstagramFollow: React.FC = () => {
+const InstagramFollow: React.FC<InstagramFollowProps>= ({cards}) => {
   return (
     <div className={styles.container}>
       <div className={styles.grid}>
-        <div className={styles.card}></div>
-        <div className={styles.card}></div>
-        <div className={`${styles.card} ${styles.centerCard}`}>
-          <i className={`fas fa-leaf ${styles.centerCardIcon}`}></i>
-          <p>Yoka@Jew</p>
-          <p>Follow Us On</p>
-          <p>Instagram</p>
-        </div>
-        <div className={styles.card}></div>
-        <div className={styles.card}></div>
+        {cards.map((card) => (
+            <div
+              key={card.id}
+              className={`${styles.card} ${card.isCenterCard ? styles.centerCard : ''}`}
+            >
+              {card.content}
+            </div>
+        ))}
       </div>
-      <div className={styles.footer}></div>
     </div>
   );
 };

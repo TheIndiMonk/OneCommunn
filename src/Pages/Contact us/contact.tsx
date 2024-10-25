@@ -40,6 +40,8 @@ const Contact: React.FC = () => {
         <div>
             <Hero
                 title="Contact Us"
+                backgroundColor="#D4CBC2"
+
                 // breadcrumb="Home • Contact Us"
                 // illustrations={illustrations}
             />

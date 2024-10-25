@@ -13,8 +13,8 @@ export interface CardProps {
 }
 
 export interface ImageCardProps {
-    src: string;
-    alt: string;
+    src?: string;
+    alt?: string;
     height?: string;
     width?: string;
 }

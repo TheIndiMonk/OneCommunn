@@ -1,72 +1,42 @@
 import styles from './faq.module.css';
+import { useFetch } from '../../Api/apiHandler';
 import { Hero } from '../../components/Hero/Hero';
+import { FAQItem } from '../../lib/types/FAQ/FAQItem';
 import { Questionnaire } from '../../components/Questioner/Questionnaire';
 import { ImageCard } from '../../components/Card/ImageCard/ImageCard';
 
 
-
 export const FAQ: React.FC = () => {
-    // const illustrations = [
-    //     {
-    //         src: '/logo/left.svg',
-    //         alt: 'Leaf Illustration 1',
-    //         className: 'illustration1'
-    //     },
-    //     {
-    //         src: '/logo/right.svg',
-    //         alt: 'Leaf Illustration 2',
-    //         className: 'illustration2'
-    //     },
-    // ];
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const { data, loading, error } = useFetch<any>(
+        'https://api.onecommunn.com/api/v1/communities/66fe765b7433f90b2c92f315/home'
+    );
+    const faqData: FAQItem[] = data?.community?.faq || [];
 
-    const FaqData = [
-        {
-            question: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, labore.',
-            answerTitle: 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore',
-            answerContent1: "So how did the classical Latin become so incoherent? According to McClintock It's difficult to find examples of lorem ipsum in use before Letraset made it popular",
-        },
-        {
-            question: 'Lorem ipsum was purposefully designed to have no meaning.',
-            answerTitle: 'Purpose of Lorem Ipsum',
-            answerContent1: 'Lorem Ipsum was created to be a placeholder text.',
-            answerContent2: 'It helps designers to visualize layout before content is available.',
-        },
-        {
-            question: 'Nulla aliquet porttitor venenatis. Donec a dui et dui fringilla consectetur.',
-            answerTitle: 'Porttitor Venenatis',
-            answerContent1: 'This text demonstrates the structure and flow of placeholder content.',
-            answerContent2: 'It helps to check visual alignment and layout responsiveness.',
-        },
-        {
-            question: 'Some claim lorem ipsum threatens to promote design over content while.',
-            answerTitle: 'Design vs. Content',
-            answerContent1: 'Lorem ipsum critics argue that it prioritizes visual design over meaningful content.',
-            answerContent2: 'However, it serves a practical purpose in early development stages.',
-        },
-    ];
+    if (loading) return <p>Loading...</p>;
+    if (error) return <p>{error}</p>;
 
     return (
         <div>
             <Hero
                 title="FAQ"
-                // breadcrumb="Home • Contact Us"
-                // illustrations={illustrations}
+                backgroundColor="#D4CBC2"
             />
             <Questionnaire
                 title='Frequently Asked Questions'
                 description="Rrow itself, let it be sorrow; let him love it; let him pursue it, ishing for its acquisition. Because he will behold, uniess but through concern, and also of those who resist. Now a pure snore disturbed sum."
-                question={FaqData}
+                question={faqData}
                 backgroundImage={false} // Set to true to show the background image
             />
             <div className={styles.cardContainer}>
                 <ImageCard 
-                    src='./Photos/yoga-image.jpeg'
+                    src={data?.community?.gallery[0]}       
                     alt='Yoga Pose'
                     width='500px' 
                     height='350px'
                 />
                <ImageCard 
-                    src='./Photos/yoga-image.jpeg'
+                    src={data?.community?.gallery[1]}
                     alt='Yoga Pose'
                     width='500px' 
                     height='350px'
@@ -76,7 +46,7 @@ export const FAQ: React.FC = () => {
             <Questionnaire
                 title='Yoga Instructor Questions'
                 description="Rrow itself, let it be sorrow; let him love it; let him pursue it, ishing for its acquisition. Because he will behold, uniess but through concern, and also of those who resist. Now a pure snore disturbed sum."
-                question={FaqData}
+                question={faqData}
                 backgroundImage={false} // Set to true to show the background image
             />
         </div>

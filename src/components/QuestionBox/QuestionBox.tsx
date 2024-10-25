@@ -21,9 +21,9 @@ export const QuestionBox: React.FC<QuestionProps> = ({ questions }) => {
             </div>
             <div className={open === index ? styles.visible : styles.hidden}>
               <div className={styles.answer}>
-                <h2 className={styles.answerTitle}>{item.answerTitle}</h2>
-                <p>{item.answerContent1}</p>
-                {item.answerContent2 && <p>{item.answerContent2}</p>}
+                <h2 className={styles.answerTitle}>{item.question}</h2>
+                <p>{item.answer}</p>
+
               </div>
             </div>
           </div>

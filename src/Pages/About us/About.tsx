@@ -1,10 +1,12 @@
-import React from 'react';
+ import React from 'react';
 import { Hero } from '../../components/Hero/Hero';
 import { Logos } from '../../components/LogosContainer/Logos';
 import { AboutSection } from '../../components/AboutSection/AboutSection';
 import TherapistGrid from '../../components/Card/TherapistGrid/TherapistGrid';
 import { TestimonialSection } from '../../components/TestimonialCarousel/Testimonial';
 import { CheckSchedule } from '../../components/CheckSchedule/CheckSchedule';
+import { useFetch } from '../../Api/apiHandler';
+import { Therapist } from '../../lib/types/Therapist/TherapistTypes';
 
 // import styles from './about.module.css';
 
@@ -22,6 +24,14 @@ const About: React.FC = () => {
 
     //     },
     // ];
+
+
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const { data } = useFetch<any>(
+        'https://api.onecommunn.com/api/v1/communities/66fe765b7433f90b2c92f315/home'
+    );
+
+    const teams: Therapist[] = data?.community?.teams || [];
 
 
     const aboutSectionData = {
@@ -95,49 +105,60 @@ const About: React.FC = () => {
         }
     ];
 
-    const therapists = [
-        {
-            name: "Emily Burden",
-            title: "Yoga Instructor",
-            description: "Duis aute irure dolor in reprehenderit...",
-            image: "https://placehold.co/150x150",
-            socialLinks: { fb: "FB", tw: "TW", yu: "YU", in: "IN" }
-        },
-        {
-            name: "Yogi Madi",
-            title: "Yoga Instructor",
-            description: "Description for Yogi Madi...",
-            image: "https://placehold.co/150x150",
-            socialLinks: { fb: "FB", tw: "TW", yu: "YU", in: "IN" }
-        },
-        {
-            name: "Rohit Madi",
-            title: "Yoga Instructor",
-            description: "Description for Yogi Madi...",
-            image: "https://placehold.co/150x150",
-            socialLinks: { fb: "FB", tw: "TW", yu: "YU", in: "IN" }
-        },
-        {
-            name: "Jhon Madi",
-            title: "Yoga Instructor",
-            description: "Description for Yogi Madi...",
-            image: "https://placehold.co/150x150",
-            socialLinks: { fb: "FB", tw: "TW", yu: "YU", in: "IN" }
-        },
-        {
-            name: "Jhon Madi",
-            title: "Yoga Instructor",
-            description: "Description for Yogi Madi...",
-            image: "https://placehold.co/150x150",
-            socialLinks: { fb: "FB", tw: "TW", yu: "YU", in: "IN" }
-        },
-        // Add more therapist data here
-    ];
+    // const therapists = [
+    //     {
+    //         name: "Emily Burden",
+    //         title: "Yoga Instructor",
+    //         description: "Duis aute irure dolor in reprehenderit...",
+    //         image: "https://placehold.co/150x150",
+    //         socialLinks: { fb: "FB", tw: "TW", yu: "YU", in: "IN" }
+    //     },
+    //     {
+    //         name: "Yogi Madi",
+    //         title: "Yoga Instructor",
+    //         description: "Description for Yogi Madi...",
+    //         image: "https://placehold.co/150x150",
+    //         socialLinks: { fb: "FB", tw: "TW", yu: "YU", in: "IN" }
+    //     },
+    //     {
+    //         name: "Rohit Madi",
+    //         title: "Yoga Instructor",
+    //         description: "Description for Yogi Madi...",
+    //         image: "https://placehold.co/150x150",
+    //         socialLinks: { fb: "FB", tw: "TW", yu: "YU", in: "IN" }
+    //     },
+    //     {
+    //         name: "Jhon Madi",
+    //         title: "Yoga Instructor",
+    //         description: "Description for Yogi Madi...",
+    //         image: "https://placehold.co/150x150",
+    //         socialLinks: { fb: "FB", tw: "TW", yu: "YU", in: "IN" }
+    //     },
+    //     {
+    //         name: "Jhon Madi",
+    //         title: "Yoga Instructor",
+    //         description: "Description for Yogi Madi...",
+    //         image: "https://placehold.co/150x150",
+    //         socialLinks: { fb: "FB", tw: "TW", yu: "YU", in: "IN" }
+    //     },
+    //     // Add more therapist data here
+    // ];
 
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any    
+    const teamsApiResponse = (teams: any[]) => 
+        teams.map(team => ({
+            name: team.name,
+            title: team.designation,
+            description: team.description,
+            image: team.image,
+        }));
+
+        
     return (
         <div>
             <Hero
                 title="About Us"
+                backgroundColor="#D4CBC2"
                 // breadcrumb="About Us"
                 // illustrations={illustrations}
             />
@@ -159,7 +180,7 @@ const About: React.FC = () => {
             <Logos Logos={logos} />
             <TestimonialSection  Testimonials={testimonials}  />
             <h1>Meet The Therapist</h1>
-            <TherapistGrid Therapist={therapists}/>
+            <TherapistGrid Therapist={teamsApiResponse(teams)}/>
         </div>
     );
 };

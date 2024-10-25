@@ -51,7 +51,10 @@
 
 .button:hover {
     background-color: #2d3748; /* Dark gray */
-    color: rgb(192, 180, 101);
+    color: white;
+    path{
+        fill: white;
+      }
 }
 
 .imageContainer {

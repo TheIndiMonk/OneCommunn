@@ -11,6 +11,11 @@ import VisionMission from '../../components/HomeSections/VisionMission/VissionMi
 import BookYoga from '../../components/HomeSections/BookYoga/BookYoga';
 import { PriceCard } from '../../components/Card/PriceCard/PriceCard';
 import ContactForm from '../../components/HomeSections/Form/HomeForm';
+import { FAQItem } from '../../lib/types/FAQ/FAQItem';
+import { useFetch } from '../../Api/apiHandler';
+import { Therapist } from '../../lib/types/Therapist/TherapistTypes';
+import { PriceCardProps } from '../../lib/types/type';
+
 
 
 
@@ -20,6 +25,62 @@ const Home: React.FC = () => {
     const handleButtonClick = () => {
         alert("Button clicked!");
     };
+
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const { data } = useFetch<any>(
+        'https://api.onecommunn.com/api/v1/communities/66fe765b7433f90b2c92f315/home'
+    );
+    const faqData: FAQItem[] = data?.community?.faq || [];
+    const services: Therapist[] = data?.community?.services || [];
+    const name: string = data?.community?.name;
+    const description: string = data?.community?.description;
+    const mission: string = data?.community?.mission;
+    const vision: string = data?.community?.vision;
+    const plans: PriceCardProps[] = data?.community?.plans || [];
+    const teams: Therapist[] = data?.community?.teams || [];
+
+
+
+
+
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const servicesApiResponse = (services: any[]) =>
+        services.map(service => ({
+            name: service.title,
+            image: service.image,
+            description: service.description,
+        }));
+      
+    {console.log(servicesApiResponse(services))}
+
+
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      const planApiResponse = (plans: any[]) =>
+        plans.map(plan => ({
+            name: plan.name,
+            trainingCount: plan.interval,
+            duration: plan.duration,
+            offerValue: plan.offerValue,
+            startDate: plan.startDate,
+            endDate: plan.endDate,
+            totalPlanValue: plan.totalPlanValue,
+            includeTax: plan.summary,
+            description: plan.description,
+
+        }));
+    {console.log(planApiResponse(plans))}
+
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any    
+    const teamsApiResponse = (teams: any[]) => 
+        teams.map(team => ({
+            name: team.name,
+            title: team.designation,
+            description: team.description,
+            image: team.image,
+        }));
+
+    {console.log(teamsApiResponse(teams))}
+
 
     const slides = [
         {
@@ -54,36 +115,36 @@ const Home: React.FC = () => {
         },
     ];
 
-    const Services = [
-        {
-            name: "Yoga Cloths",
-            title: "",
-            description: "Duis aute irure dolor in reprehenderit...",
-            image: "https://placehold.co/150x150",
-            socialLinks: { fb: "FB", tw: "TW", yu: "YU", in: "IN" }
-        },
-        {
-            name: "Yoga Books",
-            title: "",
-            description: "Description for Yogi Madi...",
-            image: "https://placehold.co/150x150",
-            socialLinks: { fb: "FB", tw: "TW", yu: "YU", in: "IN" }
-        },
-        {
-            name: "Yoga Accessories",
-            title: "",
-            description: "Description for Yogi Madi...",
-            image: "https://placehold.co/150x150",
-            socialLinks: { fb: "FB", tw: "TW", yu: "YU", in: "IN" }
-        },
-        {
-            name: "Yoga Life Style",
-            title: "",
-            description: "Description for Yogi Madi...",
-            image: "https://placehold.co/150x150",
-            socialLinks: { fb: "FB", tw: "TW", yu: "YU", in: "IN" }
-        },
-    ];
+    // const Services = [
+    //     {
+    //         name: "Yoga Cloths",
+    //         title: "",
+    //         description: "Duis aute irure dolor in reprehenderit...",
+    //         image: "https://placehold.co/150x150",
+    //         socialLinks: { fb: "FB", tw: "TW", yu: "YU", in: "IN" }
+    //     },
+    //     {
+    //         name: "Yoga Books",
+    //         title: "",
+    //         description: "Description for Yogi Madi...",
+    //         image: "https://placehold.co/150x150",
+    //         socialLinks: { fb: "FB", tw: "TW", yu: "YU", in: "IN" }
+    //     },
+    //     {
+    //         name: "Yoga Accessories",
+    //         title: "",
+    //         description: "Description for Yogi Madi...",
+    //         image: "https://placehold.co/150x150",
+    //         socialLinks: { fb: "FB", tw: "TW", yu: "YU", in: "IN" }
+    //     },
+    //     {
+    //         name: "Yoga Life Style",
+    //         title: "",
+    //         description: "Description for Yogi Madi...",
+    //         image: "https://placehold.co/150x150",
+    //         socialLinks: { fb: "FB", tw: "TW", yu: "YU", in: "IN" }
+    //     },
+    // ];
 
     const logos = [
         { src: './company-logo/logo1.svg', alt: 'Logo 1' },
@@ -123,44 +184,44 @@ const Home: React.FC = () => {
         }
     ];
 
-    const therapists = [
-        {
-            name: "Emily Burden",
-            title: "Yoga Instructor",
-            description: "Duis aute irure dolor in reprehenderit...",
-            image: "https://placehold.co/150x150",
-            socialLinks: { fb: "FB", tw: "TW", yu: "YU", in: "IN" }
-        },
-        {
-            name: "Yogi Madi",
-            title: "Yoga Instructor",
-            description: "Description for Yogi Madi...",
-            image: "https://placehold.co/150x150",
-            socialLinks: { fb: "FB", tw: "TW", yu: "YU", in: "IN" }
-        },
-        {
-            name: "Rohit Madi",
-            title: "Yoga Instructor",
-            description: "Description for Yogi Madi...",
-            image: "https://placehold.co/150x150",
-            socialLinks: { fb: "FB", tw: "TW", yu: "YU", in: "IN" }
-        },
-        {
-            name: "Jhon Madi",
-            title: "Yoga Instructor",
-            description: "Description for Yogi Madi...",
-            image: "https://placehold.co/150x150",
-            socialLinks: { fb: "FB", tw: "TW", yu: "YU", in: "IN" }
-        },
-        {
-            name: "Jhon Madi",
-            title: "Yoga Instructor",
-            description: "Description for Yogi Madi...",
-            image: "https://placehold.co/150x150",
-            socialLinks: { fb: "FB", tw: "TW", yu: "YU", in: "IN" }
-        },
-        // Add more therapist data here
-    ];
+    // const therapists = [
+    //     {
+    //         name: "Emily Burden",
+    //         title: "Yoga Instructor",
+    //         description: "Duis aute irure dolor in reprehenderit...",
+    //         image: "https://placehold.co/150x150",
+    //         socialLinks: { fb: "FB", tw: "TW", yu: "YU", in: "IN" }
+    //     },
+    //     {
+    //         name: "Yogi Madi",
+    //         title: "Yoga Instructor",
+    //         description: "Description for Yogi Madi...",
+    //         image: "https://placehold.co/150x150",
+    //         socialLinks: { fb: "FB", tw: "TW", yu: "YU", in: "IN" }
+    //     },
+    //     {
+    //         name: "Rohit Madi",
+    //         title: "Yoga Instructor",
+    //         description: "Description for Yogi Madi...",
+    //         image: "https://placehold.co/150x150",
+    //         socialLinks: { fb: "FB", tw: "TW", yu: "YU", in: "IN" }
+    //     },
+    //     {
+    //         name: "Jhon Madi",
+    //         title: "Yoga Instructor",
+    //         description: "Description for Yogi Madi...",
+    //         image: "https://placehold.co/150x150",
+    //         socialLinks: { fb: "FB", tw: "TW", yu: "YU", in: "IN" }
+    //     },
+    //     {
+    //         name: "Jhon Madi",
+    //         title: "Yoga Instructor",
+    //         description: "Description for Yogi Madi...",
+    //         image: "https://placehold.co/150x150",
+    //         socialLinks: { fb: "FB", tw: "TW", yu: "YU", in: "IN" }
+    //     },
+    //     // Add more therapist data here
+    // ];
 
     const products = [
         {
@@ -195,65 +256,62 @@ const Home: React.FC = () => {
         // Add more products as needed
     ];
 
-    const FaqData = [
-        {
-            question: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, labore.',
-            answerTitle: 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore',
-            answerContent1: "So how did the classical Latin become so incoherent? According to McClintock It's difficult to find examples of lorem ipsum in use before Letraset made it popular",
-        },
-        {
-            question: 'Lorem ipsum was purposefully designed to have no meaning.',
-            answerTitle: 'Purpose of Lorem Ipsum',
-            answerContent1: 'Lorem Ipsum was created to be a placeholder text.',
-            answerContent2: 'It helps designers to visualize layout before content is available.',
-        },
-        {
-            question: 'Nulla aliquet porttitor venenatis. Donec a dui et dui fringilla consectetur.',
-            answerTitle: 'Porttitor Venenatis',
-            answerContent1: 'This text demonstrates the structure and flow of placeholder content.',
-            answerContent2: 'It helps to check visual alignment and layout responsiveness.',
-        },
-        {
-            question: 'Some claim lorem ipsum threatens to promote design over content while.',
-            answerTitle: 'Design vs. Content',
-            answerContent1: 'Lorem ipsum critics argue that it prioritizes visual design over meaningful content.',
-            answerContent2: 'However, it serves a practical purpose in early development stages.',
-        },
-    ];
+    // const FaqData = [
+    //     {
+    //         question: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, labore.',
+    //         answer: 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore',
+    //     },
+    //     {
+    //         question: 'Lorem ipsum was purposefully designed to have no meaning.',
+    //         answer: 'Purpose of Lorem Ipsum',
+    //     },
+    //     {
+    //         question: 'Nulla aliquet porttitor venenatis. Donec a dui et dui fringilla consectetur.',
+    //         answer: 'This text demonstrates the structure and flow of placeholder content.',
+    //     },
+    //     {
+    //         question: 'Some claim lorem ipsum threatens to promote design over content while.',
+    //         answer: 'However, it serves a practical purpose in early development stages.',
+    //     },
+    // ];
 
-    const packages = [
-        {
-            title: 'The One Month',
-            trainingCount: 8,
-            price: 70,
-            schedule: 'Tue - Fri : 7:00am to 7:00pm',
-            trainer: 'Jasmin',
-            description: 'Duis aute irure dolor reprehenderit voluptate velit esse cillum dolore fugiat nulla pariatur Excepteur.',
-            includeTax: 'Include Tax, Total',
-            getStartedLink: "/beginner-plan", 
-        },
-        {
-            title: 'The One Month',
-            trainingCount: 12,
-            price: 120,
-            schedule: 'Tue - Fri : 7:00am to 7:00pm',
-            trainer: 'Jasmin',
-            description: 'Duis aute irure dolor reprehenderit voluptate velit esse cillum dolore fugiat nulla pariatur Excepteur.',
-            includeTax: 'Include Tax, Total',
-            getStartedLink: "/beginner-plan",
+    // const packages = [
+    //     {
+    //         name: 'The One Month',
+    //         trainingCount: 8,
+    //         price: 70,
+    //         startDate: "2024-10-07T05:30:00.000Z",
+    //         endDate: "2024-11-07T05:30:00.000Z",
+    //         schedule: 'Tue - Fri : 7:00am to 7:00pm',
+    //         trainer: 'Jasmin',
+    //         description: 'Duis aute irure dolor reprehenderit voluptate velit esse cillum dolore fugiat nulla pariatur Excepteur.',
+    //         includeTax: 'Include Tax, Total',
+    //         getStartedLink: "/beginner-plan", 
+    //     },
+    //     {
+    //         name: 'The One Month',
+    //         trainingCount: 12,
+    //         price: 120,
+    //         startDate: "2024-10-07T05:30:00.000Z",
+    //         endDate: "2024-11-07T05:30:00.000Z",
+    //         trainer: 'Jasmin',
+    //         description: 'Duis aute irure dolor reprehenderit voluptate velit esse cillum dolore fugiat nulla pariatur Excepteur.',
+    //         includeTax: 'Include Tax, Total',
+    //         getStartedLink: "/beginner-plan",
             
-        },
-        {
-            title: 'The One Month',
-            trainingCount: 18,
-            price: 160,
-            schedule: 'Tue - Fri : 7:00am to 7:00pm',
-            trainer: 'Jasmin',
-            description: 'Duis aute irure dolor reprehenderit voluptate velit esse cillum dolore fugiat nulla pariatur Excepteur.',
-            includeTax: 'Include Tax, Total',
-            getStartedLink: "/beginner-plan",
-        },
-    ];
+    //     },
+    //     {
+    //         name: 'The One Month',
+    //         trainingCount: 18,
+    //         price: 160,
+    //        startDate: "2024-10-07T05:30:00.000Z",
+    //         endDate: "2024-11-07T05:30:00.000Z",
+    //         trainer: 'Jasmin',
+    //         description: 'Duis aute irure dolor reprehenderit voluptate velit esse cillum dolore fugiat nulla pariatur Excepteur.',
+    //         includeTax: 'Include Tax, Total',
+    //         getStartedLink: "/beginner-plan",
+    //     },
+    // ];
 
     return (
 
@@ -272,15 +330,15 @@ const Home: React.FC = () => {
             {/* Services Section */}
             <div className={styles.section}>
                 <h2 className={styles.sectionTitle}>Services</h2>
-                <TherapistGrid Therapist={Services} />
+                <TherapistGrid Therapist={servicesApiResponse(services)} />
             </div>
 
 
             {/* About Us  */}
             <HomeAboutSection
                 title="About Us"
-                name="Elise Burtan"
-                description="Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia. "
+                name={name}
+                description={description}
                 video='./video/file_example_MP4_1280_10MG.mp4'
                 ButtonUrl='/contact'
                 onContactClick={handleButtonClick}
@@ -289,8 +347,8 @@ const Home: React.FC = () => {
 
             {/* Mission Vission Section */}
             <VisionMission
-                vision="Duis aute irure dolor reprehenderit voluptate velit esse cillum dolore."
-                mission="Excepteur sint occaecat cupidatat non proident sunt in culpa qui officia deserunt."
+                vision={vision}
+                mission={mission}
                 instructorName="Jasmin"
                 yogaType="Yoga Pregnant"
                 schedule="Tue - Fri: 7:00am to 7:00pm"
@@ -315,7 +373,7 @@ const Home: React.FC = () => {
             <div className={styles.planSection} style={{ background: '#D4CBC2' }}>
                 <h2 className={styles.sectionTitle}>Plans</h2>
                 <p>Duis aute irure dolor in reprehenderit in voluptate eu fugiat nulla pariatur.</p>
-                <PriceCard pricingData={packages} />
+                <PriceCard pricingData={planApiResponse(plans)} />
             </div>
 
 
@@ -354,7 +412,7 @@ const Home: React.FC = () => {
             {/* Meet the Team Section */}
             <div className={styles.section}>
                 <h2 className={styles.sectionTitle}>Team</h2>
-                <TherapistGrid Therapist={therapists} />
+                <TherapistGrid Therapist={teamsApiResponse(teams)} />
             </div>
 
 
@@ -363,7 +421,7 @@ const Home: React.FC = () => {
                 <h2 className={styles.sectionTitle}>Frequently Asking Questions</h2>
                 <p>Duis aute irure dolor in reprehenderit in voluptate eu fugiat nulla pariatur.</p>
 
-                <QuestionBox questions={FaqData} />
+                <QuestionBox questions={faqData} />
             </div>
         </div>
     );

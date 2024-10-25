@@ -17,6 +17,7 @@ export const MapCard: React.FC<MapCardProps> = ({ location }) => {
         <div className={style.mapContainer}>
             <img 
                 className={style.mapClass} 
+                
                 src={`./maps/${location.title}.png`} 
                 alt={`Map of ${location.title}`} 
             /> {/* Display selected map */}

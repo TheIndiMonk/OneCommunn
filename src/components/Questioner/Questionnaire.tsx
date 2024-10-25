@@ -28,11 +28,9 @@ export const Questionnaire: React.FC<QuestionnaireProps> = ({ title, description
                             <div className={open === index ? styles.visible : styles.hidden}>
                                 <div className={styles.answer}>
                                     <h2 className={styles.answerTitle}>
-                                        {item.answerTitle}
+                                        {item.question}
                                     </h2>
-                                    <p>{item.answerContent1}</p>
-                                    {item.answerContent2 && <p>{item.answerContent2}</p>} {/* Conditionally render answerContent2 */}
-
+                                    <p>{item.answer}</p>
                                 </div>
                             </div>
                         </div>

@@ -7,6 +7,9 @@ export interface HeaderProps {
     links: HeaderLink[]; // Array of navigation links
     logo: HeaderLogo; // Add logoUrl property 
     buttons?: HeaderButton[];
+
+    backgroundColor?: string;
+    textColor?: string;
   }
 
   

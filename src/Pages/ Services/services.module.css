@@ -1,24 +1,21 @@
-.services {
-    padding: 50px 20px;
-    text-align: center;
+.section{
+    display: flex;
+    padding: 20px;
+    flex-direction: column;
+    align-items: center;
+}
+.sectionTitle{
+    padding-bottom: 1rem;
 }
 
-.services h2 {
-    font-family: 'Playfair Display', serif;
-    font-size: 36px;
-    margin-bottom: 40px;
+
+
+
+
+@media (max-width: 768px) {
+
 }
 
-.serviceItem {
-    display: inline-block;
-    width: 200px;
-    height: 200px;
-    background-color: #a3b18a;
-    margin: 0 20px;
-    border-radius: 10px;
-}
+@media (max-width: 480px) {
 
-.serviceItem p {
-    margin-top: 10px;
-    font-size: 18px;
 }
