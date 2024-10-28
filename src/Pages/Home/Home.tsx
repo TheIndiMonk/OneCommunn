@@ -53,7 +53,7 @@ const Home: React.FC = () => {
             description: service.description,
         }));
       
-    {console.log(servicesApiResponse(services))}
+    // {console.log(servicesApiResponse(services))}
 
 
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -70,7 +70,7 @@ const Home: React.FC = () => {
             description: plan.description,
 
         }));
-    {console.log(planApiResponse(plans))}
+    // {console.log(planApiResponse(plans))}
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any    
     const teamsApiResponse = (teams: any[]) => 
@@ -81,7 +81,7 @@ const Home: React.FC = () => {
             image: team.image,
         }));
 
-    {console.log(teamsApiResponse(teams))}
+    // {console.log(teamsApiResponse(teams))}
 
 
 
