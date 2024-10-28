@@ -15,6 +15,8 @@ import { FAQItem } from '../../lib/types/FAQ/FAQItem';
 import { useFetch } from '../../Api/apiHandler';
 import { Therapist } from '../../lib/types/Therapist/TherapistTypes';
 import { PriceCardProps } from '../../lib/types/type';
+// import VerticalSlider from '../../components/Slider/VerticalSlider';
+// import { Slide } from '../../lib/types/SliderTypes/SliderTypes';
 
 
 
@@ -80,6 +82,7 @@ const Home: React.FC = () => {
         }));
 
     {console.log(teamsApiResponse(teams))}
+
 
 
     const slides = [
@@ -313,6 +316,51 @@ const Home: React.FC = () => {
     //     },
     // ];
 
+    // const slides: Slide[] = [
+    //     {
+    //       content: (
+    //         <div>
+    //           <img src="https://placehold.co/800x400" alt="Placeholder 1" />
+    //           <h2>Slide 1</h2>
+    //           <p>This is the first slide.</p>
+    //         </div>
+    //       ),
+    //     },
+    //     {
+    //       content: (
+    //         <div>
+    //           <img src="https://placehold.co/800x400" alt="Placeholder 2" />
+    //           <h2>Slide 2</h2>
+    //           <p>This is the second slide.</p>
+    //         </div>
+    //       ),
+    //     },
+    //     {
+    //       content: (
+    //         <div>
+    //           <img src="https://placehold.co/800x400" alt="Placeholder 3" />
+    //           <h2>Slide 3</h2>
+    //           <p>This is the third slide.</p>
+    //         </div>
+    //       ),
+    //     },
+    //     {
+    //       content: (
+    //         <div>
+    //           <video width="600" controls>
+    //             <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4" />
+    //             Your browser does not support the video tag.
+    //           </video>
+    //           <h2>Slide 4</h2>
+    //           <p>This is the fourth slide with a video.</p>
+    //         </div>
+    //       ),
+    //     },
+    // ];
+
+
+
+
     return (
 
         <div className={styles.homeContainer}>
@@ -325,6 +373,12 @@ const Home: React.FC = () => {
                 slideInterval={30000}
                 backgroundColor={''}
             />
+
+            {/* <Slider items={imageUrls} autoScroll={true} intervalTime={3000}/> */}
+
+
+            {/* <VerticalSlider slides={slides} autoScroll={false} interval={5000} /> */}
+
 
 
             {/* Services Section */}
@@ -420,7 +474,6 @@ const Home: React.FC = () => {
             <div className={styles.FaqContainer}>
                 <h2 className={styles.sectionTitle}>Frequently Asking Questions</h2>
                 <p>Duis aute irure dolor in reprehenderit in voluptate eu fugiat nulla pariatur.</p>
-
                 <QuestionBox questions={faqData} />
             </div>
         </div>

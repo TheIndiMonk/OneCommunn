@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 // App.tsx
 import './App.css';
 import Header from './components/Header/Header';
@@ -14,31 +15,16 @@ import NotFound from './components/404/NotFound';
 
 import { createBrowserRouter, RouterProvider, Outlet } from 'react-router-dom';
 import { HeaderProps, FooterProps } from './lib/types/type';
-
-
-
-
+import { useFetch } from './Api/apiHandler';
+import { useEffect, useState } from 'react';
 
 // Header and Footer data props
-const logo: HeaderProps['logo'] = {
-  src: "/logo/mantra-logo.svg",
-  alt: 'Mantra Logo',
-  width: 50,
-  height: 50,
-  logoText: 'Mantra',
-  showLogoText: true,
-};
-
 const NavLinks: HeaderProps['links'] = [
   { label: 'Home', url: '/' },
   { label: 'About Us', url: '/about' },
-  { 
-    label: 'Services',  url: '/services'
-  },
+  { label: 'Services', url: '/services' },
   { label: 'Pricing', url: '/pricing' },
-  { 
-    label: 'Faq', url: '/faq'
-  },
+  { label: 'Faq', url: '/faq' },
   { label: 'Team', url: '/team' },
   { label: 'Contact Us', url: '/contact' },
 ];
@@ -73,7 +59,10 @@ const footerProps: FooterProps = {
     { platform: 'Instagram', url: 'https://instagram.com', icon: '' },
     { platform: 'Twitter', url: 'https://twitter.com', icon: '' },
   ],
-  legalLinks: [{ label: 'Terms And Condition', url: '#', external: true }, { label: 'Privacy Policy', url: '#', external: true }],
+  legalLinks: [
+    { label: 'Terms And Condition', url: '#', external: true },
+    { label: 'Privacy Policy', url: '#', external: true },
+  ],
   newsletterPlaceholder: "email here",
   copyrightText: "© 2024 Design by DesignThemes.",
   backgroundColor: "#D2C0A8",
@@ -81,21 +70,54 @@ const footerProps: FooterProps = {
   accentColor: "#8C7A63",
 };
 
-
 // Layout component
-const Layout = () => (
-  <>
-    <Header links={NavLinks} logo={logo} buttons={buttons} backgroundColor='#D4CBC2'  />
-    <Outlet /> {/* Renders the matched child route */}
-    <Footer {...footerProps} />
-  </>
-);
+const Layout = ({
+  logoSrc,
+}: {
+  logoSrc: string;
+}) => {
+  const logo: HeaderProps['logo'] = {
+    src: logoSrc || "./logo/mantra-logo.svg",
+    alt: 'Mantra Logo',
+    width: 80,
+    height: 20,
+    logoText: 'Mantra',
+    showLogoText: true,
+  };
+
+  return (
+    <>
+      <Header links={NavLinks} logo={logo} buttons={buttons} backgroundColor="#D4CBC2" />
+      <Outlet /> {/* Renders the matched child route */}
+      <Footer {...footerProps} />
+    </>
+  );
+};
+
+
+// Wrapper to handle fetching logo and rendering the Layout
+const LayoutWrapper = () => {
+  const { data } = useFetch<any>(
+    'https://api.onecommunn.com/api/v1/communities/66fe765b7433f90b2c92f315/home'
+  );
+  const [logoSrc, setLogoSrc] = useState<string>('');
+
+  useEffect(() => {
+    if (data?.community?.logo) {
+      setLogoSrc(data.community.logo);
+    }
+  }, [data]);
+
+  return <Layout logoSrc={logoSrc} />;
+};
+
+
 
 // Define routes
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <Layout />,
+    element: <LayoutWrapper />,
     children: [
       { index: true, element: <Home /> },
       { path: 'team', element: <Team /> },
@@ -111,10 +133,6 @@ const router = createBrowserRouter([
 ]);
 
 function App() {
-
-  
-
-
   return <RouterProvider router={router} />;
 }
 
