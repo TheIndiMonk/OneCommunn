@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './home.module.css';
 import { Logos } from '../../components/LogosContainer/Logos';
-import { HomeHero } from '../../components/HomeSections/HomeHero/HomeHero';
+// import { HomeHero } from '../../components/HomeSections/HomeHero/HomeHero';
 import { QuestionBox } from '../../components/QuestionBox/QuestionBox';
 import { ProductCard } from '../../components/Card/ProductCard/ProductCard';
 import TherapistGrid from '../../components/Card/TherapistGrid/TherapistGrid';
@@ -15,7 +15,8 @@ import { FAQItem } from '../../lib/types/FAQ/FAQItem';
 import { useFetch } from '../../Api/apiHandler';
 import { Therapist } from '../../lib/types/Therapist/TherapistTypes';
 import { PriceCardProps } from '../../lib/types/type';
-// import VerticalSlider from '../../components/Slider/VerticalSlider';
+
+import VerticalCarousel from '../../components/Slider/VerticalCarousel';
 // import { Slide } from '../../lib/types/SliderTypes/SliderTypes';
 
 
@@ -41,7 +42,7 @@ const Home: React.FC = () => {
     const plans: PriceCardProps[] = data?.community?.plans || [];
     const teams: Therapist[] = data?.community?.teams || [];
 
-
+    // const banner: string[] = data?.community?.banner || [];
 
 
 
@@ -52,10 +53,7 @@ const Home: React.FC = () => {
             image: service.image,
             description: service.description,
         }));
-      
-    // {console.log(servicesApiResponse(services))}
-
-
+    
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       const planApiResponse = (plans: any[]) =>
         plans.map(plan => ({
@@ -70,7 +68,6 @@ const Home: React.FC = () => {
             description: plan.description,
 
         }));
-    // {console.log(planApiResponse(plans))}
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any    
     const teamsApiResponse = (teams: any[]) => 
@@ -81,42 +78,40 @@ const Home: React.FC = () => {
             image: team.image,
         }));
 
-    // {console.log(teamsApiResponse(teams))}
 
 
-
-    const slides = [
-        {
-            title: "Welcome to Nature 1",
-            description: "Embark on your next journey with us. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
-            contextBtnText: "Explore Now",
-            contextBtnLink: "/explore/yoga",
-            propertiesBtnText: "VIEW ALL PROPERTIES",
-            propertiesBtnLink: "/properties",
-            videoTitle: "10 min Yoga For Beginners",
-            videoLink: "https://youtube.com/video",
-        },
-        {
-            title: 'Adventure Awaits 2',
-            description: 'Embark on your next journey with us. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
-            contextBtnText: "Explore Now",
-            contextBtnLink: "/explore/yoga",
-            propertiesBtnText: "VIEW ALL PROPERTIES",
-            propertiesBtnLink: "/properties",
-            videoTitle: " 10 Mins Yoga For Nature ",
-            videoLink: "https://youtube.com/video",
-        },
-        {
-            title: 'Beginers Free Yoga',
-            description: 'Embark on your next journey with us. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
-            contextBtnText: "Explore Now",
-            contextBtnLink: "/explore/yoga",
-            propertiesBtnText: "VIEW ALL PROPERTIES",
-            propertiesBtnLink: "/properties",
-            videoTitle: " 10 Mins Yoga For Nature ",
-            videoLink: "https://youtube.com/video",
-        },
-    ];
+    // const slides = [
+    //     {
+    //         title: "Welcome to Nature 1",
+    //         description: "Embark on your next journey with us. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
+    //         contextBtnText: "Explore Now",
+    //         contextBtnLink: "/explore/yoga",
+    //         propertiesBtnText: "VIEW ALL PROPERTIES",
+    //         propertiesBtnLink: "/properties",
+    //         videoTitle: "10 min Yoga For Beginners",
+    //         videoLink: "https://youtube.com/video",
+    //     },
+    //     {
+    //         title: 'Adventure Awaits 2',
+    //         description: 'Embark on your next journey with us. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
+    //         contextBtnText: "Explore Now",
+    //         contextBtnLink: "/explore/yoga",
+    //         propertiesBtnText: "VIEW ALL PROPERTIES",
+    //         propertiesBtnLink: "/properties",
+    //         videoTitle: " 10 Mins Yoga For Nature ",
+    //         videoLink: "https://youtube.com/video",
+    //     },
+    //     {
+    //         title: 'Beginers Free Yoga',
+    //         description: 'Embark on your next journey with us. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
+    //         contextBtnText: "Explore Now",
+    //         contextBtnLink: "/explore/yoga",
+    //         propertiesBtnText: "VIEW ALL PROPERTIES",
+    //         propertiesBtnLink: "/properties",
+    //         videoTitle: " 10 Mins Yoga For Nature ",
+    //         videoLink: "https://youtube.com/video",
+    //     },
+    // ];
 
     // const Services = [
     //     {
@@ -358,7 +353,12 @@ const Home: React.FC = () => {
     //     },
     // ];
 
-
+    const images = [
+        'https://placehold.co/600x600?text=Image+1',
+        'https://placehold.co/600x600?text=Image+2',
+        'https://placehold.co/600x600?text=Image+3',
+    ];
+    
 
 
     return (
@@ -367,17 +367,23 @@ const Home: React.FC = () => {
 
 
             {/* Hero Section */}
-            <HomeHero
+            {/* <HomeHero
                 slides={slides}
                 autoSlide={false}
                 slideInterval={30000}
                 backgroundColor={''}
-            />
-
-            {/* <Slider items={imageUrls} autoScroll={true} intervalTime={3000}/> */}
+            /> */}
 
 
-            {/* <VerticalSlider slides={slides} autoScroll={false} interval={5000} /> */}
+
+
+            <div className={styles.section}>
+                <VerticalCarousel 
+                    images={images} 
+                    // controls={true}
+                    interval={5000} 
+                />
+            </div>
 
 
 
