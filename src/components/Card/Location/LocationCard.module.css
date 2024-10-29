@@ -41,7 +41,6 @@
 }
 
 .selected {
-
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
@@ -53,6 +52,7 @@
     font-weight: normal;
     text-align: center;
     color: #27282C;
+    margin-bottom: 1rem;
 }
 
 .location p {
@@ -60,6 +60,8 @@
     font-size: 14px;
     text-align: center;
     color: #27282C;
+    margin-bottom: 0.5rem;
+
 }
 
 

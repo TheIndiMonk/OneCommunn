@@ -1,6 +1,6 @@
 export interface SocialLink {
-  icon: string
   platform: string;
   url: string;
-  
+  external?: boolean;
+  icon?: string; // Optional custom icon URL
 }

@@ -4,5 +4,5 @@ import { ContactFormProps } from "./ContactFormProps";
 export interface FormInput extends ContactFormProps {
     title: string;
     formDescription: string;
-    selectedLocation: LocationCardProps | null;
+    selectedLocation?: LocationCardProps | null;
 }

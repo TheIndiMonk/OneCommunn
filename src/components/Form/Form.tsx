@@ -1,7 +1,6 @@
-// Form.tsx
 import { useEffect, useState } from 'react';
 import styles from './Form.module.css';
-import { FormInput } from '../../lib/types/type';
+import { FormInput, LocationCardProps } from '../../lib/types/type';
 import { ContactFormValues } from '../../lib/types/Form/ContactFormValues';
 
 const initialFormValues: ContactFormValues = {
@@ -13,7 +12,8 @@ const initialFormValues: ContactFormValues = {
 };
 
 interface FormProps extends FormInput {
-    showMessageBox?: boolean; // New prop for toggling the message box
+    showMessageBox?: boolean; // Optional message box toggle
+    selectedLocation?: LocationCardProps | null; // Optional location prop
 }
 
 export const Form: React.FC<FormProps> = ({
@@ -21,16 +21,15 @@ export const Form: React.FC<FormProps> = ({
     formDescription,
     fields,
     selectedLocation,
-    showMessageBox = true, // Default to true
+    showMessageBox = true,
 }) => {
-    const contactEmail = '';
     const [formValues, setFormValues] = useState<ContactFormValues>(initialFormValues);
 
     useEffect(() => {
         if (selectedLocation) {
             setFormValues((prevValues) => ({
                 ...prevValues,
-                contactEmail: selectedLocation.email, // Set email field based on selected location
+                receiverEmail: selectedLocation.email || '', // Set email based on location
             }));
         }
     }, [selectedLocation]);
@@ -44,7 +43,10 @@ export const Form: React.FC<FormProps> = ({
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        console.log(formValues, contactEmail);
+        console.log(formValues); // Log form values on submit
+        // Update this function to call send email function to send the contact us message to the email.
+
+
     };
 
     return (
@@ -70,7 +72,7 @@ export const Form: React.FC<FormProps> = ({
                         ))}
                     </div>
 
-                    {showMessageBox && ( // Conditionally render the message box
+                    {showMessageBox && (
                         <div className={styles.formGroup}>
                             <label htmlFor="message">Message</label>
                             <textarea
@@ -78,12 +80,14 @@ export const Form: React.FC<FormProps> = ({
                                 name="message"
                                 value={formValues.message}
                                 onChange={handleChange}
-                            ></textarea>
+                            />
                         </div>
                     )}
 
                     <div className={styles.formSubmit}>
-                        <button className={styles.btn} type="submit">Send Message</button>
+                        <button type="submit" className={styles.btn}>
+                            Send Message
+                        </button>
                     </div>
                 </form>
             </div>

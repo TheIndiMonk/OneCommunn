@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 // App.tsx
 import './App.css';
 import Header from './components/Header/Header';
@@ -15,7 +14,6 @@ import NotFound from './components/404/NotFound';
 
 import { createBrowserRouter, RouterProvider, Outlet } from 'react-router-dom';
 import { HeaderProps, FooterProps } from './lib/types/type';
-import { useFetch } from './Api/apiHandler';
 import { useEffect, useState } from 'react';
 
 // Header and Footer data props
@@ -73,8 +71,10 @@ const footerProps: FooterProps = {
 // Layout component
 const Layout = ({
   logoSrc,
+  contactInfo,
 }: {
   logoSrc: string;
+  contactInfo: FooterProps['contactInfo'];
 }) => {
   const logo: HeaderProps['logo'] = {
     src: logoSrc || "./logo/mantra-logo.svg",
@@ -85,11 +85,13 @@ const Layout = ({
     showLogoText: true,
   };
 
+  const updatedFooterProps: FooterProps = { ...footerProps, contactInfo };
+
   return (
     <>
       <Header links={NavLinks} logo={logo} buttons={buttons} backgroundColor="#D4CBC2" />
       <Outlet /> {/* Renders the matched child route */}
-      <Footer {...footerProps} />
+      <Footer {...updatedFooterProps} />
     </>
   );
 };
@@ -97,18 +99,51 @@ const Layout = ({
 
 // Wrapper to handle fetching logo and rendering the Layout
 const LayoutWrapper = () => {
-  const { data } = useFetch<any>(
-    'https://api.onecommunn.com/api/v1/communities/66fe765b7433f90b2c92f315/home'
-  );
   const [logoSrc, setLogoSrc] = useState<string>('');
+  const [contactInfo, setContactInfo] = useState<FooterProps['contactInfo']>({
+    address: '',
+    phone1: '',
+    phone2: '',
+    email: '',
+  });
 
   useEffect(() => {
-    if (data?.community?.logo) {
-      setLogoSrc(data.community.logo);
-    }
-  }, [data]);
+    const cachedData = localStorage.getItem('communityData');
 
-  return <Layout logoSrc={logoSrc} />;
+    if (cachedData) {
+      const community = JSON.parse(cachedData);
+      setLogoSrc(community.logo);
+      setContactInfo({
+        address: community.fullAddress || '',
+        phone1: community.mobileNumber || '',
+        phone2: community.phoneNumber || '',
+        email: community.email || '',
+      });
+    } else {
+      const fetchData = async () => {
+        const response = await fetch('https://api.onecommunn.com/api/v1/communities/66fe765b7433f90b2c92f315/home');
+        const data = await response.json();
+
+        if (data?.community) {
+          const community = data.community;
+          setLogoSrc(community.logo);
+          setContactInfo({
+            address: community.fullAddress || '',
+            phone1: community.mobileNumber || '',
+            phone2: community.phoneNumber || '',
+            email: community.email || '',
+          });
+
+          // Save to local storage
+          localStorage.setItem('communityData', JSON.stringify(community));
+        }
+      };
+
+      fetchData();
+    }
+  }, []);
+
+  return <Layout logoSrc={logoSrc} contactInfo={contactInfo} />;
 };
 
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './footer.module.css';
-
 import { FooterProps } from '../../lib/types/type';
+import { platformIcons } from './platformIcon';
 
 const Footer: React.FC<FooterProps> = ({
     newsletterPlaceholder = 'email here',
@@ -14,6 +14,8 @@ const Footer: React.FC<FooterProps> = ({
     textColor = '#27282C',
     accentColor = '#27282C'
 }) => {
+
+
 
     return (
         <footer className={styles.footer} style={{ backgroundColor, color: textColor }}>
@@ -84,19 +86,28 @@ const Footer: React.FC<FooterProps> = ({
                     </div>
 
 
-
-                    {/* Social Links */}
                     <div className={styles.socialLinks}>
-                        {socialLinks.map((link, index) => (
-                            <a key={index} href={link.url} className={styles.link}>
-                                <img
-                                    src={`/placeholder.svg?height=24&width=24&text=${link.platform}`}
-                                    // alt={`${link.platform} icon`}
-                                    className={styles.socialIcon}
-                                />
-                            </a>
-                        ))}
+                        {socialLinks.map((link, index) => {
+                            const platformKey = link.platform.toLowerCase() as keyof typeof platformIcons; // Cast to keyof the platformIcons
+
+                            const IconComponent = platformIcons[platformKey]; // Get the icon component
+
+                            return (
+                                <a key={index} href={link.url} className={styles.link}>
+                                    {link.icon ? (
+                                        <img
+                                            src={link.icon} // Use custom icon URL if provided
+                                            alt={`${link.platform} icon`}
+                                            className={styles.socialIcon}
+                                        />
+                                    ) : (
+                                        IconComponent && <IconComponent className={styles.socialIcon} /> // Use platform icon as a component
+                                    )}
+                                </a>
+                            );
+                        })}
                     </div>
+
                 </div>
             </div>
             <div className={styles.bottomBar}>

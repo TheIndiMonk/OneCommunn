@@ -1,5 +1,5 @@
 export interface CardProps {
-    title?: string;
+    city?: string;
     address?: string;
     phone1?: string;
     phone2?: string;

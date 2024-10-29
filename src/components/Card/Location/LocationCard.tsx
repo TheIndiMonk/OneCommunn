@@ -19,23 +19,23 @@ export const LocationCard: React.FC<LocationCardPropsArray> = ({ contactInfo, on
     return (
         <div className={styles.locationContainer}>
             {contactInfo.map((location, index) => (
-                // Adding the Overlay background Image.
-                <div key={index} className={`${styles.location} ${selectedLocationIndex === index ? styles.selected : ''}`}
+                <div
+                    key={index}
+                    className={`${styles.location} ${selectedLocationIndex === index ? styles.selected : ''}`}
                     onClick={() => handleLocationClick(location, index)}
-                    style={{ backgroundImage: selectedLocationIndex === index ? 'url(./logo/Selector.svg)' : 'none', }}
+                    style={{
+                        backgroundImage: selectedLocationIndex === index ? 'url(./logo/Selector.svg)' : 'none',
+                    }}
                 >
                     <Card
-                        title={location.title}
+                        city={location.city}
                         address={location.address}
                         phone1={location.phone1}
                         phone2={location.phone2}
                         email={location.email}
                     />
-
                 </div>
             ))}
         </div>
     );
 };
-
-

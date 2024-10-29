@@ -6,7 +6,7 @@ import { CardProps } from '../../lib/types/type';
 
 
 export const Card: React.FC<CardProps> = ({ 
-    title, 
+    city, 
     address, 
     phone1, 
     phone2, 
@@ -18,7 +18,7 @@ export const Card: React.FC<CardProps> = ({
     return (
         <div className={styles.card} style={{ width, height, backgroundImage: image ? `url(${image})` : 'none' }}>
             <div className={styles.textContainer}>
-                {title && <h2>{title}</h2>}
+                {city && <h2>{city}</h2>}
                 {address && <p>{address}</p>}
                 {phone1 && <p>{phone1}</p>}
                 {phone2 && <p>{phone2}</p>}
