@@ -10,6 +10,11 @@ export default function BuilderPage() {
   const isPreviewingInBuilder = useIsPreviewing();
   const [notFound, setNotFound] = React.useState(false);
   const [content, setContent] = React.useState(null);
+  const [testomonialPage, setTestomonialPage] = React.useState({
+    image: "https://cdn.builder.io/api/v1/image/assets%2F13b025a31139467fa11d6fd2561bea02%2F657215d19faa46e49538076791d2cf13",
+    title: "Testimonial 1",
+    desciption: "Testimonial description"
+  });
 
   // get the page content from Builder
   React.useEffect(() => {
@@ -45,7 +50,7 @@ export default function BuilderPage() {
   return (
     <>
       {/* Render the Builder page */}
-      <BuilderComponent model="page" content={content} />
+      <BuilderComponent model="page" content={content} data={{ testomonialPage }} />
       
     </>
   );
