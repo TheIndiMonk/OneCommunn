@@ -4,7 +4,8 @@ import "./builder-registry";
 import NotFound from "./components/404/NotFound";
 
 // Builder Public API Key set in .env file
-builder.init(process.env.VITE_PUBLIC_BUILDER_KEY!);
+// builder.init(process.env.VITE_PUBLIC_BUILDER_KEY!);
+builder.init('f4f94084095845709a660eeca02c676c');
 
 export default function BuilderPage() {
   const isPreviewingInBuilder = useIsPreviewing();

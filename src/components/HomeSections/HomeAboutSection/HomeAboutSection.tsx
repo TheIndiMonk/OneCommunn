@@ -1,5 +1,5 @@
-
 // AboutSection.tsx
+
 import React from 'react';
 import styles from './HomeAboutSection.module.css';
 import { HomeAboutSectionProps } from '../../../lib/types/type'

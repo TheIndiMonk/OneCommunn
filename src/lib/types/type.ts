@@ -44,3 +44,4 @@ export * from './HomeHeroProps/HomeHeroProps'
 export * from './VisionMissionProps/VisionMissionProps'
 
 export * from './BookYogaProps/BookYogaProps'
+export * from './VerticalCarouselProps/VerticalCarouselProps'

@@ -2,7 +2,7 @@ import { Builder } from "@builder.io/react";
 import { Hero } from "./components/Hero/Hero";
 import Footer from "./components/Footer/Footer";
 import Header from "./components/Header/Header";
-import { Card } from "./components/Card/Card";
+// import { Card } from "./components/Card/Card";
 import { LocationCard } from "./components/Card/Location/LocationCard";
 import { Form } from "./components/Form/Form";
 import { MapCard } from "./components/Card/Map/MapCard";
@@ -23,6 +23,7 @@ import { HomeHero } from "./components/HomeSections/HomeHero/HomeHero";
 import VisionMission from "./components/HomeSections/VisionMission/VissionMission";
 import BookYoga from "./components/HomeSections/BookYoga/BookYoga";
 import ContactForm from "./components/HomeSections/Form/HomeForm";
+import VerticalCarousel from "./components/VerticalCarouselProps/VerticalCarousel";
 
 // Header and Footer
 
@@ -262,53 +263,53 @@ Builder.registerComponent(Hero, {
   ],
 });
 
-Builder.registerComponent(Card, {
-  name: "Card", // The name of the component in Builder.io
-  inputs: [
-    {
-      name: "title",
-      type: "string",
-      required: true, // Set to true if this field is required
-    },
-    {
-      name: "address",
-      type: "string",
-      required: false,
-    },
-    {
-      name: "phone1",
-      type: "string",
-      required: false,
-    },
-    {
-      name: "phone2",
-      type: "string",
-      required: false,
-    },
-    {
-      name: "email",
-      type: "string",
-      required: false,
-    },
-    {
-      name: "image",
-      type: "file",
-      required: false,
-    },
-    {
-      name: "width",
-      type: "string",
-      required: false,
-      defaultValue: "auto", // Default width
-    },
-    {
-      name: "height",
-      type: "string",
-      required: false,
-      defaultValue: "auto", // Default height
-    },
-  ],
-});
+// Builder.registerComponent(Card, {
+//   name: "Card", // The name of the component in Builder.io
+//   inputs: [
+//     {
+//       name: "title",
+//       type: "string",
+//       required: true, // Set to true if this field is required
+//     },
+//     {
+//       name: "address",
+//       type: "string",
+//       required: false,
+//     },
+//     {
+//       name: "phone1",
+//       type: "string",
+//       required: false,
+//     },
+//     {
+//       name: "phone2",
+//       type: "string",
+//       required: false,
+//     },
+//     {
+//       name: "email",
+//       type: "string",
+//       required: false,
+//     },
+//     {
+//       name: "image",
+//       type: "file",
+//       required: false,
+//     },
+//     {
+//       name: "width",
+//       type: "string",
+//       required: false,
+//       defaultValue: "auto", // Default width
+//     },
+//     {
+//       name: "height",
+//       type: "string",
+//       required: false,
+//       defaultValue: "auto", // Default height
+//     },
+//   ],
+// });
 
 Builder.registerComponent(LocationCard, {
   name: "LocationCard", // The name of the component in Builder.io
@@ -319,7 +320,7 @@ Builder.registerComponent(LocationCard, {
       // Define the structure of the items in the list
       subFields: [
         {
-          name: "title",
+          name: "city",
           type: "string",
           required: true,
         },
@@ -343,6 +344,11 @@ Builder.registerComponent(LocationCard, {
           type: "string",
           required: false,
         },
+        {
+          name: "maplink",
+          type: "url",
+          required: false,
+        },
       ],
     },
     {
@@ -354,27 +360,20 @@ Builder.registerComponent(LocationCard, {
 });
 
 Builder.registerComponent(MapCard, {
-  name: "MapCard", // The name of the component in Builder.io
+  name: 'MapCard',
   inputs: [
     {
-      name: "location",
-      type: "object",
-      required: false,
+      name: 'location',
+      type: 'object',
+      required: true,
       subFields: [
-        {
-          name: "title",
-          type: "string",
-          required: true,
-        },
-        {
-          name: "address",
-          type: "string",
-          required: true,
-        },
+        { name: 'city', type: 'string', required: true, defaultValue: 'Bangalore' },
+        { name: 'mapLink', type: 'string', required: true, defaultValue: 'https://maps.app.goo.gl/xyz' },
       ],
     },
   ],
 });
+
 
 Builder.registerComponent(ImageCard, {
   name: "ImageCard",
@@ -580,11 +579,6 @@ Builder.registerComponent(Questionnaire, {
       type: "string",
       defaultValue:
         "Find answers to your most frequently asked questions below.",
-    },
-    {
-      name: "backgroundImage",
-      type: "boolean",
-      defaultValue: "false",
     },
     {
       name: "question",
@@ -988,7 +982,7 @@ Builder.registerComponent(ProductCard, {
           allowedFileTypes: ["jpeg", "jpg", "png"],
           defaultValue: "",
         },
-        { name: "link", type: "string", defaultValue: "" },
+        { name: "link", type: "url", defaultValue: "" },
       ],
     },
     {
@@ -1000,35 +994,75 @@ Builder.registerComponent(ProductCard, {
   ],
 });
 
+// Builder.registerComponent(HomeAboutSection, {
+//   name: "HomeAboutSection",
+//   inputs: [
+//     {
+//       name: "title",
+//       type: "string",
+//       defaultValue: "Welcome to Our Company",
+//     },
+//     {
+//       name: "name",
+//       type: "string",
+//       defaultValue: "John Doe",
+//     },
+//     {
+//       name: "description",
+//       type: "text",
+//       defaultValue: "This is a dynamic about section.",
+//     },
+//     {
+//       name: "video",
+//       type: "file",
+//       allowedFileTypes: ["mp4", "webm"],
+//       defaultValue: "https://cdn.example.com/video.mp4",
+//     },
+//     {
+//       name: "onContactClick",
+//       type: "function",
+//       friendlyName: "Contact Button Handler",
+//     },
+//   ],
+// });
+
 Builder.registerComponent(HomeAboutSection, {
-  name: "HomeAboutSection",
+  name: 'HomeAboutSection',
   inputs: [
-    {
-      name: "title",
-      type: "string",
-      defaultValue: "Welcome to Our Company",
+    { 
+      name: 'title', 
+      type: 'string', 
+      required: true, 
+      defaultValue: 'Welcome to Our Platform' 
     },
-    {
-      name: "name",
-      type: "string",
-      defaultValue: "John Doe",
+    { 
+      name: 'name', 
+      type: 'string', 
+      required: true, 
+      defaultValue: 'Our Story' 
     },
-    {
-      name: "description",
-      type: "text",
-      defaultValue: "This is a dynamic about section.",
+    { 
+      name: 'description', 
+      type: 'text', 
+      required: true, 
+      defaultValue: 'Discover who we are and what we do.' 
     },
-    {
-      name: "video",
-      type: "file",
-      allowedFileTypes: ["mp4", "webm"],
-      defaultValue: "https://cdn.example.com/video.mp4",
+    { 
+      name: 'video', 
+      type: 'file', 
+      allowedFileTypes: ['mp4'], 
+      required: true 
     },
-    {
-      name: "onContactClick",
-      type: "function",
-      friendlyName: "Contact Button Handler",
+    { 
+      name: 'ButtonUrl', 
+      type: 'string', 
+      helperText: 'URL for the contact button' 
     },
+    { 
+      name: 'onContactClick', 
+      type: 'function', 
+      helperText: 'Optional click handler for the contact button' 
+    }
   ],
 });
 
@@ -1071,6 +1105,7 @@ Builder.registerComponent(HomeHero, {
     },
   ],
 });
+
 Builder.registerComponent(VisionMission, {
   name: "VisionMission",
   inputs: [
@@ -1188,6 +1223,41 @@ Builder.registerComponent(ContactForm, {
           required: false,
         },
       ],
+    },
+  ],
+});
+
+Builder.registerComponent(VerticalCarousel, {
+  name: 'Vertical Carousel',
+  inputs: [
+    {
+      name: 'images',
+      type: 'list',
+      subFields: [
+      ],
+      defaultValue: [ "https://upload-community-files.s3.ap-south-1.amazonaws.com/66fe765b7433f90b2c92f315_banner.webp"],
+    },
+    {
+      name: 'interval',
+      type: 'number',
+      defaultValue: 3000,
+      helperText: 'Interval time between slides in milliseconds.',
+    },
+    { name: 'title', type: 'string', defaultValue: 'Default Title' },
+    { name: 'subtitle', type: 'string', defaultValue: 'Default Subtitle' },
+    { name: 'BtnText', type: 'string', defaultValue: 'Click Me' },
+    { name: 'BtnLink', type: 'url', defaultValue: 'https://example.com' },
+    {
+      name: 'showControls',
+      type: 'boolean',
+      defaultValue: true,
+      helperText: 'Show or hide control buttons.',
+    },
+    {
+      name: 'autoSlide',
+      type: 'boolean',
+      defaultValue: true,
+      helperText: 'Enable or disable automatic sliding.',
     },
   ],
 });

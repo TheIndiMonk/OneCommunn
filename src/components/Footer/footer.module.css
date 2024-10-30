@@ -117,7 +117,8 @@
 .socialLinks {
   display: flex;
   margin-top: 77px;
-  flex-direction: row-reverse;
+  flex-direction: row;
+  justify-content: flex-end;
 }
 
 .socialIcon {
