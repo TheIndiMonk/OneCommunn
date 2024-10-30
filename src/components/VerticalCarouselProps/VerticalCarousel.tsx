@@ -68,10 +68,7 @@ const VerticalCarousel: React.FC<VerticalCarouselProps> = ({
 
       <div className={styles.carouselItems}>
         {images.map((image, index) => (
-          <div
-            key={index}
-            className={`${styles.carouselItem} ${index === currentIndex ? styles.active : ''
-              }`}
+          <div key={index} className={`${styles.carouselItem} ${index === currentIndex ? styles.active : ''}`}
             style={{ backgroundImage: `url(${image})` }}
           />
         ))}

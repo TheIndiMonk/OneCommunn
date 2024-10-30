@@ -55,13 +55,13 @@
             'https://api.onecommunn.com/api/v1/communities/66fe765b7433f90b2c92f315/home'
         );
 
-        // useEffect(() => {
-        //     if (data?.community?.banner) {
-        //         const bannerUrl = data.community.banner;
-        //         // Update the images array with the fetched banner
-        //         setImages((prevImages) => [bannerUrl, ...prevImages]);
-        //     }
-        // }, [data?.community?.banner]);
+        useEffect(() => {
+            if (data?.community?.banner) {
+                const bannerUrl = data.community.banner;
+                // Update the images array with the fetched banner
+                setImages((prevImages) => [bannerUrl, ...prevImages]);
+            }
+        }, [data?.community?.banner]);
 
         const faqData: FAQItem[] = data?.community?.faq || [];
         const services: Therapist[] = data?.community?.services || [];
