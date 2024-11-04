@@ -85,10 +85,8 @@
   text-align: left;
 }
 
-.input,
-.textarea {
+.input,.textarea {
   background-color: #E9E3DE;
-  ;
   flex: none;
   width: 95%;
   padding: 10px;

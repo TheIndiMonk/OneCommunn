@@ -1,9 +1,9 @@
 // import React from 'react';
 import { useFetch } from '../../Api/apiHandler';
-import { Card } from '../../components/Card/Card';
-import { TherapistGrid } from '../../components/Card/TherapistGrid/TherapistGrid';
 import { Hero } from '../../components/Hero/Hero';
+import { TherapistGrid } from '../../components/Card/TherapistGrid/TherapistGrid';
 import { Therapist } from '../../lib/types/Therapist/TherapistTypes';
+
 import styles from './services.module.css';
 
 
@@ -69,6 +69,41 @@ export const Services = () => {
     //         socialLinks: { fb: "FB", tw: "TW", yu: "YU", in: "IN" }
     //     },
     // ];
+    // const therapistCardsData: TherapistCardProps[] = [
+    //     {
+    //         name: 'Dr. Emily Smith',
+    //         title: 'Clinical Psychologist',
+    //         image: 'https://placehold.co/300x300',
+    //         onClick: () => alert('Dr. Emily Smith clicked!'),
+    //     },
+    //     {
+    //         name: 'Michael Johnson',
+    //         title: 'Marriage and Family Therapist',
+    //         image: 'https://placehold.co/300x300',
+    //         onClick: () => alert('Michael Johnson clicked!'),
+    //     },
+    //     {
+    //         name: 'Sophia Brown',
+    //         title: 'Child Psychologist',
+    //         image: 'https://placehold.co/300x300',
+    //         onClick: () => alert('Sophia Brown clicked!'),
+    //     },
+    //     {
+    //         name: 'Dr. William Lee',
+    //         title: 'Behavioral Therapist',
+    //         image: 'https://placehold.co/300x300',
+    //         onClick: () => alert('Dr. William Lee clicked!'),
+    //     },
+    //     {
+    //         name: 'Anna Martinez',
+    //         title: 'Mental Health Counselor',
+    //         image: 'https://placehold.co/300x300',
+    //         onClick: () => alert('Anna Martinez clicked!'),
+    //     },
+
+    // ];
+
+
 
     return (
         <>
@@ -80,18 +115,6 @@ export const Services = () => {
                 <TherapistGrid Therapist={servicesApiResponse(services)} />
             </div>
 
-            <Card 
-                city="New York"
-                address="123 Main St"
-                phone1="(123) 456-7890"
-                image="/path/to/image.jpg"
-                width="300px"
-                height="400px"
-                backgroundColor="#f5f5f5"
-            >
-                <button onClick={() => alert('Button clicked!')}>Click Me</button>
-                <p>Custom text inside the card</p>
-            </Card>
 
 
         </>

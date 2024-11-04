@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './TherapistGrid.module.css';
-import TherapistCard from '../TherapistCard/TherapistCard';
+import { TherapistCard } from '../TherapistCard/TherapistCard';
 import { TherapistProps } from '../../../lib/types/type';
 
 export const TherapistGrid: React.FC<TherapistProps> = ({ Therapist, onSelectTherapist }) => {
@@ -12,8 +12,7 @@ export const TherapistGrid: React.FC<TherapistProps> = ({ Therapist, onSelectThe
                     name={therapist.name}
                     title={therapist.title!}
                     image={therapist.image!}
-                    onClick={() => onSelectTherapist?.(therapist)}
-                />
+                    onClick={() => onSelectTherapist?.(therapist)}/>
             ))}
         </div>
     );

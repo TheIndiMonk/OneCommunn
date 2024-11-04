@@ -1,5 +1,5 @@
 // BookYoga.tsx
-import React from "react";
+import React, { useState } from "react";
 import styles from "./BookYoga.module.css";
 import { BookYogaProps } from "../../../lib/types/type";
 
@@ -9,15 +9,26 @@ export const BookYoga: React.FC<BookYogaProps> = ({
   contactInfo,
   onEmailSubmit,
 }) => {
-  const [email, setEmail] = React.useState<string>("");
+  const [email, setEmail] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setEmail(event.target.value);
+    setErrorMessage(''); // Clear 
   };
 
+
+
   const handleButtonClick = () => {
-    if (email) {
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (email.trim() === '') {
+      setErrorMessage('Please enter an email address.');
+    } else if (!emailPattern.test(email)) {
+      setErrorMessage('Please enter a valid email address.');
+    } else {
+      setErrorMessage(''); // Clear the error if the input is valid
       onEmailSubmit(email);
+      console.log('Entered email:', email); // You can replace this with your submit logic
     }
   };
 
@@ -25,9 +36,9 @@ export const BookYoga: React.FC<BookYogaProps> = ({
     <div className={styles.BookYogaContainer}>
       <div className={styles.left}>
         <div className={styles.graphicContents}>
-            <div className={styles.circleBackground}></div>
-            <img  className={styles.imgWrapper} src="./Photos/yoga-image.jpeg" alt="Yoga-Imagr" height={427} width={360} />
-            <img className={styles.svgWrapper} src="./logo/leaf-outline.svg" alt="leaf-svg" />
+          <div className={styles.circleBackground}></div>
+          <img className={styles.imgWrapper} src="./Photos/yoga-image.jpeg" alt="Yoga-Imagr" height={427} width={360} />
+          <img className={styles.svgWrapper} src="./logo/leaf-outline.svg" alt="leaf-svg" />
         </div>
       </div>
 
@@ -36,6 +47,8 @@ export const BookYoga: React.FC<BookYogaProps> = ({
 
           <h1 className={styles.heading}>{heading}</h1>
           <p className={styles.description}>{description}</p>
+
+
           <div className={styles.EmailContainer}>
             <div className={styles.emailContainer}>
               <input
@@ -49,7 +62,18 @@ export const BookYoga: React.FC<BookYogaProps> = ({
                 <img src="./logo/submit.svg" alt="" />
               </button>
             </div>
+            {errorMessage && (
+              <p className={styles.errorMessage} style={{ color: '#df4a4a', margin: '0px' }}>
+                {errorMessage}
+              </p>
+            )}
           </div>
+
+
+
+
+
+
           <div className={styles.contact}>
             <span > Ph: {contactInfo.phone} </span> | <span>email: {contactInfo.email}</span>
           </div>
@@ -59,8 +83,10 @@ export const BookYoga: React.FC<BookYogaProps> = ({
           <div className={styles.rectangle}></div>
 
         </div>
-        <img  className={styles.svgOverlayImage1} src="./logo/upward-leaf.svg" alt="" />
-        <img  className={styles.svgOverlayImage2}src="./logo/fill-sun.svg" alt="" />
+
+
+        <img className={styles.svgOverlayImage1} src="./logo/upward-leaf.svg" alt="" />
+        <img className={styles.svgOverlayImage2} src="./logo/fill-sun.svg" alt="" />
       </div>
     </div>
   );
