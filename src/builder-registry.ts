@@ -7,7 +7,8 @@ import { LocationCard } from "./components/Card/Location/LocationCard";
 import { Form } from "./components/Form/Form";
 import { MapCard } from "./components/Card/Map/MapCard";
 import { FeaturedCard } from "./components/Card/FeaturedCard/FeaturedCard";
-import {TherapistGrid} from "./components/Card/TherapistGrid/TherapistGrid";
+import { TherapistGrid } from "./components/Card/TherapistGrid/TherapistGrid";
+import { TherapistCard } from "./components/Card/TherapistCard/TherapistCard";
 import { Questionnaire } from "./components/Questioner/Questionnaire";
 import { ImageCard } from "./components/Card/ImageCard/ImageCard";
 import { Logos } from "./components/LogosContainer/Logos";
@@ -18,12 +19,13 @@ import { PriceCard } from "./components/Card/PriceCard/PriceCard";
 import BannerCard from "./components/Banner/BannerCard";
 import TimeTable from "./components/TimeTable/TimeTable";
 import { ProductCard } from "./components/Card/ProductCard/ProductCard";
-import {HomeAboutSection} from "./components/HomeSections/HomeAboutSection/HomeAboutSection";
+import { HomeAboutSection } from "./components/HomeSections/HomeAboutSection/HomeAboutSection";
 import { HomeHero } from "./components/HomeSections/HomeHero/HomeHero";
-import {VisionMission} from "./components/HomeSections/VisionMission/VissionMission";
-import {BookYoga} from "./components/HomeSections/BookYoga/BookYoga";
-import {ContactForm} from "./components/HomeSections/Form/HomeForm";
-import {VerticalCarousel} from "./components/VerticalCarouselProps/VerticalCarousel";
+import { VisionMission } from "./components/HomeSections/VisionMission/VissionMission";
+import { BookYoga } from "./components/HomeSections/BookYoga/BookYoga";
+import { ContactForm } from "./components/HomeSections/Form/HomeForm";
+import { VerticalCarousel } from "./components/VerticalCarouselProps/VerticalCarousel";
+import { Card } from "./components/Card/Card";
 
 // Header and Footer
 
@@ -258,8 +260,8 @@ Builder.registerComponent(Hero, {
       name: "backgroundColor",
       type: "color",
       defaultValue: "#D4CBC2",
-      friendlyName: "Background Color"
-    }
+      friendlyName: "Background Color",
+    },
   ],
 });
 
@@ -360,20 +362,29 @@ Builder.registerComponent(LocationCard, {
 });
 
 Builder.registerComponent(MapCard, {
-  name: 'MapCard',
+  name: "MapCard",
   inputs: [
     {
-      name: 'location',
-      type: 'object',
+      name: "location",
+      type: "object",
       required: true,
       subFields: [
-        { name: 'city', type: 'string', required: true, defaultValue: 'Bangalore' },
-        { name: 'mapLink', type: 'string', required: true, defaultValue: 'https://maps.app.goo.gl/xyz' },
+        {
+          name: "city",
+          type: "string",
+          required: true,
+          defaultValue: "Bangalore",
+        },
+        {
+          name: "mapLink",
+          type: "string",
+          required: true,
+          defaultValue: "https://maps.app.goo.gl/xyz",
+        },
       ],
     },
   ],
 });
-
 
 Builder.registerComponent(ImageCard, {
   name: "ImageCard",
@@ -495,6 +506,35 @@ Builder.registerComponent(Form, {
         },
         // Add more fields from selectedLocation as needed
       ],
+    },
+  ],
+});
+
+Builder.registerComponent(TherapistCard, {
+  name: "TherapistCard",
+  inputs: [
+    {
+      name: "name",
+      type: "string",
+      defaultValue: "John Doe",
+      required: true,
+    },
+    {
+      name: "title",
+      type: "string",
+      defaultValue: "Therapist",
+    },
+    {
+      name: "image",
+      type: "file",
+      allowedFileTypes: ["jpg", "png", "svg"],
+      defaultValue: "https://placehold.co/300x300",
+    },
+    {
+      name: "onClick",
+      type: "function",
+      helperText: "Optional click handler for custom functionality",
+      advanced: true, // Marks this prop as advanced, making it hidden by default in the UI
     },
   ],
 });
@@ -1027,42 +1067,42 @@ Builder.registerComponent(ProductCard, {
 // });
 
 Builder.registerComponent(HomeAboutSection, {
-  name: 'HomeAboutSection',
+  name: "HomeAboutSection",
   inputs: [
-    { 
-      name: 'title', 
-      type: 'string', 
-      required: true, 
-      defaultValue: 'Welcome to Our Platform' 
+    {
+      name: "title",
+      type: "string",
+      required: true,
+      defaultValue: "Welcome to Our Platform",
     },
-    { 
-      name: 'name', 
-      type: 'string', 
-      required: true, 
-      defaultValue: 'Our Story' 
+    {
+      name: "name",
+      type: "string",
+      required: true,
+      defaultValue: "Our Story",
     },
-    { 
-      name: 'description', 
-      type: 'text', 
-      required: true, 
-      defaultValue: 'Discover who we are and what we do.' 
+    {
+      name: "description",
+      type: "text",
+      required: true,
+      defaultValue: "Discover who we are and what we do.",
     },
-    { 
-      name: 'video', 
-      type: 'file', 
-      allowedFileTypes: ['mp4'], 
-      required: true 
+    {
+      name: "video",
+      type: "file",
+      allowedFileTypes: ["mp4"],
+      required: true,
     },
-    { 
-      name: 'ButtonUrl', 
-      type: 'string', 
-      helperText: 'URL for the contact button' 
+    {
+      name: "ButtonUrl",
+      type: "string",
+      helperText: "URL for the contact button",
     },
-    { 
-      name: 'onContactClick', 
-      type: 'function', 
-      helperText: 'Optional click handler for the contact button' 
-    }
+    {
+      name: "onContactClick",
+      type: "function",
+      helperText: "Optional click handler for the contact button",
+    },
   ],
 });
 
@@ -1228,36 +1268,94 @@ Builder.registerComponent(ContactForm, {
 });
 
 Builder.registerComponent(VerticalCarousel, {
-  name: 'Vertical Carousel',
+  name: "Vertical Carousel",
   inputs: [
     {
-      name: 'images',
-      type: 'list',
-      subFields: [
+      name: "images",
+      type: "list",
+      subFields: [],
+      defaultValue: [
+        "https://upload-community-files.s3.ap-south-1.amazonaws.com/66fe765b7433f90b2c92f315_banner.webp",
       ],
-      defaultValue: [ "https://upload-community-files.s3.ap-south-1.amazonaws.com/66fe765b7433f90b2c92f315_banner.webp"],
     },
     {
-      name: 'interval',
-      type: 'number',
+      name: "interval",
+      type: "number",
       defaultValue: 3000,
-      helperText: 'Interval time between slides in milliseconds.',
+      helperText: "Interval time between slides in milliseconds.",
     },
-    { name: 'title', type: 'string', defaultValue: 'Default Title' },
-    { name: 'subtitle', type: 'string', defaultValue: 'Default Subtitle' },
-    { name: 'BtnText', type: 'string', defaultValue: 'Click Me' },
-    { name: 'BtnLink', type: 'url', defaultValue: 'https://example.com' },
+    { name: "title", type: "string", defaultValue: "Default Title" },
+    { name: "subtitle", type: "string", defaultValue: "Default Subtitle" },
+    { name: "BtnText", type: "string", defaultValue: "Click Me" },
+    { name: "BtnLink", type: "url", defaultValue: "https://example.com" },
     {
-      name: 'showControls',
-      type: 'boolean',
+      name: "showControls",
+      type: "boolean",
       defaultValue: true,
-      helperText: 'Show or hide control buttons.',
+      helperText: "Show or hide control buttons.",
     },
     {
-      name: 'autoSlide',
-      type: 'boolean',
+      name: "autoSlide",
+      type: "boolean",
       defaultValue: true,
-      helperText: 'Enable or disable automatic sliding.',
+      helperText: "Enable or disable automatic sliding.",
+    },
+  ],
+});
+
+Builder.registerComponent(Card, {
+  name: "Card",
+  inputs: [
+    {
+      name: "title",
+      type: "string",
+      defaultValue: "Card Title",
+    },
+    {
+      name: "subtitle",
+      type: "string",
+      defaultValue: "Card Subtitle",
+    },
+    {
+      name: "descriptions",
+      type: "string",
+      defaultValue: "This is the description text of the card.",
+    },
+    {
+      name: "email",
+      type: "string",
+      defaultValue: "example@example.com",
+    },
+    {
+      name: "image",
+      type: "file",
+      allowedFileTypes: ["jpg", "png", "svg"],
+      defaultValue: "https://via.placeholder.com/150",
+    },
+    {
+      name: "alt",
+      type: "string",
+      defaultValue: "Image description",
+    },
+    {
+      name: "width",
+      type: "string",
+      defaultValue: "auto",
+    },
+    {
+      name: "height",
+      type: "string",
+      defaultValue: "auto",
+    },
+    {
+      name: "backgroundColor",
+      type: "color",
+      defaultValue: "#fff",
+    },
+    {
+      name: "children",
+      type: "uiBlocks",
+      defaultValue: [],
     },
   ],
 });

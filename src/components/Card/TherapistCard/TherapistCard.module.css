@@ -1,12 +1,17 @@
 .therapistCard {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    flex-direction: column;
     text-align: center;
+    align-items: center;
 }
 
 .therapistImage {
     background-color: #a3b18a;
     border-radius: 8px;
     margin-bottom: 10px;
-    width: 100%;
+    width: 250px;
     height: 250px;
     display: flex;
     justify-content: center;
