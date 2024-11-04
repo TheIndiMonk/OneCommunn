@@ -2,7 +2,7 @@ import React, { useState, ChangeEvent, FormEvent } from "react";
 import styles from "./ContactForm.module.css";
 import { ContactFormProps } from "../../../lib/types/ContactFormData/ContactFormProps";
 
-const ContactForm: React.FC<ContactFormProps> = ({ title, subtitle, fields, onSubmit }) => {
+export const ContactForm: React.FC<ContactFormProps> = ({ title, subtitle, fields, onSubmit }) => {
   const initialFormData = fields.reduce((acc, field) => {
     acc[field.name] = "";
     return acc;
@@ -109,4 +109,3 @@ const ContactForm: React.FC<ContactFormProps> = ({ title, subtitle, fields, onSu
   );
 };
 
-export default ContactForm;

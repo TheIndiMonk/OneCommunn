@@ -141,6 +141,16 @@
   margin: 0;
   font-size: 14px;
 }
+.spanText{
+  color: #4b5563;
+  transition-timing-function: cubic-bezier(.4,0,.2,1);
+  transition-duration: .15s;
+}
+.spanText:hover{
+  a{
+    text-decoration: underline
+  }
+}
 
 .legalLinks { 
   display: flex;

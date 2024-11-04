@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styles from './footer.module.css';
 import { FooterProps } from '../../lib/types/type';
 import { platformIcons } from './platformIcon';
 
 const Footer: React.FC<FooterProps> = ({
     newsletterPlaceholder = 'email here',
+    logo,
     contactInfo,
     sections,
     socialLinks,
@@ -15,6 +16,28 @@ const Footer: React.FC<FooterProps> = ({
     accentColor = '#27282C'
 }) => {
 
+    // Handle email Input.
+    const [email, setEmail] = useState('');
+    const [errorMessage, setErrorMessage] = useState('');
+
+    const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        setEmail(event.target.value);
+        setErrorMessage(''); // Clear the error message when the user types
+    }
+
+
+    // Newsletter List Handler   NOTE :: This is just for Testing the function please add the proper logic or function call for the Newsletter listing. 
+    const enterEmailToNewsLetter = () => {
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (email.trim() === '') {
+            setErrorMessage('Please enter an email address.');
+        } else if (!emailPattern.test(email)) {
+            setErrorMessage('Please enter a valid email address.');
+        } else {
+            setErrorMessage(''); // Clear the error if the input is valid
+            console.log('Entered email:', email); // You can replace this with your submit logic
+        }
+    };
 
 
     return (
@@ -29,19 +52,29 @@ const Footer: React.FC<FooterProps> = ({
                             placeholder={newsletterPlaceholder}
                             className={styles.input}
                             style={{ borderBottom: `1px solid ${accentColor}` }}
+                            value={email}
+                            onChange={handleInputChange}
                         />
                         <button
                             type="submit"
+                            onClick={enterEmailToNewsLetter}
                             className={styles.button}
                             style={{ border: `1px solid ${accentColor}` }}
                         >
                             ➤
                         </button>
                     </div>
+                    {errorMessage && (
+                        <p className={styles.errorMessage} style={{ color: '#df4a4a', margin: '0px' }}>
+                            {errorMessage}
+                        </p>
+                    )}
                     <div className={styles.logoContainer}>
                         <img
-                            src="./logo/footer-logo.svg"
-                            alt="Mantra Logo"
+                            src={logo.src}
+                            alt={logo.alt}
+                            height={logo.height}
+                            width={logo.width}
                             className={styles.logoImage}
                         />
                     </div>
@@ -111,7 +144,7 @@ const Footer: React.FC<FooterProps> = ({
                 </div>
             </div>
             <div className={styles.bottomBar}>
-                <p className={styles.copyright}>{copyrightText}</p>
+                <p className={styles.copyright}>{copyrightText} A Project by <span className={styles.spanText}><a href='https://www.aimonk.io' target='_blank' >Aimonk.io</a></span></p>
                 <div className={styles.legalLinks}>
                     {legalLinks.map((link, index) => (
                         <a key={index} href={link.url} className={styles.legalLink}>

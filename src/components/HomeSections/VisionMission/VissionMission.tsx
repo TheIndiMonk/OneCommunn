@@ -3,7 +3,7 @@ import React from "react";
 import styles from "./VisionMission.module.css";
 import { VisionMissionProps } from "../../../lib/types/type";
 
-const VisionMission: React.FC<VisionMissionProps> = ({
+export const VisionMission: React.FC<VisionMissionProps> = ({
   vision,
   mission,
   instructorName,
@@ -95,4 +95,3 @@ const VisionMission: React.FC<VisionMissionProps> = ({
   );
 };
 
-export default VisionMission;
