@@ -37,7 +37,7 @@ const footerProps: FooterProps = {
     src: "/logo/mantra-logo.svg",
     alt: 'Mantra Logo',
     width: 50,
-    height: 50,
+    height: 250,
     logoText: 'Mantra',
     showLogoText: true,
   },
@@ -62,7 +62,7 @@ const footerProps: FooterProps = {
     { label: 'Privacy Policy', url: '#', external: true },
   ],
   newsletterPlaceholder: "email here",
-  copyrightText: "© 2024 Design by DesignThemes.",
+  copyrightText: "© 2024 Design by Webxinfinity.",
   backgroundColor: "#D2C0A8",
   textColor: "#6B5B45",
   accentColor: "#8C7A63",
@@ -85,7 +85,14 @@ const Layout = ({
     showLogoText: true,
   };
 
-  const updatedFooterProps: FooterProps = { ...footerProps, contactInfo };
+  const updatedFooterProps: FooterProps = {
+    ...footerProps,
+    logo: {
+      ...footerProps.logo,
+      src: logoSrc || footerProps.logo.src, // Use logoSrc from state or default
+    },
+    contactInfo,
+  };
 
   return (
     <>

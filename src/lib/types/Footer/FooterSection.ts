@@ -1,7 +1,8 @@
-import { FooterLink } from "./FooterLink";
+import { HeaderLink } from "../Header/HeaderLink";
+
 
 export interface FooterSection {
     title: string;
-    links: FooterLink[];
+    links: HeaderLink[];
 }
   

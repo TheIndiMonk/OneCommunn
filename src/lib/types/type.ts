@@ -14,6 +14,7 @@ export * from './Form/formProps'
 
 // Card
 export * from './Card/CardProps'
+export * from './LocationCard/LocationCardPropsArray'
 export * from './FAQ/QuestionnaireProps'
 
 

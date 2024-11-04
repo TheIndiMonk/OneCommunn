@@ -1,12 +1,9 @@
 import React, { useState } from 'react';
-import { LocationCardProps } from '../../../lib/types/type';
+import { LocationCardProps, LocationCardPropsArray } from '../../../lib/types/type';
 import styles from './LocationCard.module.css';
-import { Card } from '../Card';
 
-interface LocationCardPropsArray {
-    contactInfo: LocationCardProps[];
-    onLocationSelect: (location: LocationCardProps) => void; // Callback to parent
-}
+
+
 
 export const LocationCard: React.FC<LocationCardPropsArray> = ({ contactInfo, onLocationSelect }) => {
     const [selectedLocationIndex, setSelectedLocationIndex] = useState<number | null>(null);
@@ -27,13 +24,15 @@ export const LocationCard: React.FC<LocationCardPropsArray> = ({ contactInfo, on
                         backgroundImage: selectedLocationIndex === index ? 'url(./logo/Selector.svg)' : 'none',
                     }}
                 >
-                    <Card
-                        city={location.city}
-                        address={location.address}
-                        phone1={location.phone1}
-                        phone2={location.phone2}
-                        email={location.email}
-                    />
+                    <div className={styles.card} style={{ width: 'auto', height: 'auto' }}>
+                        <div className={styles.textContainer}>
+                            {location.city && <h2>{location.city}</h2>}
+                            {location.address && <p>{location.address}</p>}
+                            {location.phone1 && <p>{location.phone1}</p>}
+                            {location.phone2 && <p>{location.phone2}</p>}
+                            {location.email && <p>{location.email}</p>}
+                        </div>
+                    </div>
                 </div>
             ))}
         </div>

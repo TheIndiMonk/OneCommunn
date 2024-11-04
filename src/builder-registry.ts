@@ -7,7 +7,7 @@ import { LocationCard } from "./components/Card/Location/LocationCard";
 import { Form } from "./components/Form/Form";
 import { MapCard } from "./components/Card/Map/MapCard";
 import { FeaturedCard } from "./components/Card/FeaturedCard/FeaturedCard";
-import TherapistGrid from "./components/Card/TherapistGrid/TherapistGrid";
+import {TherapistGrid} from "./components/Card/TherapistGrid/TherapistGrid";
 import { Questionnaire } from "./components/Questioner/Questionnaire";
 import { ImageCard } from "./components/Card/ImageCard/ImageCard";
 import { Logos } from "./components/LogosContainer/Logos";
@@ -18,12 +18,12 @@ import { PriceCard } from "./components/Card/PriceCard/PriceCard";
 import BannerCard from "./components/Banner/BannerCard";
 import TimeTable from "./components/TimeTable/TimeTable";
 import { ProductCard } from "./components/Card/ProductCard/ProductCard";
-import HomeAboutSection from "./components/HomeSections/HomeAboutSection/HomeAboutSection";
+import {HomeAboutSection} from "./components/HomeSections/HomeAboutSection/HomeAboutSection";
 import { HomeHero } from "./components/HomeSections/HomeHero/HomeHero";
-import VisionMission from "./components/HomeSections/VisionMission/VissionMission";
-import BookYoga from "./components/HomeSections/BookYoga/BookYoga";
-import ContactForm from "./components/HomeSections/Form/HomeForm";
-import VerticalCarousel from "./components/VerticalCarouselProps/VerticalCarousel";
+import {VisionMission} from "./components/HomeSections/VisionMission/VissionMission";
+import {BookYoga} from "./components/HomeSections/BookYoga/BookYoga";
+import {ContactForm} from "./components/HomeSections/Form/HomeForm";
+import {VerticalCarousel} from "./components/VerticalCarouselProps/VerticalCarousel";
 
 // Header and Footer
 

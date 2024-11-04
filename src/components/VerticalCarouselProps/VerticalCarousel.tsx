@@ -3,7 +3,7 @@ import styles from './VerticalCarousel.module.css';
 import { VerticalCarouselProps } from '../../lib/types/type';
 
 
-const VerticalCarousel: React.FC<VerticalCarouselProps> = ({
+export const VerticalCarousel: React.FC<VerticalCarouselProps> = ({
   images,
   interval = 3000,
   title,
@@ -150,4 +150,3 @@ const VerticalCarousel: React.FC<VerticalCarouselProps> = ({
   );
 };
 
-export default VerticalCarousel;

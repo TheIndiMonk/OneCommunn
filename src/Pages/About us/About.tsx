@@ -1,8 +1,8 @@
- import React from 'react';
+import React from 'react';
 import { Hero } from '../../components/Hero/Hero';
 import { Logos } from '../../components/LogosContainer/Logos';
 import { AboutSection } from '../../components/AboutSection/AboutSection';
-import TherapistGrid from '../../components/Card/TherapistGrid/TherapistGrid';
+import { TherapistGrid } from '../../components/Card/TherapistGrid/TherapistGrid';
 import { TestimonialSection } from '../../components/TestimonialCarousel/Testimonial';
 import { CheckSchedule } from '../../components/CheckSchedule/CheckSchedule';
 import { useFetch } from '../../Api/apiHandler';
@@ -38,26 +38,26 @@ const About: React.FC = () => {
         heading: "Elise Burten",
         subHeading: "About Us",
         features: [
-          {
-            icon: './logo/stress-relife.svg', // Replace with actual path
-            title: 'Stress Relief',
-            description: 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.'
-          },
-          {
-            icon: './logo/calm-mind.svg', // Replace with actual path
-            title: 'Calm Mind',
-            description: 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.'
-          },
-          {
-            icon: './logo/life-style.svg', // Replace with actual path
-            title: 'Life Style',
-            description: 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.'
-          },
-          {
-            icon: './logo/healty-body.svg', // Replace with actual path
-            title: 'Healthy Body',
-            description: 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.'
-          },
+            {
+                icon: './logo/stress-relife.svg', // Replace with actual path
+                title: 'Stress Relief',
+                description: 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.'
+            },
+            {
+                icon: './logo/calm-mind.svg', // Replace with actual path
+                title: 'Calm Mind',
+                description: 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.'
+            },
+            {
+                icon: './logo/life-style.svg', // Replace with actual path
+                title: 'Life Style',
+                description: 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.'
+            },
+            {
+                icon: './logo/healty-body.svg', // Replace with actual path
+                title: 'Healthy Body',
+                description: 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.'
+            },
         ],
         videoSrc: './path-to-video/video.mp4', // Replace with actual video file path
         buttonText: "Book Appointment"
@@ -83,21 +83,21 @@ const About: React.FC = () => {
 
     const testimonials = [
         {
-            src: 'https://placehold.co/300x300', 
+            src: 'https://placehold.co/300x300',
             alt: 'Logo 1',
             text: 'What an experience! From the moment I entered Retreat You I felt in peace. Daily yoga, exercises and great diet really helped me to disconnect.',
             author: 'Rohit Martin',
             role: 'Manager',
         },
         {
-            src: 'https://placehold.co/300x300', 
+            src: 'https://placehold.co/300x300',
             alt: 'Logo 2',
             text: 'What an experience! From the moment I entered Retreat You I felt in peace. Daily yoga, exercises and great diet really helped me to disconnect.',
             author: 'Manish Martin',
             role: 'Manager',
         },
         {
-            src: 'https://placehold.co/300x300', 
+            src: 'https://placehold.co/300x300',
             alt: 'Logo 2',
             text: 'What an experience! From the moment I entered Retreat You I felt in peace. Daily yoga, exercises and great diet really helped me to disconnect.',
             author: 'Jessi Martin',
@@ -144,8 +144,8 @@ const About: React.FC = () => {
     //     // Add more therapist data here
     // ];
 
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any    
-    const teamsApiResponse = (teams: any[]) => 
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any    
+    const teamsApiResponse = (teams: any[]) =>
         teams.map(team => ({
             name: team.name,
             title: team.designation,
@@ -153,21 +153,21 @@ const About: React.FC = () => {
             image: team.image,
         }));
 
-        
+
     return (
         <div>
             <Hero
                 title="About Us"
                 backgroundColor="#D4CBC2"
-                // breadcrumb="About Us"
-                // illustrations={illustrations}
+            // breadcrumb="About Us"
+            // illustrations={illustrations}
             />
-            <AboutSection 
-              heading={aboutSectionData.heading}
-              subHeading={aboutSectionData.subHeading}
-              features={aboutSectionData.features}
-              videoSrc={aboutSectionData.videoSrc}
-              buttonText={aboutSectionData.buttonText}
+            <AboutSection
+                heading={aboutSectionData.heading}
+                subHeading={aboutSectionData.subHeading}
+                features={aboutSectionData.features}
+                videoSrc={aboutSectionData.videoSrc}
+                buttonText={aboutSectionData.buttonText}
             />
             <CheckSchedule
                 heading="Shape Your Perfect Body"
@@ -178,9 +178,9 @@ const About: React.FC = () => {
                 circleText="Calm & Relax"
             />
             <Logos Logos={logos} />
-            <TestimonialSection  Testimonials={testimonials}  />
+            <TestimonialSection Testimonials={testimonials} />
             <h1>Meet The Therapist</h1>
-            <TherapistGrid Therapist={teamsApiResponse(teams)}/>
+            <TherapistGrid Therapist={teamsApiResponse(teams)} />
         </div>
     );
 };

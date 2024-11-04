@@ -4,7 +4,7 @@ import React from 'react';
 import styles from './HomeAboutSection.module.css';
 import { HomeAboutSectionProps } from '../../../lib/types/type'
 
-const HomeAboutSection: React.FC<HomeAboutSectionProps> = ({
+export const HomeAboutSection: React.FC<HomeAboutSectionProps> = ({
   title,
   name,
   description,
@@ -58,4 +58,3 @@ const HomeAboutSection: React.FC<HomeAboutSectionProps> = ({
       </div>
     );
   };
-  export default HomeAboutSection;

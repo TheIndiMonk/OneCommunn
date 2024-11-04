@@ -1,6 +1,7 @@
 // import React from 'react';
 import { useFetch } from '../../Api/apiHandler';
-import TherapistGrid from '../../components/Card/TherapistGrid/TherapistGrid';
+import { Card } from '../../components/Card/Card';
+import { TherapistGrid } from '../../components/Card/TherapistGrid/TherapistGrid';
 import { Hero } from '../../components/Hero/Hero';
 import { Therapist } from '../../lib/types/Therapist/TherapistTypes';
 import styles from './services.module.css';
@@ -22,7 +23,7 @@ export const Services = () => {
             image: service.image,
             description: service.description,
         }));
-    
+
     // const illustrations = [
     //     {
     //         src: '/logo/left.svg',
@@ -73,11 +74,25 @@ export const Services = () => {
         <>
             <Hero title={'Service'} backgroundColor="#D4CBC2" />
 
-              {/* Services Section */}
-              <div className={styles.section}>
+            {/* Services Section */}
+            <div className={styles.section}>
                 <h2 className={styles.sectionTitle}>Services</h2>
                 <TherapistGrid Therapist={servicesApiResponse(services)} />
             </div>
+
+            <Card 
+                city="New York"
+                address="123 Main St"
+                phone1="(123) 456-7890"
+                image="/path/to/image.jpg"
+                width="300px"
+                height="400px"
+                backgroundColor="#f5f5f5"
+            >
+                <button onClick={() => alert('Button clicked!')}>Click Me</button>
+                <p>Custom text inside the card</p>
+            </Card>
+
 
         </>
     );

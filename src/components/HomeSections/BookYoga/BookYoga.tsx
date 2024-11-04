@@ -3,7 +3,7 @@ import React from "react";
 import styles from "./BookYoga.module.css";
 import { BookYogaProps } from "../../../lib/types/type";
 
-const BookYoga: React.FC<BookYogaProps> = ({
+export const BookYoga: React.FC<BookYogaProps> = ({
   heading,
   description,
   contactInfo,
@@ -66,4 +66,3 @@ const BookYoga: React.FC<BookYogaProps> = ({
   );
 };
 
-export default BookYoga;

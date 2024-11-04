@@ -1,13 +1,11 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
 import styles from "./header.module.css";
+
+import { Link } from "react-router-dom";
 import { HeaderProps } from "../../lib/types/type";
 
 
 const Header: React.FC<HeaderProps> = ({ links, logo, buttons, backgroundColor, textColor }) => {
-
-
-
 
     const [isNavOpen, setIsNavOpen] = useState(false);
     const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
