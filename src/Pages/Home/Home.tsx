@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import styles from './home.module.css';
 
 import { Logos } from '../../components/LogosContainer/Logos';
-import { HomeHero } from '../../components/HomeSections/HomeHero/HomeHero';
+// import { HomeHero } from '../../components/HomeSections/HomeHero/HomeHero';
 import { QuestionBox } from '../../components/QuestionBox/QuestionBox';
 import { ProductCard } from '../../components/Card/ProductCard/ProductCard';
 import { TherapistGrid } from '../../components/Card/TherapistGrid/TherapistGrid';
@@ -177,38 +177,38 @@ const Home: React.FC = () => {
         // Add more products as needed
     ];
 
-    const slides = [
-        {
-            title: "Welcome to Nature 1",
-            description: "Embark on your next journey with us. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
-            contextBtnText: "Explore Now",
-            contextBtnLink: "/explore/yoga",
-            propertiesBtnText: "VIEW ALL PROPERTIES",
-            propertiesBtnLink: "/properties",
-            videoTitle: "10 min Yoga For Beginners",
-            videoLink: "https://youtube.com/video",
-        },
-        {
-            title: 'Adventure Awaits 2',
-            description: 'Embark on your next journey with us. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
-            contextBtnText: "Explore Now",
-            contextBtnLink: "/explore/yoga",
-            propertiesBtnText: "VIEW ALL PROPERTIES",
-            propertiesBtnLink: "/properties",
-            videoTitle: " 10 Mins Yoga For Nature ",
-            videoLink: "https://youtube.com/video",
-        },
-        {
-            title: 'Beginers Free Yoga',
-            description: 'Embark on your next journey with us. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
-            contextBtnText: "Explore Now",
-            contextBtnLink: "/explore/yoga",
-            propertiesBtnText: "VIEW ALL PROPERTIES",
-            propertiesBtnLink: "/properties",
-            videoTitle: " 10 Mins Yoga For Nature ",
-            videoLink: "https://youtube.com/video",
-        },
-    ];
+    // const slides = [
+    //     {
+    //         title: "Welcome to Nature 1",
+    //         description: "Embark on your next journey with us. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
+    //         contextBtnText: "Explore Now",
+    //         contextBtnLink: "/explore/yoga",
+    //         propertiesBtnText: "VIEW ALL PROPERTIES",
+    //         propertiesBtnLink: "/properties",
+    //         videoTitle: "10 min Yoga For Beginners",
+    //         videoLink: "https://youtube.com/video",
+    //     },
+    //     {
+    //         title: 'Adventure Awaits 2',
+    //         description: 'Embark on your next journey with us. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
+    //         contextBtnText: "Explore Now",
+    //         contextBtnLink: "/explore/yoga",
+    //         propertiesBtnText: "VIEW ALL PROPERTIES",
+    //         propertiesBtnLink: "/properties",
+    //         videoTitle: " 10 Mins Yoga For Nature ",
+    //         videoLink: "https://youtube.com/video",
+    //     },
+    //     {
+    //         title: 'Beginers Free Yoga',
+    //         description: 'Embark on your next journey with us. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
+    //         contextBtnText: "Explore Now",
+    //         contextBtnLink: "/explore/yoga",
+    //         propertiesBtnText: "VIEW ALL PROPERTIES",
+    //         propertiesBtnLink: "/properties",
+    //         videoTitle: " 10 Mins Yoga For Nature ",
+    //         videoLink: "https://youtube.com/video",
+    //     },
+    // ];
 
     // const Services = [
     //     {
@@ -396,12 +396,12 @@ const Home: React.FC = () => {
 
 
             {/* Hero Section */}
-            <HomeHero
+            {/* <HomeHero
                 slides={slides}
                 autoSlide={false}
                 slideInterval={30000}
                 backgroundColor={''}
-            />
+            /> */}
 
 
             <div className={styles.section}>
