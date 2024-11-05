@@ -12,9 +12,10 @@ export const TherapistGrid: React.FC<TherapistProps> = ({ Therapist, onSelectThe
                     name={therapist.name}
                     title={therapist.title!}
                     image={therapist.image!}
-                    onClick={() => onSelectTherapist?.(therapist)}/>
+                    isFeatured={therapist.isFeatured || false}
+                    onClick={() => onSelectTherapist?.(therapist)}
+                />
             ))}
         </div>
     );
 };
-
