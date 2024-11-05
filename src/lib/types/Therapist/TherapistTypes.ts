@@ -4,5 +4,6 @@ export interface Therapist {
     image?: string;
     description: string;
     status?: string;
+    isFeatured?: boolean;
     socialLinks?: { fb: string, tw: string, yu: string, in: string };
 }
