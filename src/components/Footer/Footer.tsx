@@ -84,8 +84,9 @@ const Footer: React.FC<FooterProps> = ({
                 <div className={styles.column}>
                     <h2 className={styles.heading}>Contact</h2>
                     <p>{contactInfo.address} </p>
-                    <p>{contactInfo.phone1}</p>
-                    <p>{contactInfo.phone2}</p>
+                    <p>{contactInfo.city}</p>
+                    <p>Pincode {contactInfo.pinCode}</p>
+                    <p>{contactInfo.phone}</p>
                     <p>{contactInfo.email}</p>
                     <p className={styles.description}>
                         Duis aute irure dolor reprehenderit voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat.

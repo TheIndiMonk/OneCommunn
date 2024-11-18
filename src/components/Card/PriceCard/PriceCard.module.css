@@ -6,6 +6,7 @@
   }
   
   .card {
+    flex: 1 1 calc(33.33% - 1rem); /* Adjust width based on layout */
     margin: 1px;
     display: flex;
     width: 300px;
@@ -16,6 +17,9 @@
     align-items: flex-start;
     background-color: white;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    align-items: stretch; /* Make cards equal height */
+    min-height: 300px; /* Set a minimum height for consistency */
+    max-width: 300px; /* Optional: set a consistent max-width */
   }
   .ItemsContainer{
     display: flex;
@@ -34,7 +38,7 @@
     border: 1px solid #ccc; /* Optional: border around items */
     border-radius: 5px; /* Optional: rounded corners */
   }
-  
+
   .primaryCard {
     background-color: #C1A78C; /* Primary background */
     color: black;
@@ -95,11 +99,19 @@
     color: #b08f6e;
   }
   
+
+  .descriptionContainer{
+    display: flex;
+    min-height: 150px;
+  }
+
   .description {
     font-size: 13px;
+    padding-right: 20px;  
     margin: 0.5rem 0 !important;
     color: rgb(0, 0, 0);
-    text-align: left;
+    text-align: justify;
+  
   }
   
   .price {

@@ -14,37 +14,39 @@ const Contact: React.FC = () => {
     // Check local storage for cached community data
     useEffect(() => {
         const cachedData = localStorage.getItem('communityData');
-        
+
         if (cachedData) {
             const community = JSON.parse(cachedData);
             setContactInfo([
                 {
-                    city: community.city,
-                    address: community.fullAddress,
-                    phone1: community.mobileNumber,
-                    phone2: community.phoneNumber,
-                    email: community.email,
-                    mapLink: community.location,
+                    city: community.data.contactUs.city,
+                    address: community.data.contactUs.address,
+                    pinCode: community.data.contactUs.pinCode,
+                    phone: community.data.contactUs.phone,
+                    email: community.data.contactUs.email,
+                    mapLink: community.data.contactUs.location,
                 },
             ]);
         } else {
             // Fetch community data
             const fetchData = async () => {
-                const response = await fetch('https://api.onecommunn.com/api/v1/communities/66fe765b7433f90b2c92f315/home');
+                const response = await fetch('https://api-uat.onecommunn.com/api/v2.0/builders/community/673811a2262dbf8ab84ff643');
                 const data = await response.json();
 
-                if (data?.community) {
-                    const community = data.community;
+                if (data?.data) {
+                    const community = data.data;
+                    console.log(community)
                     const contactInfo: LocationCardProps[] = [
                         {
-                            city: community.city,
-                            address: community.fullAddress,
-                            phone1: community.mobileNumber,
-                            phone2: community.phoneNumber,
-                            email: community.email,
+                            address: community.contactUs.address || '',
+                            city: community.contactUs.city || '',
+                            pinCode: community.contactUs.pinCode || '',
+                            phone: community.contactUs.phone || '',
+                            email: community.contactUs.email || '',
                             mapLink: community.location,
                         },
                     ];
+                    console.log(contactInfo)
                     setContactInfo(contactInfo);
 
                     // Save to local storage

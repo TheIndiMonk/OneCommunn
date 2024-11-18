@@ -2,14 +2,9 @@ import React, { useEffect, useState } from 'react';
 import styles from './VerticalCarousel.module.css';
 import { VerticalCarouselProps } from '../../lib/types/type';
 
-
 export const VerticalCarousel: React.FC<VerticalCarouselProps> = ({
-  images,
+  banners,
   interval = 3000,
-  title,
-  subtitle,
-  BtnText,
-  BtnLink,
   showControls = true,
   autoSlide = true,
 }) => {
@@ -25,52 +20,59 @@ export const VerticalCarousel: React.FC<VerticalCarouselProps> = ({
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
-  // Handle automatic image changes
+  // Handle automatic banner changes
   useEffect(() => {
     if (!autoSlide && !isMobile) return;
 
-    const changeImage = setInterval(() => {
+    const changeBanner = setInterval(() => {
       setCurrentIndex((prevIndex) =>
-        prevIndex === images.length - 1 ? 0 : prevIndex + 1
+        prevIndex === banners.length - 1 ? 0 : prevIndex + 1
       );
     }, interval);
 
-    return () => clearInterval(changeImage); // Cleanup on unmount
-  }, [images.length, interval, autoSlide, isMobile]);
+    return () => clearInterval(changeBanner); // Cleanup on unmount
+  }, [banners.length, interval, autoSlide, isMobile]);
 
   const goToPrevSlide = () => {
     setCurrentIndex((prevIndex) =>
-      prevIndex === 0 ? images.length - 1 : prevIndex - 1
+      prevIndex === 0 ? banners.length - 1 : prevIndex - 1
     );
   };
 
   const goToNextSlide = () => {
     setCurrentIndex((prevIndex) =>
-      prevIndex === images.length - 1 ? 0 : prevIndex + 1
+      prevIndex === banners.length - 1 ? 0 : prevIndex + 1
     );
   };
 
-  const handleButtonClick = () => {
-    if (BtnLink) window.open(BtnLink, '_blank');
+  const handleButtonClick = (btnLink: string | undefined) => {
+    if (btnLink) window.open(btnLink, '_blank');
   };
 
   return (
     <div className={styles.carouselContainer}>
-      <div className={styles.textContainer}>
-        {title && <h2 className={styles.title}>{title}</h2>}
-        {subtitle && <p className={styles.subtitle}>{subtitle}</p>}
-        {BtnText && (
-          <button onClick={handleButtonClick} className={styles.actionButton}>
-            {BtnText}
-          </button>
-        )}
-      </div>
-
       <div className={styles.carouselItems}>
-        {images.map((image, index) => (
-          <div key={index} className={`${styles.carouselItem} ${index === currentIndex ? styles.active : ''}`}
-            style={{ backgroundImage: `url(${image})` }}
-          />
+        {banners.map((banner, index) => (
+          <div
+            key={index}
+            className={`${styles.carouselItem} ${index === currentIndex ? styles.active : ''}`}
+            style={{ backgroundImage: `url(${banner.image})` }}
+          >
+            <div className={styles.textContainer}>
+              {banner.title && <h2 className={styles.title} style={{color: 'white'}}>{banner.title}</h2>}
+              {banner.subtitle && (
+                <p className={styles.subtitle} style={{color: 'white'}}>{banner.subtitle}</p>
+              )}
+              {banner.BtnText && (
+                <button
+                  onClick={() => handleButtonClick(banner.BtnLink)}
+                  className={styles.actionButton}
+                >
+                  {banner.BtnText}
+                </button>
+              )}
+            </div>
+          </div>
         ))}
       </div>
 
@@ -91,15 +93,14 @@ export const VerticalCarousel: React.FC<VerticalCarouselProps> = ({
                 >
                   <path
                     d="M1 9.48523L9.48528 0.999948L17.9706 9.48523"
-                    stroke="#27282C"
+                    stroke="#fff"
                   />
                 </svg>
               </button>
 
               <div className={styles.pager}>
-                {String(
-                  ((currentIndex - 1 + images.length) % images.length) + 1
-                ).padStart(2, '0')}
+                {/* Current slide index (displayed as 1-based index) */}
+                {String(currentIndex + 1).padStart(2, '0')}
               </div>
 
               <svg
@@ -114,15 +115,13 @@ export const VerticalCarousel: React.FC<VerticalCarouselProps> = ({
                   y1="-0.000122048"
                   x2="0.499997"
                   y2="72.9999"
-                  stroke="#27282C"
+                  stroke="#fff"
                 />
               </svg>
 
               <div className={styles.pager}>
-                {String(((currentIndex + 1) % images.length) + 1).padStart(
-                  2,
-                  '0'
-                )}
+                {/* Next slide index (with wrapping) */}
+                {String((currentIndex + 2 > banners.length ? 1 : currentIndex + 2)).padStart(2, '0')}
               </div>
 
               <button
@@ -138,7 +137,7 @@ export const VerticalCarousel: React.FC<VerticalCarouselProps> = ({
                 >
                   <path
                     d="M17.9707 0.485229L9.48542 8.97051L1.00014 0.485229"
-                    stroke="#27282C"
+                    stroke="#fff"
                   />
                 </svg>
               </button>
@@ -149,4 +148,3 @@ export const VerticalCarousel: React.FC<VerticalCarouselProps> = ({
     </div>
   );
 };
-

@@ -12,15 +12,16 @@ export const Services = () => {
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const { data } = useFetch<any>(
-        'https://api.onecommunn.com/api/v1/communities/66fe765b7433f90b2c92f315/home'
+        'https://api-uat.onecommunn.com/api/v2.0/builders/community/673811a2262dbf8ab84ff643'
     );
-    const services: Therapist[] = data?.community?.services || [];
+    const services: Therapist[] = data?.data?.services || [];
+
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const servicesApiResponse = (services: any[]) =>
         services.map(service => ({
             name: service.title,
-            image: service.image,
+            image: service.images,
             description: service.description,
         }));
 
