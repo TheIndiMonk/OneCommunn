@@ -28,10 +28,10 @@ const About: React.FC = () => {
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const { data } = useFetch<any>(
-        'https://api.onecommunn.com/api/v1/communities/66fe765b7433f90b2c92f315/home'
+        'https://api-uat.onecommunn.com/api/v2.0/builders/community/673811a2262dbf8ab84ff643'
     );
 
-    const teams: Therapist[] = data?.community?.teams || [];
+    const teams: Therapist[] = data?.data?.teams || [];
 
 
     const aboutSectionData = {
@@ -150,7 +150,7 @@ const About: React.FC = () => {
             name: team.name,
             title: team.designation,
             description: team.description,
-            image: team.image,
+            image: team.avatar.value,
         }));
 
 

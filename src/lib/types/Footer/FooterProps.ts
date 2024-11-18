@@ -8,8 +8,9 @@ export interface FooterProps {
   logo: HeaderLogo;
   contactInfo: {
     address: string;
-    phone1: string;
-    phone2: string;
+    city: string;
+    pinCode: number;
+    phone: string;  
     email: string;
   };
   

@@ -13,71 +13,88 @@ import { BookYoga } from '../../components/HomeSections/BookYoga/BookYoga';
 import { PriceCard } from '../../components/Card/PriceCard/PriceCard';
 import { ContactForm } from '../../components/HomeSections/Form/HomeForm';
 import { FAQItem } from '../../lib/types/FAQ/FAQItem';
-import { useFetch } from '../../Api/apiHandler';
 import { Therapist } from '../../lib/types/Therapist/TherapistTypes';
 import { PriceCardProps } from '../../lib/types/type';
-import { VerticalCarousel } from '../../components/VerticalCarouselProps/VerticalCarousel';
+import { VerticalCarousel } from '../../components/VerticalCarousel/VerticalCarousel';
+import { getCache, setCache } from '../../lib/Utils/cacheUtils';
 // import { Slide } from '../../lib/types/SliderTypes/SliderTypes';
 
 
+const fetchWithCache = async (url: string, cacheKey: string, cacheDuration: number = 600000) => {
+    const cachedData = getCache(cacheKey);
+    const currentTime = Date.now();
 
+    // If cache exists and it's still valid
+    if (cachedData && currentTime - cachedData.timestamp < cacheDuration) {
+        return cachedData.data;
+    }
 
+    // Otherwise, fetch the data and cache it
+    const response = await fetch(url);
+    const data = await response.json();
+
+    // Save to cache with a timestamp
+    setCache(cacheKey, { data, timestamp: currentTime });
+
+    return data;
+};
 
 
 const Home: React.FC = () => {
     const handleButtonClick = () => {
         alert("Button clicked!");
     };
-
-    const [images, setImages] = useState<string[]>([]); // State to store images
-    const BANNER_KEY = 'community-banner'; // Key for localStorage
-
-
-    const loadBannerFromCacheOrAPI = () => {
-        // Check if the banner is already cached
-        const cachedBanner = localStorage.getItem(BANNER_KEY);
-        if (cachedBanner) {
-            setImages([cachedBanner]); // Use cached banner
-        } else if (data?.community?.banner) {
-            const bannerUrl = data.community.banner;
-            localStorage.setItem(BANNER_KEY, bannerUrl); // Cache the banner
-            setImages([bannerUrl]); // Update state
-        }
-    };
-
-    useEffect(() => {
-        loadBannerFromCacheOrAPI();
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []); // Only on mount
-
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const { data } = useFetch<any>(
-        'https://api.onecommunn.com/api/v1/communities/66fe765b7433f90b2c92f315/home'
-    );
+    const [banners, setBanners] = useState<any[]>([]);
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const [data, setData] = useState<any>(null);
 
     useEffect(() => {
-        if (data?.community?.banner) {
-            const bannerUrl = data.community.banner;
-            // Update the images array with the fetched banner
-            setImages((prevImages) => [bannerUrl, ...prevImages]);
-        }
-    }, [data?.community?.banner]);
+        const fetchData = async () => {
+            try {
+                const apiData = await fetchWithCache(
+                    'https://api-uat.onecommunn.com/api/v2.0/builders/community/673811a2262dbf8ab84ff643',
+                    'homePageData'
+                );
+                setData(apiData);
 
-    const faqData: FAQItem[] = data?.community?.faq || [];
-    const services: Therapist[] = data?.community?.services || [];
-    const name: string = data?.community?.name;
-    const description: string = data?.community?.description;
-    const mission: string = data?.community?.mission;
-    const vision: string = data?.community?.vision;
-    const plans: PriceCardProps[] = data?.community?.plans || [];
-    const teams: Therapist[] = data?.community?.teams || [];
+                // Process banner data
+                if (apiData?.data?.banner) {
+                    const BannerArray = apiData.data.banner;
+                    const slidesBanners = BannerArray.map((banner: { _id: string; subheading: string; heading: string; image: string }) => ({
+                        image: banner.image,
+                        title: banner.heading,
+                        subtitle: banner.subheading,
+                        BtnText: "Learn More",
+                        BtnLink: `https://example.com/${banner._id}`,
+                    }));
+                    setBanners(slidesBanners);
+                }
+            } catch (error) {
+                console.error('Error fetching data:', error);
+            }
+        };
+
+        fetchData();
+    }, []);
+    
+    
+
+    const faqData: FAQItem[] = data?.data?.faq || [];
+    const services: Therapist[] = data?.data?.services || [];
+    const name: string = data?.data?.aboutUs?.heading;
+    const description: string = data?.data?.aboutUs?.about;
+    const mission: string = data?.data?.aboutUs?.mission;
+    const vision: string = data?.data?.aboutUs?.vision;
+    const plans: PriceCardProps[] = data?.data?.plans || [];
+    const teams: Therapist[] = data?.data?.teams || [];
 
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const servicesApiResponse = (services: any[]) =>
         services.map(service => ({
             name: service.title,
-            image: service.image,
+            image: service.images,
             description: service.description,
         }));
 
@@ -102,7 +119,7 @@ const Home: React.FC = () => {
             name: team.name,
             title: team.designation,
             description: team.description,
-            image: team.image,
+            image: team.avatar.w,
         }));
 
 
@@ -393,30 +410,14 @@ const Home: React.FC = () => {
     return (
 
         <div className={styles.homeContainer}>
-
-
-            {/* Hero Section */}
-            {/* <HomeHero
-                slides={slides}
-                autoSlide={false}
-                slideInterval={30000}
-                backgroundColor={''}
-            /> */}
-
-
             <div className={styles.section}>
                 <VerticalCarousel
-                    images={images}
+                    banners={banners} 
                     interval={2000}
-                    title="Our Latest Collection"
-                    subtitle="Discover the beauty of our new arrivals"
-                    BtnText='Learn More'
-                    BtnLink='/about'
                     showControls={true}
                     autoSlide={false}
                 />
             </div>
-
 
 
             {/* Services Section */}
@@ -458,7 +459,7 @@ const Home: React.FC = () => {
                 }}
                 onEmailSubmit={function (): void {
                     throw new Error('Function not implemented.');
-                }} />
+            }} />
 
 
             {/* Price Plan Section */}

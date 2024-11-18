@@ -32,18 +32,22 @@
   color: white;
   padding: 1rem;
   position: absolute;
+  width: 50%;
   left: 50px;
   top: 200px;
   display: flex;
   text-align: left;
-  z-index: 2;
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
   align-content: flex-start;
   flex-wrap: wrap;
-  background-color: #bdafa094;
+  background-color: #3a393994;
   border-radius: 8px;
+}
+.actionButton{
+  color: white;
+  border: 1px solid #e8e9ec;
 }
 
 .pagination {

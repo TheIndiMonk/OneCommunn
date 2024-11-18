@@ -15,24 +15,25 @@ import { FaLeaf } from 'react-icons/fa';
 const Pricing: React.FC = () => {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const { data } = useFetch<any>(
-        'https://api.onecommunn.com/api/v1/communities/66fe765b7433f90b2c92f315/home'
+        'https://api-uat.onecommunn.com/api/v2.0/builders/community/673811a2262dbf8ab84ff643'
     );
-    const plans: PriceCardProps[] = data?.community?.plans || [];
+    const plans: PriceCardProps[] = data?.data?.plans || [];
+
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const planApiResponse = (plans: any[]) =>
-        plans.map(plan => ({
-            name: plan.name,
-            trainingCount: plan.interval,
-            duration: plan.duration,
-            offerValue: plan.offerValue,
-            startDate: plan.startDate,
-            endDate: plan.endDate,
-            totalPlanValue: plan.totalPlanValue,
-            includeTax: plan.summary,
-            description: plan.description,
-        }));
-    {console.log(planApiResponse(plans))}
+      plans.map(plan => ({
+          name: plan.name,
+          trainingCount: plan.interval,
+          duration: plan.duration,
+          offerValue: plan.offerValue,
+          startDate: plan.startDate,
+          endDate: plan.endDate,
+          totalPlanValue: plan.totalPlanValue,
+          includeTax: plan.summary,
+          description: plan.description,
+
+      }));
 
     // const packages = [
     //     {

@@ -24,7 +24,7 @@ import { HomeHero } from "./components/HomeSections/HomeHero/HomeHero";
 import { VisionMission } from "./components/HomeSections/VisionMission/VissionMission";
 import { BookYoga } from "./components/HomeSections/BookYoga/BookYoga";
 import { ContactForm } from "./components/HomeSections/Form/HomeForm";
-import { VerticalCarousel } from "./components/VerticalCarouselProps/VerticalCarousel";
+import { VerticalCarousel } from "./components/VerticalCarousel/VerticalCarousel";
 import { Card } from "./components/Card/Card";
 
 // Header and Footer
@@ -171,8 +171,9 @@ Builder.registerComponent(Footer, {
       type: "object",
       subFields: [
         { name: "address", type: "string" },
-        { name: "phone1", type: "string" },
-        { name: "phone2", type: "string" },
+        { name: "city", type: "string"},
+        { name: "pincode", type: "string" },
+        { name: "phone", type: "string" },
         { name: "email", type: "string" },
       ],
       friendlyName: "Contact Information",

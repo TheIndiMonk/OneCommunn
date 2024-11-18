@@ -28,8 +28,8 @@ export const LocationCard: React.FC<LocationCardPropsArray> = ({ contactInfo, on
                         <div className={styles.textContainer}>
                             {location.city && <h2>{location.city}</h2>}
                             {location.address && <p>{location.address}</p>}
-                            {location.phone1 && <p>{location.phone1}</p>}
-                            {location.phone2 && <p>{location.phone2}</p>}
+                            {location.pinCode && <p>{location.pinCode}</p>}
+                            {location.phone && <p>{location.phone}</p>}
                             {location.email && <p>{location.email}</p>}
                         </div>
                     </div>
