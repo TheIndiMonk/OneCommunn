@@ -8,6 +8,7 @@ import { getCache, setCache } from '../../lib/Utils/cacheUtils';
 
 
 export const FAQ: React.FC = () => {
+    const community = import.meta.env.VITE_APP_COMMUNITY  // 673811a2262dbf8ab84ff643
     const [faqData, setFaqData] = useState<FAQItem[]>([]);
     const [gallery, setGallery] = useState<string[]>([]);
     const [loading, setLoading] = useState(true);
@@ -15,7 +16,7 @@ export const FAQ: React.FC = () => {
 
     useEffect(() => {
         const fetchFAQData = async () => {
-            const API_URL = 'https://api-uat.onecommunn.com/api/v2.0/builders/community/673811a2262dbf8ab84ff643';
+            const API_URL = `https://api-uat.onecommunn.com/api/v2.0/builders/community/${community}`;
 
             const cachedData = getCache('faqData');
             if (cachedData) {
@@ -35,6 +36,7 @@ export const FAQ: React.FC = () => {
                         setGallery(data.gallery || []);
                         setCache('faqData', { faq: data.faq, gallery: data.gallery });
                     }
+                // eslint-disable-next-line @typescript-eslint/no-unused-vars
                 } catch (err) {
                     setError('Failed to load FAQ data.');
                 } finally {
@@ -44,7 +46,7 @@ export const FAQ: React.FC = () => {
         };
 
         fetchFAQData();
-    }, []);
+    }, [community]);
 
     if (loading) return <p>Loading...</p>;
     if (error) return <p>{error}</p>;
