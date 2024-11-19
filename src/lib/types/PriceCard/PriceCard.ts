@@ -1,7 +1,7 @@
 export interface PriceCard {
   offerEndDate?: string;
   _id?: string;
-  name: string;
+  name?: string;
   trainingCount?: number;
   duration?:string;
   startDate: string;
