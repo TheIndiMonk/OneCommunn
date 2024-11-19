@@ -13,10 +13,9 @@ import { FaLeaf } from 'react-icons/fa';
 
 
 const Pricing: React.FC = () => {
+    const community = import.meta.env.VITE_APP_COMMUNITY  // 673811a2262dbf8ab84ff643
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const { data } = useFetch<any>(
-        'https://api-uat.onecommunn.com/api/v2.0/builders/community/673811a2262dbf8ab84ff643'
-    );
+    const { data } = useFetch<any>(`https://api-uat.onecommunn.com/api/v2.0/builders/community/${community}`);  
     const plans: PriceCardProps[] = data?.data?.plans || [];
 
 

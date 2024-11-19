@@ -1,110 +1,54 @@
-// import React from 'react';
-import { useFetch } from '../../Api/apiHandler';
+import { useEffect, useState } from 'react';
 import { Hero } from '../../components/Hero/Hero';
 import { TherapistGrid } from '../../components/Card/TherapistGrid/TherapistGrid';
 import { Therapist } from '../../lib/types/Therapist/TherapistTypes';
 
+
 import styles from './services.module.css';
-
-
+import { getCache, setCache } from '../../lib/Utils/cacheUtils';
 
 export const Services = () => {
 
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const { data } = useFetch<any>(
-        'https://api-uat.onecommunn.com/api/v2.0/builders/community/673811a2262dbf8ab84ff643'
-    );
-    const services: Therapist[] = data?.data?.services || [];
+    const community = import.meta.env.VITE_APP_COMMUNITY  // 673811a2262dbf8ab84ff643
+    const CACHE_KEY = 'services_data';
+    const [services, setServices] = useState<Therapist[]>([]);
+    const [isLoading, setIsLoading] = useState(true);
 
+    useEffect(() => {
+        const fetchServices = async () => {
+            // Check if cached data exists
+            const cachedData = getCache(CACHE_KEY);
+            if (cachedData) {
+                setServices(cachedData);
+                setIsLoading(false);
+                return;
+            }
 
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const servicesApiResponse = (services: any[]) =>
-        services.map(service => ({
-            name: service.title,
-            image: service.images,
-            description: service.description,
-        }));
+            // Fetch data if no cache is available
+            try {
+                const response = await fetch(
+                    `https://api-uat.onecommunn.com/api/v2.0/builders/community/${community}`
+                );
+                const json = await response.json();
+                // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                const fetchedServices = json?.data?.services.map((service: any) => ({
+                    name: service.title,
+                    image: service.images,
+                    description: service.description,
+                }));
 
-    // const illustrations = [
-    //     {
-    //         src: '/logo/left.svg',
-    //         alt: 'Leaf Illustration 1',
-    //         className: 'illustration1'
-    //     },
-    //     {
-    //         src: '/logo/right.svg',
-    //         alt: 'Leaf Illustration 2',
-    //         className: 'illustration2'
+                // Save fetched data to cache
+                setCache(CACHE_KEY, fetchedServices);
+                setServices(fetchedServices);
+            } catch (error) {
+                console.error('Error fetching services:', error);
+            } finally {
+                setIsLoading(false);
+            }
+        };
 
-    //     },
-    // ];
-
-
-    // const Services = [
-    //     {
-    //         name: "Yoga Cloths",
-    //         title: "",
-    //         description: "Duis aute irure dolor in reprehenderit...",
-    //         image: "https://placehold.co/150x150",
-    //         socialLinks: { fb: "FB", tw: "TW", yu: "YU", in: "IN" }
-    //     },
-    //     {
-    //         name: "Yoga Books",
-    //         title: "",
-    //         description: "Description for Yogi Madi...",
-    //         image: "https://placehold.co/150x150",
-    //         socialLinks: { fb: "FB", tw: "TW", yu: "YU", in: "IN" }
-    //     },
-    //     {
-    //         name: "Yoga Accessories",
-    //         title: "",
-    //         description: "Description for Yogi Madi...",
-    //         image: "https://placehold.co/150x150",
-    //         socialLinks: { fb: "FB", tw: "TW", yu: "YU", in: "IN" }
-    //     },
-    //     {
-    //         name: "Yoga Life Style",
-    //         title: "",
-    //         description: "Description for Yogi Madi...",
-    //         image: "https://placehold.co/150x150",
-    //         socialLinks: { fb: "FB", tw: "TW", yu: "YU", in: "IN" }
-    //     },
-    // ];
-    // const therapistCardsData: TherapistCardProps[] = [
-    //     {
-    //         name: 'Dr. Emily Smith',
-    //         title: 'Clinical Psychologist',
-    //         image: 'https://placehold.co/300x300',
-    //         onClick: () => alert('Dr. Emily Smith clicked!'),
-    //     },
-    //     {
-    //         name: 'Michael Johnson',
-    //         title: 'Marriage and Family Therapist',
-    //         image: 'https://placehold.co/300x300',
-    //         onClick: () => alert('Michael Johnson clicked!'),
-    //     },
-    //     {
-    //         name: 'Sophia Brown',
-    //         title: 'Child Psychologist',
-    //         image: 'https://placehold.co/300x300',
-    //         onClick: () => alert('Sophia Brown clicked!'),
-    //     },
-    //     {
-    //         name: 'Dr. William Lee',
-    //         title: 'Behavioral Therapist',
-    //         image: 'https://placehold.co/300x300',
-    //         onClick: () => alert('Dr. William Lee clicked!'),
-    //     },
-    //     {
-    //         name: 'Anna Martinez',
-    //         title: 'Mental Health Counselor',
-    //         image: 'https://placehold.co/300x300',
-    //         onClick: () => alert('Anna Martinez clicked!'),
-    //     },
-
-    // ];
-
-
+        fetchServices();
+    }, [community]);
 
     return (
         <>
@@ -113,11 +57,12 @@ export const Services = () => {
             {/* Services Section */}
             <div className={styles.section}>
                 <h2 className={styles.sectionTitle}>Services</h2>
-                <TherapistGrid Therapist={servicesApiResponse(services)} />
+                {isLoading ? (
+                    <p>Loading...</p>
+                ) : (
+                    <TherapistGrid Therapist={services} />
+                )}
             </div>
-
-
-
         </>
     );
 };

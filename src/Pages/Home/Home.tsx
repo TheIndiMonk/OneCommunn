@@ -41,6 +41,8 @@ const fetchWithCache = async (url: string, cacheKey: string, cacheDuration: numb
 
 
 const Home: React.FC = () => {
+    const community = import.meta.env.VITE_APP_COMMUNITY  // 673811a2262dbf8ab84ff643
+
     const handleButtonClick = () => {
         alert("Button clicked!");
     };
@@ -53,7 +55,7 @@ const Home: React.FC = () => {
         const fetchData = async () => {
             try {
                 const apiData = await fetchWithCache(
-                    'https://api-uat.onecommunn.com/api/v2.0/builders/community/673811a2262dbf8ab84ff643',
+                    `https://api-uat.onecommunn.com/api/v2.0/builders/community/${community}`,
                     'homePageData'
                 );
                 setData(apiData);
@@ -76,7 +78,7 @@ const Home: React.FC = () => {
         };
 
         fetchData();
-    }, []);
+    }, [community]);
     
     
 
@@ -119,7 +121,7 @@ const Home: React.FC = () => {
             name: team.name,
             title: team.designation,
             description: team.description,
-            image: team.avatar.w,
+            image: team.avatar.value,
         }));
 
 

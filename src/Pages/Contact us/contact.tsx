@@ -8,6 +8,8 @@ import { ContactFormProps } from '../../lib/types/Form/ContactFormProps';
 
 
 const Contact: React.FC = () => {
+    const community = import.meta.env.VITE_APP_COMMUNITY  // 673811a2262dbf8ab84ff643
+
     const [selectedLocation, setSelectedLocation] = useState<LocationCardProps | null>(null); // Store selected location
     const [contactInfo, setContactInfo] = useState<LocationCardProps[]>([]); // State to store contact info
 
@@ -30,7 +32,7 @@ const Contact: React.FC = () => {
         } else {
             // Fetch community data
             const fetchData = async () => {
-                const response = await fetch('https://api-uat.onecommunn.com/api/v2.0/builders/community/673811a2262dbf8ab84ff643');
+                const response = await fetch(`https://api-uat.onecommunn.com/api/v2.0/builders/community/${community}`);
                 const data = await response.json();
 
                 if (data?.data) {
@@ -56,7 +58,7 @@ const Contact: React.FC = () => {
 
             fetchData();
         }
-    }, []);
+    }, [community]);
 
     const fields: ContactFormProps['fields'] = [
         { name: 'FirstName', type: 'text', placeholder: 'First Name' },
