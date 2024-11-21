@@ -1,8 +1,8 @@
-export interface PriceCard {
+export interface PriceCardProp {
   offerEndDate?: string;
   _id?: string;
   name?: string;
-  trainingCount?: number;
+  interval?: number;
   duration?:string;
   startDate: string;
   endDate: string;

@@ -132,6 +132,7 @@ const Layout = ({
 
 // Wrapper to handle fetching logo and rendering the Layout
 const LayoutWrapper = () => {
+  const community = import.meta.env.VITE_APP_COMMUNITY  // 673811a2262dbf8ab84ff643
   const [logoSrc, setLogoSrc] = useState<string>("");
   const [contactInfo, setContactInfo] = useState<FooterProps["contactInfo"]>({
     address: "",
@@ -143,9 +144,7 @@ const LayoutWrapper = () => {
 
   useEffect(() => {
     const fetchCommunityData = async () => {
-      const API_URL =
-        "https://api-uat.onecommunn.com/api/v2.0/builders/community/673811a2262dbf8ab84ff643";
-
+      const API_URL =`https://api-uat.onecommunn.com/api/v2.0/builders/community/${community}`;
       const cachedData = getCache("communityData");
       if (cachedData) {
         // Use cached data if available and valid
@@ -184,7 +183,7 @@ const LayoutWrapper = () => {
     };
 
     fetchCommunityData();
-  }, []);
+  }, [community]);
 
   return <Layout logoSrc={logoSrc} contactInfo={contactInfo} />;
 };
