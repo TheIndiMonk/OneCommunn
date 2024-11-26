@@ -12,8 +12,7 @@ const Contact: React.FC = () => {
 
 
     const [selectedLocation, setSelectedLocation] = useState<LocationCardProps | null>(null); // Store selected location
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const [contactInfo, setContactInfo] = useState<LocationCardProps[]>(contactUsDummyData); // State to store contact info
+    const [contactInfo] = useState<LocationCardProps[]>(contactUsDummyData); // State to store contact info
     useEffect(() => {
         const loadAboutData = async () =>{
             const data = await fetchContactUs();
