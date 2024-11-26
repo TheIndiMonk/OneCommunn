@@ -27,7 +27,7 @@ import { fetchFaq } from '../../data/HomePage/faqData';
 import { fetchServices } from '../../data/HomePage/services';
 import { fetchPackages } from '../../data/HomePage/packages';
 
-import { aboutUs } from '../../data/HomePage/aboutUs';
+
 import { logos } from '../../data/HomePage/logos';
 import { products } from '../../data/HomePage/products';
 import { testimonials } from '../../data/HomePage/testimonials';
@@ -37,26 +37,8 @@ import { fetchTeam } from '../../data/HomePage/therapists';
 import { FAQItem } from '../../lib/types/FAQ/FAQItem';
 import { Therapist } from '../../lib/types/Therapist/TherapistTypes';
 import { PriceCardProp } from '../../lib/types/PriceCard/PriceCard';
+import { fetchAboutUs, aboutUsDummyData} from '../../data/HomePage/aboutUs'
 
-
-// const fetchWithCache = async (url: string, cacheKey: string, cacheDuration: number = 600000) => {
-//     const cachedData = getCache(cacheKey);
-//     const currentTime = Date.now();
-
-//     // If cache exists and it's still valid
-//     if (cachedData && currentTime - cachedData.timestamp < cacheDuration) {
-//         return cachedData.data;
-//     }
-
-//     // Otherwise, fetch the data and cache it
-//     const response = await fetch(url);
-//     const data = await response.json();
-
-//     // Save to cache with a timestamp
-//     setCache(cacheKey, { data, timestamp: currentTime });
-
-//     return data;
-// };
 
 
 const Home: React.FC = () => {
@@ -64,6 +46,16 @@ const Home: React.FC = () => {
         alert("Button clicked!");
     };
     
+
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const [about, setAbout] = useState <any>(aboutUsDummyData)
+    useEffect(() => {
+        const loadAboutData = async () =>{
+            const data = await fetchAboutUs();
+            setAbout(data);
+        }
+        loadAboutData();
+    }, [])
 
     const [banners, setBanners] = useState<SlidesBanners[]>([]);
     useEffect(() => {
@@ -95,7 +87,12 @@ const Home: React.FC = () => {
     useEffect(() =>{
         const loadServices = async () => {
             const data = await fetchServices();
-            setServices(data);
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            const modifiedServices = data.map((services: any) => ({
+                ...services, 
+                image: services.images[0]
+            }));
+            setServices(modifiedServices);
         };
         loadServices();
     }, []);
@@ -147,8 +144,8 @@ const Home: React.FC = () => {
             {/* About Us  */}
             <HomeAboutSection
                 title="About Us"
-                name={aboutUs.heading}
-                description={aboutUs.about}
+                name={about.heading}
+                description={about.about}
                 video='./video/file_example_MP4_1280_10MG.mp4'
                 ButtonUrl='/contact'
                 onContactClick={handleButtonClick}
@@ -157,8 +154,8 @@ const Home: React.FC = () => {
 
             {/* Mission Vission Section */}
             <VisionMission
-                vision={aboutUs.vision}
-                mission={aboutUs.mission}
+                vision={about.vision}
+                mission={about.mission}
                 instructorName="Jasmin"
                 yogaType="Yoga Pregnant"
                 schedule="Tue - Fri: 7:00am to 7:00pm"

@@ -4,52 +4,33 @@ import { Hero } from '../../components/Hero/Hero';
 import { FAQItem } from '../../lib/types/FAQ/FAQItem';
 import { Questionnaire } from '../../components/Questioner/Questionnaire';
 import { ImageCard } from '../../components/Card/ImageCard/ImageCard';
-import { getCache, setCache } from '../../lib/Utils/cacheUtils';
+
+import { fetchFaq } from '../../data/HomePage/faqData';
+import { fetchGallery } from '../../data/FAQPage/GalleryData';
 
 
 export const FAQ: React.FC = () => {
-    const community = import.meta.env.VITE_APP_COMMUNITY  // 673811a2262dbf8ab84ff643
-    const [faqData, setFaqData] = useState<FAQItem[]>([]);
+
+
     const [gallery, setGallery] = useState<string[]>([]);
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState<string | null>(null);
-
     useEffect(() => {
-        const fetchFAQData = async () => {
-            const API_URL = `https://api-uat.onecommunn.com/api/v2.0/builders/community/${community}`;
-
-            const cachedData = getCache('faqData');
-            if (cachedData) {
-                // Use cached data
-                setFaqData(cachedData.faq || []);
-                setGallery(cachedData.gallery || []);
-                setLoading(false);
-            } else {
-                // Fetch fresh data from API
-                try {
-                    const response = await fetch(API_URL);
-                    const result = await response.json();
-                    const data = result?.data;
-
-                    if (data) {
-                        setFaqData(data.faq || []);
-                        setGallery(data.gallery || []);
-                        setCache('faqData', { faq: data.faq, gallery: data.gallery });
-                    }
-                // eslint-disable-next-line @typescript-eslint/no-unused-vars
-                } catch (err) {
-                    setError('Failed to load FAQ data.');
-                } finally {
-                    setLoading(false);
-                }
-            }
+        const loadGallery = async () => {
+            const data = await fetchGallery();
+            console.log("Data: ",data)
+            setGallery(data);
         };
+        loadGallery();
+    }, [])
 
-        fetchFAQData();
-    }, [community]);
 
-    if (loading) return <p>Loading...</p>;
-    if (error) return <p>{error}</p>;
+    const [FaqData, setFaqData] = useState<FAQItem[]>([]);
+    useEffect(() => {
+        const loadFaqData = async ()  => {
+            const data = await fetchFaq();
+            setFaqData(data);
+        };
+        loadFaqData();
+    }, [])
 
     return (
         <div>
@@ -60,7 +41,7 @@ export const FAQ: React.FC = () => {
             <Questionnaire
                 title="Frequently Asked Questions"
                 description="Rrow itself, let it be sorrow; let him love it; let him pursue it, ishing for its acquisition. Because he will behold, uniess but through concern, and also of those who resist. Now a pure snore disturbed sum."
-                question={faqData}
+                question={FaqData}
                 backgroundImage={false} // Set to true to show the background image
             />
             <div className={styles.cardContainer}>
@@ -77,7 +58,7 @@ export const FAQ: React.FC = () => {
             <Questionnaire
                 title="Yoga Instructor Questions"
                 description="Rrow itself, let it be sorrow; let him love it; let him pursue it, ishing for its acquisition. Because he will behold, uniess but through concern, and also of those who resist. Now a pure snore disturbed sum."
-                question={faqData}
+                question={FaqData}
                 backgroundImage={false} // Set to true to show the background image
             />
         </div>

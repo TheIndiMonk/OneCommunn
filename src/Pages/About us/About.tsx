@@ -1,39 +1,32 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Hero } from '../../components/Hero/Hero';
 import { Logos } from '../../components/LogosContainer/Logos';
 import { AboutSection } from '../../components/AboutSection/AboutSection';
 import { TherapistGrid } from '../../components/Card/TherapistGrid/TherapistGrid';
 import { TestimonialSection } from '../../components/TestimonialCarousel/Testimonial';
 import { CheckSchedule } from '../../components/CheckSchedule/CheckSchedule';
-import { useFetch } from '../../Api/apiHandler';
+
 import { Therapist } from '../../lib/types/Therapist/TherapistTypes';
+import { fetchTeam } from '../../data/HomePage/therapists';
 
 // import styles from './about.module.css';
 
 const About: React.FC = () => {
-    const community = import.meta.env.VITE_APP_COMMUNITY  // 673811a2262dbf8ab84ff643
 
-    // const illustrations = [
-    //     {
-    //         src: '/logo/left.svg',
-    //         alt: 'Leaf Illustration 1',
-    //         className: 'illustration1'
-    //     },
-    //     {
-    //         src: '/logo/right.svg',
-    //         alt: 'Leaf Illustration 2',
-    //         className: 'illustration2'
-
-    //     },
-    // ];
-
-
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const { data } = useFetch<any>(
-        `https://api-uat.onecommunn.com/api/v2.0/builders/community/${community}`
-    );
-
-    const teams: Therapist[] = data?.data?.teams || [];
+    // Team API Call.
+    const [teams, setTeams] = useState<Therapist[]>([]);
+    useEffect(() =>{
+        const loadTherapists = async () => {
+            const data = await fetchTeam();
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            const modifiedTeam = data.map((teams: any) => ({
+                ...teams,
+                image: teams.avatar?.value || ""
+              }));
+              setTeams(modifiedTeam);
+        };
+        loadTherapists();
+    }, []);
 
 
     const aboutSectionData = {
@@ -107,54 +100,6 @@ const About: React.FC = () => {
         }
     ];
 
-    // const therapists = [
-    //     {
-    //         name: "Emily Burden",
-    //         title: "Yoga Instructor",
-    //         description: "Duis aute irure dolor in reprehenderit...",
-    //         image: "https://placehold.co/150x150",
-    //         socialLinks: { fb: "FB", tw: "TW", yu: "YU", in: "IN" }
-    //     },
-    //     {
-    //         name: "Yogi Madi",
-    //         title: "Yoga Instructor",
-    //         description: "Description for Yogi Madi...",
-    //         image: "https://placehold.co/150x150",
-    //         socialLinks: { fb: "FB", tw: "TW", yu: "YU", in: "IN" }
-    //     },
-    //     {
-    //         name: "Rohit Madi",
-    //         title: "Yoga Instructor",
-    //         description: "Description for Yogi Madi...",
-    //         image: "https://placehold.co/150x150",
-    //         socialLinks: { fb: "FB", tw: "TW", yu: "YU", in: "IN" }
-    //     },
-    //     {
-    //         name: "Jhon Madi",
-    //         title: "Yoga Instructor",
-    //         description: "Description for Yogi Madi...",
-    //         image: "https://placehold.co/150x150",
-    //         socialLinks: { fb: "FB", tw: "TW", yu: "YU", in: "IN" }
-    //     },
-    //     {
-    //         name: "Jhon Madi",
-    //         title: "Yoga Instructor",
-    //         description: "Description for Yogi Madi...",
-    //         image: "https://placehold.co/150x150",
-    //         socialLinks: { fb: "FB", tw: "TW", yu: "YU", in: "IN" }
-    //     },
-    //     // Add more therapist data here
-    // ];
-
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any    
-    const teamsApiResponse = (teams: any[]) =>
-        teams.map(team => ({
-            name: team.name,
-            title: team.designation,
-            description: team.description,
-            image: team.avatar.value,
-        }));
-
 
     return (
         <div>
@@ -182,7 +127,7 @@ const About: React.FC = () => {
             <Logos Logos={logos} />
             <TestimonialSection Testimonials={testimonials} />
             <h1>Meet The Therapist</h1>
-            <TherapistGrid Therapist={teamsApiResponse(teams)} />
+            <TherapistGrid Therapist={teams} />
         </div>
     );
 };

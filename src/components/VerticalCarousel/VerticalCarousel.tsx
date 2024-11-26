@@ -4,7 +4,7 @@ import { VerticalCarouselProps } from '../../lib/types/type';
 
 export const VerticalCarousel: React.FC<VerticalCarouselProps> = ({
   banners,
-  interval = 3000,
+  interval = 200000,
   showControls = true,
   autoSlide = true,
 }) => {

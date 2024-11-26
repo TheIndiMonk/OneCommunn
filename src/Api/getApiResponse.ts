@@ -15,6 +15,7 @@ export const getApiData = async (): Promise<ApiResponse["data"]> => {
   try {
     const response = await axios.get(endpoint);
     return response.data.data as ApiResponse["data"];
+  
   } catch (err) {
     throw new Error(
       `Failed to fetch data: ${err instanceof Error ? err.message : String(err)}`
