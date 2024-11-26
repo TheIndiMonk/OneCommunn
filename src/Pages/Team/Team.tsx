@@ -5,44 +5,32 @@ import { Hero } from '../../components/Hero/Hero';
 import { FeaturedCard } from '../../components/Card/FeaturedCard/FeaturedCard';
 import { TherapistGrid } from '../../components/Card/TherapistGrid/TherapistGrid';
 import { Therapist } from '../../lib/types/Therapist/TherapistTypes';
-import { useFetch } from '../../Api/apiHandler';
 
-const CACHE_KEY = 'therapistsData';
+import { fetchTeam } from '../../data/HomePage/therapists';
+
 
 const Team: React.FC = () => {
-    const community = import.meta.env.VITE_APP_COMMUNITY  // 673811a2262dbf8ab84ff643
 
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const { data } = useFetch<any>(`https://api-uat.onecommunn.com/api/v2.0/builders/community/${community}`);
-    const [teams, setTeams] = useState<Therapist[]>([]);
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const [selectedTherapist, setSelectedTherapist] = useState<Therapist | null | any>(null);
 
+    const [teams, setTeams] = useState<Therapist[]>([]);
     useEffect(() => {
-        // Check if data is cached in localStorage
-        const cachedData = localStorage.getItem(CACHE_KEY);
-        if (cachedData) {
-            // Use the cached data
-            const parsedData: Therapist[] = JSON.parse(cachedData);
-            setTeams(parsedData);
-            setSelectedTherapist(parsedData.find(t => t.isFeatured) || parsedData[0]);
-        } else if (data?.data?.teams) {
+        const loadTherapists = async () => {
+            const data = await fetchTeam();
             // eslint-disable-next-line @typescript-eslint/no-explicit-any
-            const fetchedTeams = data?.data?.teams.map((team: any) => ({
-                name: team.name,
-                title: team.designation,
-                description: team.description,
-                image: team.avatar.value,
-                isFeatured: team.isFeatured || false,
-                socialLinks: { fb: "FB", tw: "TW", yu: "YU", in: "IN" }
+            const modifiedTeam = data.map((therapists: any) => ({
+                ...therapists,
+                image: therapists.avatar?.value || ""
             }));
-            // Cache the data
-            localStorage.setItem(CACHE_KEY, JSON.stringify(fetchedTeams));
-            setTeams(fetchedTeams);
+            setTeams(modifiedTeam);
             // eslint-disable-next-line @typescript-eslint/no-explicit-any
-            setSelectedTherapist(fetchedTeams.find((t: { isFeatured: any; }) => t.isFeatured) || fetchedTeams[0]);
-        }
-    }, [data]);
+            setSelectedTherapist(modifiedTeam.find((t: { isFeatured: any; }) => t.isFeatured) || modifiedTeam[0]);
+        };
+        loadTherapists();
+    }, []);
+
+
 
     const handleSelectTherapist = (therapist: Therapist) => {
         setSelectedTherapist(therapist);

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from './pricing.module.css';
 import { Hero } from '../../components/Hero/Hero';
 import { PriceCard } from '../../components/Card/PriceCard/PriceCard';
@@ -6,33 +6,22 @@ import BannerCard from '../../components/Banner/BannerCard';
 import TimeTable from '../../components/TimeTable/TimeTable';
 import {ProductCard} from '../../components/Card/ProductCard/ProductCard';
 import InstagramFollow from '../../components/InstagramCard/InstagramFollow';
-import { PriceCardProps } from '../../lib/types/type';
-import { useFetch } from '../../Api/apiHandler';
+
 import { FaLeaf } from 'react-icons/fa';
+import { fetchPackages } from '../../data/HomePage/packages';
+import { PriceCardProp } from '../../lib/types/PriceCard/PriceCard';
 
 
 
 const Pricing: React.FC = () => {
-    const community = import.meta.env.VITE_APP_COMMUNITY  // 673811a2262dbf8ab84ff643
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const { data } = useFetch<any>(`https://api-uat.onecommunn.com/api/v2.0/builders/community/${community}`);  
-    const plans: PriceCardProps[] = data?.data?.plans || [];
-
-
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const planApiResponse = (plans: any[]) =>
-      plans.map(plan => ({
-          name: plan.name,
-          trainingCount: plan.interval,
-          duration: plan.duration,
-          offerValue: plan.offerValue,
-          startDate: plan.startDate,
-          endDate: plan.endDate,
-          totalPlanValue: plan.totalPlanValue,
-          includeTax: plan.summary,
-          description: plan.description,
-
-      }));
+    const [packages, setPackages] = useState<PriceCardProp[]>([]);
+    useEffect(() =>{
+        const loadPackages = async () => {
+            const data = await fetchPackages();
+            setPackages(data);
+        };
+        loadPackages();
+    }, []);
 
     // const packages = [
     //     {
@@ -204,6 +193,7 @@ const Pricing: React.FC = () => {
             isCenterCard: false,
           content: (
             <>
+              <FaLeaf className="fas fa-leaf" />
               <p> Yoka@Jew</p>
               <p>Follow Us On</p>
               <p>Instagram</p>
@@ -223,7 +213,7 @@ const Pricing: React.FC = () => {
             <div className={styles.container}>
                 <h1 className={styles.title}>Prices And Packages</h1>
                 <p className={styles.subtitle}>Duis aute irure dolor reprehenderit voluptate velit esse cillum dolore fugiat nulla pariatur.</p>
-                <PriceCard pricingData={planApiResponse(plans)} />
+                <PriceCard pricingData={packages} />
 
                 <BannerCard
                     title="Sale Now On"

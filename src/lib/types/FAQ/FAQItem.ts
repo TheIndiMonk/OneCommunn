@@ -1,6 +1,6 @@
 // FAQItem.ts
 export interface FAQItem {
-    id: string;
+    id?: string;
     question: string;
     answer: string;
 

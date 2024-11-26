@@ -5,5 +5,5 @@ export interface LocationCardProps {
     pinCode: string;
     phone: string;
     email: string;
-    mapLink: string; // Add map link to the interface
+    mapLink?: string; // Add map link to the interface
 };

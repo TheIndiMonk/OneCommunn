@@ -1,8 +1,8 @@
 // type.ts
 
-import { PriceCard } from "./PriceCard";
+import { PriceCardProp } from "./PriceCard";
 
 
   export interface PriceCardProps {
-    pricingData: PriceCard[];
+    pricingData: PriceCardProp[];
   }

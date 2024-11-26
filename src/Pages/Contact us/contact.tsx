@@ -5,60 +5,21 @@ import { Form } from '../../components/Form/Form';
 import { MapCard } from '../../components/Card/Map/MapCard';
 import { LocationCardProps } from '../../lib/types/type';
 import { ContactFormProps } from '../../lib/types/Form/ContactFormProps';
+import { fetchContactUs, contactUsDummyData } from '../../data/ContactPage/contactData';
 
 
 const Contact: React.FC = () => {
-    const community = import.meta.env.VITE_APP_COMMUNITY  // 673811a2262dbf8ab84ff643
+
 
     const [selectedLocation, setSelectedLocation] = useState<LocationCardProps | null>(null); // Store selected location
-    const [contactInfo, setContactInfo] = useState<LocationCardProps[]>([]); // State to store contact info
-
-    // Check local storage for cached community data
+    const [contactInfo] = useState<LocationCardProps[]>(contactUsDummyData); // State to store contact info
     useEffect(() => {
-        const cachedData = localStorage.getItem('communityData');
-
-        if (cachedData) {
-            const community = JSON.parse(cachedData);
-            setContactInfo([
-                {
-                    city: community.data.contactUs.city,
-                    address: community.data.contactUs.address,
-                    pinCode: community.data.contactUs.pinCode,
-                    phone: community.data.contactUs.phone,
-                    email: community.data.contactUs.email,
-                    mapLink: community.data.contactUs.location,
-                },
-            ]);
-        } else {
-            // Fetch community data
-            const fetchData = async () => {
-                const response = await fetch(`https://api-uat.onecommunn.com/api/v2.0/builders/community/${community}`);
-                const data = await response.json();
-
-                if (data?.data) {
-                    const community = data.data;
-                    console.log(community)
-                    const contactInfo: LocationCardProps[] = [
-                        {
-                            address: community.contactUs.address || '',
-                            city: community.contactUs.city || '',
-                            pinCode: community.contactUs.pinCode || '',
-                            phone: community.contactUs.phone || '',
-                            email: community.contactUs.email || '',
-                            mapLink: community.location,
-                        },
-                    ];
-                    console.log(contactInfo)
-                    setContactInfo(contactInfo);
-
-                    // Save to local storage
-                    localStorage.setItem('communityData', JSON.stringify(community));
-                }
-            };
-
-            fetchData();
+        const loadAboutData = async () =>{
+            const data = await fetchContactUs();
+            console.log("data is not of proper format just loogin it from the time bing: ", data)
         }
-    }, [community]);
+        loadAboutData();
+    }, [])
 
     const fields: ContactFormProps['fields'] = [
         { name: 'FirstName', type: 'text', placeholder: 'First Name' },

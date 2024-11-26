@@ -1,7 +1,7 @@
 export interface SlidesBanners {
     image: string;
-    title?: string;
-    subtitle?: string;
+    heading?: string;
+    subheading?: string;
     BtnText?: string;
     BtnLink?: string;
   }

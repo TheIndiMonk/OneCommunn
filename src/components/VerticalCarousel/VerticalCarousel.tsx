@@ -4,7 +4,7 @@ import { VerticalCarouselProps } from '../../lib/types/type';
 
 export const VerticalCarousel: React.FC<VerticalCarouselProps> = ({
   banners,
-  interval = 3000,
+  interval = 200000,
   showControls = true,
   autoSlide = true,
 }) => {
@@ -59,14 +59,14 @@ export const VerticalCarousel: React.FC<VerticalCarouselProps> = ({
             style={{ backgroundImage: `url(${banner.image})` }}
           >
             <div className={styles.textContainer}>
-              {banner.title && <h2 className={styles.title} style={{color: 'white'}}>{banner.title}</h2>}
-              {banner.subtitle && (
-                <p className={styles.subtitle} style={{color: 'white'}}>{banner.subtitle}</p>
+              {banner.heading && <h2 className={styles.title} style={{ color: 'white' }}>{banner.heading}</h2>}
+              {banner.subheading && (
+                <p className={styles.subtitle} style={{ color: 'white' }}>{banner.subheading}</p>
               )}
               {banner.BtnText && (
                 <button
                   onClick={() => handleButtonClick(banner.BtnLink)}
-                  className={styles.actionButton}
+                  className={`${styles.actionButton} actionButton`}
                 >
                   {banner.BtnText}
                 </button>
