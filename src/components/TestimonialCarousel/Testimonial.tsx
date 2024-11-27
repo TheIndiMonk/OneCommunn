@@ -64,7 +64,7 @@ export const TestimonialSection: React.FC<TestimonialProps> = ({ Testimonials })
               className={styles.image}
             />
           </div>
-          <svg width="216" height="14" viewBox="0 0 216 14" fill="none" xmlns="http://www.w3.org/2000/svg" style={{padding:"2rem", paddingLeft:"10rem" }}>
+          <svg width="216" height="14" viewBox="0 0 216 14" fill="none" xmlns="http://www.w3.org/2000/svg" style={{padding:"2rem 0rem 2rem 10rem" }}>
           <path d="M0 1C21.6 1 21.6 12.6667 43.2 12.6667C64.8 12.6667 64.8 1 86.4 1C108 1 108 12.6667 129.6 12.6667C151.2 12.6667 151.2 1 172.8 1C194.4 1 194.4 12.6667 216 12.6667" stroke="#27282C" strokeMiterlimit="10"/>
           </svg>
 
