@@ -167,4 +167,8 @@ button:hover{
   .contactUsRight{
     width: 100%;
   }
+  .content{
+    width: 100%;
+    padding: 2rem;
+  }
 }
